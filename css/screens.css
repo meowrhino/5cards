@@ -1,0 +1,330 @@
+/* ========================================
+   screens.css — estilos por pantalla
+   (passwords, turn, game, scores)
+   ======================================== */
+
+/* --- pantalla contraseñas --- */
+#screen-passwords {
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 40px 20px;
+}
+
+#screen-passwords h2 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+}
+
+#password-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.player-password-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.player-password-row label {
+  flex: 0 0 90px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  font-family: var(--font-ui);
+}
+
+.player-password-row input {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--text-secondary);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  font-size: 0.9rem;
+}
+
+.player-password-row input:focus {
+  border-color: var(--accent);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(201,169,110,0.15);
+}
+
+#btn-start-game {
+  padding: 14px 40px;
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: var(--font-display);
+  border-radius: var(--radius-md);
+  background: var(--btn-bg);
+  color: var(--accent);
+  border: 2px solid var(--accent);
+  transition: all 0.3s ease;
+}
+
+#btn-start-game:hover {
+  background: var(--accent);
+  color: var(--bg-primary);
+}
+
+/* --- pantalla turno --- */
+#screen-turn {
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px 20px;
+}
+
+#turn-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 900;
+  font-family: var(--font-display);
+  color: var(--bg-primary);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+}
+
+#screen-turn h2 {
+  font-size: 1.3rem;
+  font-family: var(--font-display);
+  text-align: center;
+}
+
+#turn-password {
+  padding: 14px;
+  font-size: 1.1rem;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--text-secondary);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  text-align: center;
+  width: 260px;
+  font-family: var(--font-ui);
+  transition: border-color 200ms ease, box-shadow 200ms ease;
+}
+
+#turn-password:focus {
+  border-color: var(--accent);
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(201,169,110,0.15);
+}
+
+#btn-unlock {
+  padding: 14px 40px;
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: var(--font-display);
+  border-radius: var(--radius-md);
+  background: var(--btn-bg);
+  color: var(--accent);
+  border: 2px solid var(--accent);
+  transition: all 0.3s ease;
+}
+
+#btn-unlock:hover {
+  background: var(--accent);
+  color: var(--bg-primary);
+}
+
+/* --- pantalla juego --- */
+#screen-game {
+  padding: 0;
+}
+
+#game-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  font-family: var(--font-ui);
+  background: var(--bg-surface);
+  border-bottom: 1px solid rgba(128,128,128,0.1);
+}
+
+#game-info-display {
+  opacity: 0.6;
+  font-size: 0.75rem;
+}
+
+#btn-back {
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-surface);
+  color: var(--text-secondary);
+  border: 1px solid var(--text-secondary);
+  font-size: 0.75rem;
+  font-family: var(--font-ui);
+}
+
+#btn-back:hover {
+  color: var(--text-primary);
+  border-color: var(--text-primary);
+}
+
+#game-table {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  gap: 12px;
+  min-height: 200px;
+}
+
+#game-hand {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--card-gap);
+  padding: 16px;
+  justify-content: center;
+  background: var(--bg-surface);
+  min-height: 130px;
+  border-top: 1px solid rgba(128,128,128,0.1);
+}
+
+#game-actions {
+  display: flex;
+  gap: 10px;
+  padding: 12px 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* --- pantalla puntuaciones --- */
+#screen-scores {
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 40px 20px;
+}
+
+#screen-scores h2 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+}
+
+#scores-table {
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+  font-family: var(--font-ui);
+}
+
+#scores-table th,
+#scores-table td {
+  padding: 10px 14px;
+  border: 1px solid rgba(128,128,128,0.2);
+}
+
+#scores-table th {
+  font-weight: 900;
+  background: var(--bg-surface);
+  font-size: 0.8rem;
+  text-transform: lowercase;
+}
+
+#scores-table td {
+  font-size: 0.9rem;
+}
+
+#screen-scores .btn {
+  min-width: 160px;
+}
+
+/* --- modal --- */
+#modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: var(--bg-surface-solid, #1a1a2e);
+  color: var(--text-primary);
+  padding: 32px;
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  max-width: 360px;
+  width: 90%;
+  box-shadow: 0 24px 48px rgba(0,0,0,0.4);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.modal-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+}
+
+.modal-input {
+  padding: 10px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--text-secondary);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  text-align: center;
+  width: 100%;
+  font-size: 1rem;
+}
+
+.modal-input:focus {
+  border-color: var(--accent);
+  outline: none;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+.modal-buttons .btn {
+  flex: 1;
+  padding: 10px;
+}
+
+/* --- responsive --- */
+@media (max-width: 600px) {
+  #game-hand {
+    padding: 12px 8px;
+    min-height: 100px;
+  }
+
+  .player-password-row {
+    flex-wrap: wrap;
+  }
+
+  .player-password-row label {
+    flex: 0 0 100%;
+    font-size: 0.8rem;
+  }
+
+  #turn-avatar {
+    width: 60px;
+    height: 60px;
+    font-size: 1.6rem;
+  }
+
+  .modal-content {
+    padding: 24px 20px;
+  }
+}

@@ -1,0 +1,168 @@
+/* ========================================
+   tokens.css — design tokens del sistema
+   CSS custom properties centralizadas
+   ======================================== */
+
+/* --- tipografia --- */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Inter:wght@400;600;700;900&display=swap');
+
+:root {
+  --font-display: 'Fredoka', 'Baloo 2', system-ui, sans-serif;
+  --font-ui: 'Inter', system-ui, -apple-system, sans-serif;
+
+  /* dimensiones de cartas */
+  --card-w: 72px;
+  --card-h: 104px;
+  --card-radius: 10px;
+  --card-gap: 8px;
+
+  /* rummikub tiles (mas pequeñas) */
+  --tile-w: 56px;
+  --tile-h: 78px;
+
+  /* transiciones */
+  --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --transform-duration: 800ms;
+
+  /* colores de equivalencia (constantes entre juegos) */
+  --equiv-0: #F5A623;  /* Oros / Diamonds / Amarillo */
+  --equiv-1: #E74C3C;  /* Copas / Hearts / Rojo */
+  --equiv-2: #3498DB;  /* Espadas / Spades / Azul */
+  --equiv-3: #27AE60;  /* Bastos / Clubs / Verde */
+
+  /* sombras comunes */
+  --shadow-card: 0 2px 8px rgba(0,0,0,0.25);
+  --shadow-card-hover: 0 8px 24px rgba(0,0,0,0.35);
+  --shadow-card-selected: 0 12px 32px rgba(0,0,0,0.45);
+  --shadow-glow-0: 0 0 16px 4px rgba(245,166,35,0.5);
+  --shadow-glow-1: 0 0 16px 4px rgba(231,76,60,0.5);
+  --shadow-glow-2: 0 0 16px 4px rgba(52,152,219,0.5);
+  --shadow-glow-3: 0 0 16px 4px rgba(39,174,96,0.5);
+
+  /* radios */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+}
+
+/* ========================================
+   chinchon: taberna española clasica
+   verde profundo, acentos dorados
+   ======================================== */
+body[data-game="chinchon"] {
+  --bg-primary: #1B3A1B;
+  --bg-secondary: #0F260F;
+  --bg-surface: rgba(255,255,255,0.06);
+  --bg-surface-solid: #2D5016;
+  --accent: #C9A96E;
+  --accent-secondary: #8B6914;
+  --text-primary: #F5EDD6;
+  --text-secondary: rgba(245,237,214,0.6);
+  --nav-bg: #0F260F;
+  --nav-active-bg: #4A7A25;
+  --nav-active-text: #fff;
+  --btn-bg: rgba(201,169,110,0.15);
+  --btn-border: #C9A96E;
+  --card-bg: linear-gradient(170deg, #FBF6EC 0%, #F0E6CC 100%);
+  --card-border: #A08060;
+  --card-suit-red: #9B1B30;
+  --card-suit-black: #1A1A2E;
+}
+
+/* ========================================
+   uno: fiesta vibrante, negro + neones
+   ======================================== */
+body[data-game="uno"] {
+  --bg-primary: #0D0D0D;
+  --bg-secondary: #000000;
+  --bg-surface: rgba(255,255,255,0.06);
+  --bg-surface-solid: #1A1A1A;
+  --accent: #FF2D2D;
+  --accent-secondary: #FFD600;
+  --text-primary: #FFFFFF;
+  --text-secondary: rgba(255,255,255,0.5);
+  --nav-bg: #000000;
+  --nav-active-bg: #E02020;
+  --nav-active-text: #fff;
+  --btn-bg: rgba(255,45,45,0.15);
+  --btn-border: #E02020;
+  --uno-yellow: linear-gradient(135deg, #FFE033 0%, #F5B800 100%);
+  --uno-red: linear-gradient(135deg, #FF3333 0%, #C00000 100%);
+  --uno-blue: linear-gradient(135deg, #3377FF 0%, #1540B0 100%);
+  --uno-green: linear-gradient(135deg, #33CC33 0%, #108010 100%);
+}
+
+/* ========================================
+   rummikub: elegancia, azul profundo
+   ======================================== */
+body[data-game="rummikub"] {
+  --bg-primary: #0C2D48;
+  --bg-secondary: #071E32;
+  --bg-surface: rgba(255,255,255,0.06);
+  --bg-surface-solid: #1A4A6E;
+  --accent: #E8B931;
+  --accent-secondary: #E74C3C;
+  --text-primary: #FFFFFF;
+  --text-secondary: rgba(255,255,255,0.5);
+  --nav-bg: #071E32;
+  --nav-active-bg: #E74C3C;
+  --nav-active-text: #fff;
+  --btn-bg: rgba(232,185,49,0.15);
+  --btn-border: #E8B931;
+  --tile-bg: linear-gradient(180deg, #FFFFF8 0%, #F0EDE0 100%);
+  --tile-border: #2A2A2A;
+}
+
+/* ========================================
+   virus: laboratorio oscuro, acentos neon
+   ======================================== */
+body[data-game="virus"] {
+  --bg-primary: #0A1628;
+  --bg-secondary: #060F1D;
+  --bg-surface: rgba(57,255,20,0.04);
+  --bg-surface-solid: #122240;
+  --accent: #39FF14;
+  --accent-secondary: #FF1493;
+  --text-primary: #E0F7E8;
+  --text-secondary: rgba(224,247,232,0.5);
+  --nav-bg: #060F1D;
+  --nav-active-bg: #39FF14;
+  --nav-active-text: #0A1628;
+  --btn-bg: rgba(57,255,20,0.1);
+  --btn-border: #39FF14;
+}
+
+/* ========================================
+   poker: casino nocturno, dorados
+   ======================================== */
+body[data-game="poker"] {
+  --bg-primary: #0B1426;
+  --bg-secondary: #060D1A;
+  --bg-surface: rgba(212,175,55,0.04);
+  --bg-surface-solid: #162040;
+  --accent: #D4AF37;
+  --accent-secondary: #C0392B;
+  --text-primary: #F5F0E1;
+  --text-secondary: rgba(245,240,225,0.5);
+  --nav-bg: #060D1A;
+  --nav-active-bg: #D4AF37;
+  --nav-active-text: #0B1426;
+  --btn-bg: rgba(212,175,55,0.12);
+  --btn-border: #D4AF37;
+}
+
+/* ========================================
+   responsive
+   ======================================== */
+@media (max-width: 600px) {
+  :root {
+    --card-w: 54px;
+    --card-h: 78px;
+    --card-gap: 5px;
+    --tile-w: 42px;
+    --tile-h: 60px;
+  }
+}

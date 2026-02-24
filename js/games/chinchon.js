@@ -1,10 +1,12 @@
 /* ========================================
-   chinchon.js — lógica del chinchón
+   chinchon.js — logica del chinchon
    ======================================== */
 
 const ChinchonGame = {
 
   scoreLimit: 100,
+
+  /* === LOGICA (sin DOM) === */
 
   init(scoreLimit) {
     this.scoreLimit = scoreLimit || 100;
@@ -14,42 +16,28 @@ const ChinchonGame = {
     };
   },
 
-  /* ¿puede el jugador cerrar? (tiene 7 cartas ligadas o quiere cerrar con puntos bajos) */
   canClose(playerIdx) {
-    const hand = GameEngine.state.players[playerIdx].hand;
-    return hand.length === 7;
+    return GameEngine.state.players[playerIdx].hand.length === 7;
   },
 
-  /* calcular puntos de una mano (cartas no ligadas) */
   calculatePoints(hand) {
-    /* intentar encontrar la mejor combinación de grupos/escaleras */
-    const bestResult = this.findBestCombination(hand);
-    return bestResult.points;
+    return this.findBestCombination(hand).points;
   },
 
-  /* encontrar la mejor combinación de ligazones */
   findBestCombination(hand) {
     const cards = hand.map(c => ({
-      id: c.id,
-      value: c.chinchon.value,
-      suit: c.chinchon.suit
+      id: c.id, value: c.chinchon.value, suit: c.chinchon.suit
     }));
 
-    /* intentar todas las combinaciones posibles de grupos y escaleras */
     let bestPoints = this.sumPoints(cards);
     let bestGroups = [];
     let bestLeftover = [...cards];
 
-    /* buscar escaleras (3+ cartas consecutivas mismo palo) */
     const escaleras = this.findEscaleras(cards);
-
-    /* buscar grupos (3+ cartas mismo valor) */
     const grupos = this.findGrupos(cards);
-
-    /* probar combinaciones */
     const allCombos = [...escaleras, ...grupos];
 
-    /* para simplificar, probar cada combo individual y ver cuál reduce más puntos */
+    /* probar cada combo individual */
     for (const combo of allCombos) {
       const usedIds = new Set(combo.map(c => c.id));
       const leftover = cards.filter(c => !usedIds.has(c.id));
@@ -61,7 +49,7 @@ const ChinchonGame = {
       }
     }
 
-    /* probar pares de combos que no compartan cartas */
+    /* probar pares de combos sin cartas compartidas */
     for (let i = 0; i < allCombos.length; i++) {
       for (let j = i + 1; j < allCombos.length; j++) {
         const ids1 = new Set(allCombos[i].map(c => c.id));
@@ -83,7 +71,7 @@ const ChinchonGame = {
       }
     }
 
-    /* chinchón: 7 cartas consecutivas mismo palo */
+    /* chinchon: 7 cartas consecutivas mismo palo */
     if (cards.length === 7) {
       const suits = {};
       cards.forEach(c => {
@@ -95,7 +83,7 @@ const ChinchonGame = {
           suitCards.sort((a, b) => a.value - b.value);
           let consecutive = true;
           for (let k = 1; k < 7; k++) {
-            if (suitCards[k].value !== suitCards[k-1].value + 1) {
+            if (suitCards[k].value !== suitCards[k - 1].value + 1) {
               consecutive = false;
               break;
             }
@@ -110,7 +98,6 @@ const ChinchonGame = {
     return { points: bestPoints, groups: bestGroups, leftover: bestLeftover, chinchon: false };
   },
 
-  /* buscar escaleras posibles */
   findEscaleras(cards) {
     const results = [];
     const bySuit = {};
@@ -130,15 +117,12 @@ const ChinchonGame = {
             break;
           }
         }
-        if (run.length >= 3) {
-          results.push([...run]);
-        }
+        if (run.length >= 3) results.push([...run]);
       }
     }
     return results;
   },
 
-  /* buscar grupos posibles (mismo valor, distinto palo) */
   findGrupos(cards) {
     const results = [];
     const byValue = {};
@@ -146,104 +130,86 @@ const ChinchonGame = {
       if (!byValue[c.value]) byValue[c.value] = [];
       byValue[c.value].push(c);
     });
-
     for (const group of Object.values(byValue)) {
-      if (group.length >= 3) {
-        results.push([...group]);
-      }
+      if (group.length >= 3) results.push([...group]);
     }
     return results;
   },
 
-  /* sumar puntos de cartas sueltas */
   sumPoints(cards) {
-    return cards.reduce((sum, c) => {
-      if (c.value >= 10) return sum + 10;
-      return sum + c.value;
-    }, 0);
+    return cards.reduce((sum, c) => sum + (c.value >= 10 ? 10 : c.value), 0);
   },
 
-  /* cerrar ronda */
   closeRound(closerIdx) {
     const players = GameEngine.state.players;
-
-    /* calcular puntos de cada jugador */
     const roundScores = players.map((p, idx) => {
       if (idx === closerIdx) {
         const result = this.findBestCombination(p.hand);
         return result.chinchon ? -25 : result.points;
-      } else {
-        return this.calculatePoints(p.hand);
       }
+      return this.calculatePoints(p.hand);
     });
 
-    /* sumar a puntuaciones acumuladas */
-    players.forEach((p, idx) => {
-      p.score += roundScores[idx];
-    });
-
-    /* verificar si alguien perdió */
-    const losers = players.filter(p => p.score >= this.scoreLimit);
+    players.forEach((p, idx) => { p.score += roundScores[idx]; });
 
     return {
       roundScores,
       totalScores: players.map(p => p.score),
-      losers,
+      losers: players.filter(p => p.score >= this.scoreLimit),
       chinchon: roundScores[closerIdx] === -25
     };
   },
 
-  /* renderizar mesa de chinchón */
+  /* === RENDERING (con DOM) === */
+
   renderTable() {
     const table = document.getElementById('game-table');
-    const game = 'chinchon';
     const topCard = GameEngine.getTopDiscard();
+    const gs = GameEngine.state.gameSpecific;
 
     table.innerHTML = `
-      <div style="display:flex; gap:20px; align-items:center;">
+      <div class="table-center">
         <div class="draw-pile" id="chinchon-draw" title="robar del mazo">🂠</div>
-        <div id="chinchon-discard" style="min-width:70px; min-height:100px;">
-          ${topCard ? '' : '<span style="opacity:0.3">descarte</span>'}
+        <div class="discard-slot" id="chinchon-discard">
+          ${topCard ? '' : '<span class="placeholder-text">descarte</span>'}
         </div>
       </div>
     `;
 
     if (topCard) {
-      const discardEl = document.getElementById('chinchon-discard');
-      CardRenderer.renderSingleCard(topCard, game, discardEl);
+      CardComponent.renderSingle(topCard, 'chinchon', document.getElementById('chinchon-discard'));
     }
 
     /* robar del mazo */
     document.getElementById('chinchon-draw').addEventListener('click', () => {
-      if (GameEngine.state.gameSpecific.hasDrawn) return;
+      if (gs.hasDrawn) return;
       GameEngine.drawCard(GameEngine.state.currentPlayerIdx);
-      GameEngine.state.gameSpecific.hasDrawn = true;
+      gs.hasDrawn = true;
       this.renderTable();
-      App.renderCurrentHand();
+      EventBus.emit('hand:updated');
     });
 
     /* robar del descarte */
     const discardEl = document.getElementById('chinchon-discard');
-    if (discardEl && topCard && !GameEngine.state.gameSpecific.hasDrawn) {
+    if (discardEl && topCard && !gs.hasDrawn) {
       discardEl.style.cursor = 'pointer';
       discardEl.addEventListener('click', () => {
-        if (GameEngine.state.gameSpecific.hasDrawn) return;
+        if (gs.hasDrawn) return;
         const card = GameEngine.state.discardPile.pop();
         GameEngine.state.players[GameEngine.state.currentPlayerIdx].hand.push(card);
-        GameEngine.state.gameSpecific.hasDrawn = true;
+        gs.hasDrawn = true;
         this.renderTable();
-        App.renderCurrentHand();
+        EventBus.emit('hand:updated');
       });
     }
   },
 
-  /* renderizar acciones */
   renderActions() {
     const actions = document.getElementById('game-actions');
     actions.innerHTML = `
-      <button id="btn-chinchon-discard" disabled>descartar seleccionada</button>
-      <button id="btn-chinchon-close">cerrar</button>
-      <button id="btn-pass-turn">pasar turno</button>
+      <button id="btn-chinchon-discard" class="btn btn--accent" disabled>descartar</button>
+      <button id="btn-chinchon-close" class="btn btn--ghost">cerrar</button>
+      <button id="btn-pass-turn" class="btn btn--ghost">pasar turno</button>
     `;
 
     document.getElementById('btn-chinchon-discard').addEventListener('click', () => {
@@ -253,16 +219,18 @@ const ChinchonGame = {
       GameEngine.playCard(GameEngine.state.currentPlayerIdx, cardId);
       GameEngine.state.gameSpecific.hasDrawn = false;
       this.renderTable();
-      App.renderCurrentHand();
+      EventBus.emit('hand:updated');
     });
 
     document.getElementById('btn-chinchon-close').addEventListener('click', () => {
       const result = this.closeRound(GameEngine.state.currentPlayerIdx);
-      App.showScores(result);
+      EventBus.emit('round:ended', result);
     });
 
     document.getElementById('btn-pass-turn').addEventListener('click', () => {
-      App.passTurn();
+      EventBus.emit('turn:passed');
     });
   }
 };
+
+GameInterface.register('chinchon', ChinchonGame);

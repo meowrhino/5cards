@@ -2,39 +2,60 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#1B3A1B">
   <title>5cards</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/themes.css">
   <link rel="stylesheet" href="css/cards.css">
   <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/screens.css">
   <link rel="stylesheet" href="css/game.css">
+  <link rel="stylesheet" href="css/transitions.css">
 </head>
 <body data-game="chinchon">
 
   <!-- ============================================ -->
-  <!-- PANTALLA PRINCIPAL: selección de juego        -->
+  <!-- PANTALLA PRINCIPAL: seleccion de juego        -->
   <!-- ============================================ -->
   <div id="screen-main" class="screen active">
 
-    <!-- menú superior: 5 juegos -->
+    <!-- menu superior: 5 juegos -->
     <nav id="game-nav">
-      <button class="game-tab active" data-game="chinchon">chinchón</button>
+      <button class="game-tab active" data-game="chinchon">chinchon</button>
       <button class="game-tab" data-game="uno">uno</button>
       <button class="game-tab" data-game="rummikub">rummikub</button>
       <button class="game-tab" data-game="virus">virus</button>
       <button class="game-tab" data-game="poker">poker</button>
     </nav>
 
-    <!-- zona de cartas: baraja ordenada -->
-    <div id="card-display">
-      <!-- las cartas se generan con JS -->
+    <!-- hero: cartas representativas con transformacion -->
+    <div id="hero-area">
+      <div id="hero-cards">
+        <!-- se generan con JS -->
+      </div>
+
+      <!-- franja de equivalencias -->
+      <div id="equiv-strip" class="equiv-strip">
+        <!-- se genera con JS -->
+      </div>
+
+      <!-- info del juego actual -->
+      <div id="game-info-card"></div>
     </div>
 
-    <!-- zona inferior: configuración + jugar -->
+    <!-- toggle baraja completa -->
+    <div id="full-deck-area">
+      <button id="btn-toggle-deck">ver baraja completa</button>
+      <div id="full-deck-display" style="display:none;"></div>
+    </div>
+
+    <!-- configuracion + jugar -->
     <div id="game-setup">
       <div id="setup-options">
-        <!-- opciones específicas de cada juego se muestran aquí -->
         <div id="player-config">
           <label for="num-players">jugadores:</label>
           <select id="num-players">
@@ -46,29 +67,25 @@
           </select>
         </div>
 
-        <!-- opciones chinchón -->
+        <!-- opciones chinchon -->
         <div id="chinchon-options" class="game-options">
-          <label>puntos para perder: <input type="number" id="chinchon-limit" value="100" min="50" max="200" step="10"></label>
+          <label>limite: <input type="number" id="chinchon-limit" value="100" min="50" max="200" step="10"></label>
         </div>
 
         <!-- opciones poker -->
         <div id="poker-options" class="game-options" style="display:none;">
-          <label>fichas iniciales: <input type="number" id="poker-chips" value="1000" min="100" step="100"></label>
+          <label>fichas: <input type="number" id="poker-chips" value="1000" min="100" step="100"></label>
         </div>
 
         <!-- opciones virus -->
-        <div id="virus-options" class="game-options" style="display:none;">
-          <!-- virus no necesita config extra -->
-        </div>
+        <div id="virus-options" class="game-options" style="display:none;"></div>
 
         <!-- opciones uno -->
-        <div id="uno-options" class="game-options" style="display:none;">
-          <!-- uno no necesita config extra -->
-        </div>
+        <div id="uno-options" class="game-options" style="display:none;"></div>
 
         <!-- opciones rummikub -->
         <div id="rummikub-options" class="game-options" style="display:none;">
-          <label>puntos mínimos primera jugada: <input type="number" id="rummikub-min" value="30" min="20" max="50" step="5"></label>
+          <label>minimo: <input type="number" id="rummikub-min" value="30" min="20" max="50" step="5"></label>
         </div>
       </div>
 
@@ -81,7 +98,7 @@
   </div>
 
   <!-- ============================================ -->
-  <!-- PANTALLA CONTRASEÑAS: setup de jugadores      -->
+  <!-- PANTALLA CONTRASEÑAS                          -->
   <!-- ============================================ -->
   <div id="screen-passwords" class="screen">
     <h2>configurar jugadores</h2>
@@ -95,24 +112,25 @@
   <!-- PANTALLA TURNO: pedir contraseña              -->
   <!-- ============================================ -->
   <div id="screen-turn" class="screen">
-    <h2 id="turn-title">soy jugador <span id="turn-player-name"></span></h2>
-    <input type="password" id="turn-password" placeholder="contraseña">
-    <button id="btn-unlock">desbloquear mano</button>
+    <div id="turn-avatar"></div>
+    <h2 id="turn-title">turno de <span id="turn-player-name"></span></h2>
+    <input type="password" id="turn-password" placeholder="contraseña" autocomplete="off">
+    <button id="btn-unlock">desbloquear</button>
     <p id="turn-error" class="error-msg"></p>
   </div>
 
   <!-- ============================================ -->
-  <!-- PANTALLA JUEGO: la partida en sí              -->
+  <!-- PANTALLA JUEGO                                -->
   <!-- ============================================ -->
   <div id="screen-game" class="screen">
     <div id="game-header">
       <span id="game-current-player"></span>
-      <span id="game-info"></span>
-      <button id="btn-back" title="volver atrás (pide contraseña)">← atrás</button>
+      <span id="game-info-display"></span>
+      <button id="btn-back" title="volver atras">← atras</button>
     </div>
 
     <div id="game-table">
-      <!-- zona de juego central (mesa) -->
+      <!-- zona de juego central -->
     </div>
 
     <div id="game-hand">
@@ -120,8 +138,7 @@
     </div>
 
     <div id="game-actions">
-      <!-- botones de acción según el juego -->
-      <button id="btn-pass-turn">pasar turno</button>
+      <!-- botones de accion segun el juego -->
     </div>
   </div>
 
@@ -133,32 +150,48 @@
     <table id="scores-table">
       <!-- se genera con JS -->
     </table>
-    <button id="btn-next-round">siguiente ronda</button>
-    <button id="btn-end-game">terminar partida</button>
-  </div>
-
-  <!-- ============================================ -->
-  <!-- MODAL: volver atrás pidiendo contraseña       -->
-  <!-- ============================================ -->
-  <div id="modal-back" class="modal" style="display:none;">
-    <div class="modal-content">
-      <h3>introduce la contraseña del jugador actual</h3>
-      <input type="password" id="back-password" placeholder="contraseña">
-      <button id="btn-confirm-back">confirmar</button>
-      <button id="btn-cancel-back">cancelar</button>
-      <p id="back-error" class="error-msg"></p>
+    <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center;">
+      <button id="btn-next-round" class="btn btn--accent">siguiente ronda</button>
+      <button id="btn-end-game" class="btn btn--ghost">terminar</button>
     </div>
   </div>
 
-  <!-- scripts modulares -->
-  <script src="js/cards-data.js"></script>
-  <script src="js/card-renderer.js"></script>
-  <script src="js/game-engine.js"></script>
-  <script src="js/chinchon.js"></script>
-  <script src="js/uno.js"></script>
-  <script src="js/rummikub.js"></script>
-  <script src="js/virus.js"></script>
-  <script src="js/poker.js"></script>
+  <!-- ============================================ -->
+  <!-- MODAL                                         -->
+  <!-- ============================================ -->
+  <div id="modal-overlay">
+    <div class="modal-content">
+      <!-- contenido dinamico -->
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- SCRIPTS (orden de dependencias)               -->
+  <!-- ============================================ -->
+
+  <!-- core (sin dependencias entre si) -->
+  <script src="js/core/event-bus.js"></script>
+  <script src="js/core/suit-equivalence.js"></script>
+  <script src="js/core/cards-data.js"></script>
+  <script src="js/core/game-engine.js"></script>
+  <script src="js/core/screen-manager.js"></script>
+
+  <!-- ui (depende de core) -->
+  <script src="js/ui/card-component.js"></script>
+  <script src="js/ui/transform-animator.js"></script>
+  <script src="js/ui/modal-manager.js"></script>
+  <script src="js/ui/main-screen.js"></script>
+  <script src="js/ui/turn-screen.js"></script>
+
+  <!-- games (depende de core + ui) -->
+  <script src="js/games/game-interface.js"></script>
+  <script src="js/games/chinchon.js"></script>
+  <script src="js/games/uno.js"></script>
+  <script src="js/games/rummikub.js"></script>
+  <script src="js/games/virus.js"></script>
+  <script src="js/games/poker.js"></script>
+
+  <!-- app (depende de todo) -->
   <script src="js/app.js"></script>
 </body>
 </html>

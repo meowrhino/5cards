@@ -1,5 +1,5 @@
 /* ========================================
-   reset.css — normalización básica
+   reset.css — normalizacion basica
    ======================================== */
 
 *, *::before, *::after {
@@ -14,10 +14,17 @@ html {
 }
 
 body {
-  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-family: var(--font-ui, 'Inter', system-ui, -apple-system, sans-serif);
   line-height: 1.5;
   min-height: 100vh;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display, 'Fredoka', system-ui, sans-serif);
+  line-height: 1.2;
 }
 
 button {
@@ -26,11 +33,13 @@ button {
   font-size: inherit;
   border: none;
   background: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 input, select {
   font-family: inherit;
   font-size: inherit;
+  -webkit-tap-highlight-color: transparent;
 }
 
 table {
@@ -40,4 +49,9 @@ table {
 img {
   max-width: 100%;
   display: block;
+}
+
+::selection {
+  background: var(--accent, #C9A96E);
+  color: var(--bg-primary, #1B3A1B);
 }

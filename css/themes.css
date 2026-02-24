@@ -1,94 +1,141 @@
 /* ========================================
-   themes.css — estética de cada juego
-   cada juego cambia el body[data-game]
+   themes.css — estetica visual por juego
+   usa tokens de tokens.css
    ======================================== */
 
-/* ----- chinchón: fondo sencillo, cartas clásicas ----- */
-body[data-game="chinchon"] {
-  background-color: #2d5016;
-  background-image: none;
-  color: #f5f0e1;
-}
-
-body[data-game="chinchon"] #game-nav {
-  background-color: #1a3009;
-}
-
-body[data-game="chinchon"] .game-tab.active {
-  background-color: #4a7a25;
-  color: #fff;
-}
-
-/* ----- uno: fondo negro, colores vivos ----- */
-body[data-game="uno"] {
-  background-color: #111;
-  color: #fff;
-}
-
-body[data-game="uno"] #game-nav {
-  background-color: #000;
-}
-
-body[data-game="uno"] .game-tab.active {
-  background-color: #e02020;
-  color: #fff;
-}
-
-/* ----- rummikub: colores primarios, fondo claro ----- */
-body[data-game="rummikub"] {
-  background-color: #1a5276;
-  color: #fff;
-}
-
-body[data-game="rummikub"] #game-nav {
-  background-color: #0e3650;
-}
-
-body[data-game="rummikub"] .game-tab.active {
-  background-color: #e74c3c;
-  color: #fff;
-}
-
-/* ----- virus: fondo verde fosforito ----- */
-body[data-game="virus"] {
-  background-color: #39ff14;
-  color: #111;
-}
-
-body[data-game="virus"] #game-nav {
-  background-color: #20cc00;
-}
-
-body[data-game="virus"] .game-tab.active {
-  background-color: #ff1493;
-  color: #fff;
-}
-
-/* ----- poker: estampado geométrico blanco/azul ----- */
-body[data-game="poker"] {
-  background-color: #e5e5f7;
-  background-image:
-    linear-gradient(135deg, #444cf7 25%, transparent 25%),
-    linear-gradient(225deg, #444cf7 25%, transparent 25%),
-    linear-gradient(45deg, #444cf7 25%, transparent 25%),
-    linear-gradient(315deg, #444cf7 25%, transparent 25%);
-  background-position: 21px 0, 21px 0, 0 0, 0 0;
-  background-size: 21px 21px;
-  background-repeat: repeat;
-  color: #111;
-}
-
-body[data-game="poker"] #game-nav {
-  background-color: rgba(20, 20, 60, 0.95);
-  color: #fff;
-}
-
-body[data-game="poker"] .game-tab.active {
-  background-color: #fff;
-  color: #444cf7;
-}
-
-/* ----- transición suave entre temas ----- */
+/* --- transicion suave entre temas --- */
 body {
-  transition: background-color 0.6s ease, color 0.4s ease;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.5s ease, color 0.4s ease;
+}
+
+/* --- nav superior --- */
+#game-nav {
+  background-color: var(--nav-bg);
+  transition: background-color 0.5s ease;
+}
+
+.game-tab.active {
+  background-color: var(--nav-active-bg);
+  color: var(--nav-active-text);
+}
+
+/* --- chinchon: textura de fieltro sutil --- */
+body[data-game="chinchon"] {
+  background-image:
+    radial-gradient(ellipse at 20% 50%, rgba(74,122,37,0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 50%, rgba(74,122,37,0.1) 0%, transparent 50%);
+}
+
+/* --- uno: puntos de luz sutiles --- */
+body[data-game="uno"] {
+  background-image:
+    radial-gradient(circle at 30% 30%, rgba(255,45,45,0.05) 0%, transparent 40%),
+    radial-gradient(circle at 70% 70%, rgba(51,119,255,0.05) 0%, transparent 40%);
+}
+
+/* --- rummikub: degradado profundo --- */
+body[data-game="rummikub"] {
+  background-image: linear-gradient(180deg, var(--bg-primary) 0%, #071E32 100%);
+}
+
+/* --- virus: rejilla laboratorio --- */
+body[data-game="virus"] {
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(57,255,20,0.02) 40px, rgba(57,255,20,0.02) 41px),
+    repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(57,255,20,0.02) 40px, rgba(57,255,20,0.02) 41px);
+}
+
+/* --- poker: resplandor dorado --- */
+body[data-game="poker"] {
+  background-image: radial-gradient(ellipse at 50% 0%, rgba(212,175,55,0.06) 0%, transparent 60%);
+}
+
+/* --- botones --- */
+.btn {
+  padding: 12px 28px;
+  font-weight: 700;
+  font-family: var(--font-ui);
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  text-transform: lowercase;
+  letter-spacing: 0.3px;
+  transition: all 200ms ease;
+  border: 2px solid transparent;
+}
+
+.btn--accent {
+  background: var(--btn-bg);
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.btn--accent:hover {
+  background: var(--accent);
+  color: var(--bg-primary);
+  transform: scale(1.03);
+}
+
+.btn--accent:disabled {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--text-secondary);
+  border-color: var(--text-secondary);
+}
+
+.btn--ghost:hover {
+  color: var(--text-primary);
+  border-color: var(--text-primary);
+  background: var(--bg-surface);
+}
+
+.btn--danger {
+  background: rgba(231,76,60,0.1);
+  color: #E74C3C;
+  border-color: #E74C3C;
+}
+
+.btn--danger:hover {
+  background: #E74C3C;
+  color: #fff;
+}
+
+/* --- status badges --- */
+.status-badge {
+  display: inline-block;
+  padding: 4px 14px;
+  border-radius: var(--radius-xl);
+  font-weight: 700;
+  font-size: 0.8rem;
+  font-family: var(--font-ui);
+  background: var(--badge-color, var(--accent));
+  color: #fff;
+}
+
+.status-badge--danger {
+  background: #E74C3C;
+}
+
+/* --- textos auxiliares --- */
+.placeholder-text {
+  opacity: 0.3;
+  font-size: 0.8rem;
+  font-style: italic;
+}
+
+.pile-count {
+  font-size: 0.75rem;
+  opacity: 0.5;
+  font-family: var(--font-ui);
+}
+
+.error-msg {
+  color: #ff4444;
+  font-size: 0.85rem;
+  min-height: 1.2em;
 }

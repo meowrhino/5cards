@@ -1,97 +1,79 @@
 /* ========================================
-   app.js — controlador principal de 5cards
-   conecta UI, motor de juego y módulos
+   app.js — orquestador principal de 5cards
+   conecta modulos via EventBus
    ======================================== */
 
 const App = {
 
   currentGame: 'chinchon',
 
-  /* ---- inicialización ---- */
   init() {
-    console.log('[app] 5cards iniciando...');
+    /* inicializar pantalla principal */
+    MainScreen.init();
+    this.currentGame = MainScreen.currentGame;
 
-    /* renderizar baraja inicial */
-    CardRenderer.renderFullDeck(this.currentGame);
+    /* bind eventos globales */
+    this.bindEvents();
+    this.bindEventBus();
+  },
 
-    /* listeners del menú de juegos */
-    document.querySelectorAll('.game-tab').forEach(tab => {
-      tab.addEventListener('click', () => {
-        const newGame = tab.dataset.game;
-        if (newGame === this.currentGame) return;
-
-        /* cambiar tab activa */
-        document.querySelectorAll('.game-tab').forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-
-        /* cambiar tema */
-        document.body.dataset.game = newGame;
-
-        /* mostrar/ocultar opciones del juego */
-        document.querySelectorAll('.game-options').forEach(el => el.style.display = 'none');
-        const optionsEl = document.getElementById(newGame + '-options');
-        if (optionsEl) optionsEl.style.display = '';
-
-        /* transformar cartas */
-        CardRenderer.transformDeck(this.currentGame, newGame);
-        this.currentGame = newGame;
-
-        console.log(`[app] cambiado a ${newGame}`);
-      });
-    });
-
-    /* botón jugar */
+  bindEvents() {
+    /* boton jugar */
     document.getElementById('btn-play').addEventListener('click', () => {
       this.goToPasswords();
     });
 
-    /* botón empezar partida */
+    /* boton empezar partida */
     document.getElementById('btn-start-game').addEventListener('click', () => {
       this.startGame();
     });
 
-    /* botón desbloquear */
+    /* boton desbloquear turno */
     document.getElementById('btn-unlock').addEventListener('click', () => {
-      this.unlockHand();
+      TurnScreen.tryUnlock();
     });
 
-    /* enter en campo de contraseña de turno */
+    /* enter en campo contraseña */
     document.getElementById('turn-password').addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') this.unlockHand();
+      if (e.key === 'Enter') TurnScreen.tryUnlock();
     });
 
-    /* botón volver atrás */
+    /* boton volver atras */
     document.getElementById('btn-back').addEventListener('click', () => {
       this.showBackModal();
     });
 
-    /* modal volver atrás */
-    document.getElementById('btn-confirm-back').addEventListener('click', () => {
-      this.confirmBack();
-    });
-    document.getElementById('btn-cancel-back').addEventListener('click', () => {
-      document.getElementById('modal-back').style.display = 'none';
-    });
-
-    /* botones de puntuaciones */
+    /* botones puntuaciones */
     document.getElementById('btn-next-round').addEventListener('click', () => {
       this.nextRound();
     });
+
     document.getElementById('btn-end-game').addEventListener('click', () => {
       this.endGame();
     });
-
-    console.log('[app] 5cards listo');
   },
 
-  /* ---- navegación entre pantallas ---- */
-  showScreen(screenId) {
-    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-    document.getElementById(screenId).classList.add('active');
+  bindEventBus() {
+    EventBus.on('turn:passed', () => {
+      GameEngine.nextTurn();
+      TurnScreen.show();
+    });
+
+    EventBus.on('round:ended', (result) => {
+      this.showScores(result);
+    });
+
+    EventBus.on('hand:updated', () => {
+      this.renderCurrentHand();
+    });
+
+    EventBus.on('game:render', () => {
+      this.renderGameScreen();
+    });
   },
 
-  /* ---- ir a pantalla de contraseñas ---- */
   goToPasswords() {
+    this.currentGame = MainScreen.currentGame;
     const numPlayers = parseInt(document.getElementById('num-players').value);
     const container = document.getElementById('password-fields');
     container.innerHTML = '';
@@ -100,256 +82,149 @@ const App = {
       const row = document.createElement('div');
       row.className = 'player-password-row';
       row.innerHTML = `
-        <label>jugador ${i + 1}:</label>
+        <label>jugador ${i + 1}</label>
         <input type="text" placeholder="nombre" class="player-name-input" value="jugador ${i + 1}">
         <input type="password" placeholder="contraseña" class="player-pass-input">
       `;
       container.appendChild(row);
     }
 
-    this.showScreen('screen-passwords');
+    ScreenManager.show('screen-passwords');
   },
 
-  /* ---- empezar partida ---- */
   startGame() {
     const nameInputs = document.querySelectorAll('.player-name-input');
     const passInputs = document.querySelectorAll('.player-pass-input');
-
     const names = Array.from(nameInputs).map(i => i.value.trim() || 'jugador');
     const passwords = Array.from(passInputs).map(i => i.value);
 
-    /* verificar que todas las contraseñas están puestas */
     if (passwords.some(p => p.length === 0)) {
       alert('todos los jugadores necesitan contraseña');
       return;
     }
 
-    const numPlayers = names.length;
+    GameEngine.initGame(this.currentGame, names.length, passwords);
+    GameEngine.state.players.forEach((p, i) => { p.name = names[i]; });
 
-    /* iniciar motor */
-    GameEngine.initGame(this.currentGame, numPlayers, passwords);
-
-    /* poner nombres */
-    GameEngine.state.players.forEach((p, i) => {
-      p.name = names[i];
-    });
-
-    /* iniciar módulo específico */
-    switch (this.currentGame) {
-      case 'chinchon':
-        ChinchonGame.init(parseInt(document.getElementById('chinchon-limit').value));
-        break;
-      case 'uno':
-        UnoGame.init();
-        break;
-      case 'rummikub':
-        RummikubGame.init(parseInt(document.getElementById('rummikub-min').value));
-        break;
-      case 'virus':
-        VirusGame.init();
-        break;
-      case 'poker':
-        PokerGame.init(parseInt(document.getElementById('poker-chips').value));
-        break;
+    const gameModule = GameInterface.get(this.currentGame);
+    if (gameModule) {
+      switch (this.currentGame) {
+        case 'chinchon':
+          gameModule.init(parseInt(document.getElementById('chinchon-limit').value));
+          break;
+        case 'rummikub':
+          gameModule.init(parseInt(document.getElementById('rummikub-min').value));
+          break;
+        case 'poker':
+          gameModule.init(parseInt(document.getElementById('poker-chips').value));
+          break;
+        default:
+          gameModule.init();
+      }
     }
 
-    /* ir a pantalla de turno */
-    this.showTurnScreen();
+    TurnScreen.show();
   },
 
-  /* ---- pantalla de turno (pedir contraseña) ---- */
-  showTurnScreen() {
-    const player = GameEngine.getCurrentPlayer();
-    document.getElementById('turn-player-name').textContent = player.name;
-    document.getElementById('turn-password').value = '';
-    document.getElementById('turn-error').textContent = '';
-    this.showScreen('screen-turn');
-  },
-
-  /* ---- desbloquear mano ---- */
-  unlockHand() {
-    const password = document.getElementById('turn-password').value;
-    const playerIdx = GameEngine.state.currentPlayerIdx;
-
-    if (!GameEngine.checkPassword(playerIdx, password)) {
-      document.getElementById('turn-error').textContent = 'contraseña incorrecta';
-      return;
-    }
-
-    /* resetear estado de turno */
-    if (GameEngine.state.gameSpecific.hasDrawn !== undefined) {
-      GameEngine.state.gameSpecific.hasDrawn = false;
-    }
-    if (GameEngine.state.gameSpecific.hasPlayed !== undefined) {
-      GameEngine.state.gameSpecific.hasPlayed = false;
-    }
-
-    /* mostrar pantalla de juego */
-    this.showScreen('screen-game');
-    this.renderGameScreen();
-  },
-
-  /* ---- renderizar pantalla de juego ---- */
   renderGameScreen() {
     const game = this.currentGame;
     const player = GameEngine.getCurrentPlayer();
 
-    /* header */
     document.getElementById('game-current-player').textContent = player.name;
-    document.getElementById('game-info').textContent =
-      `${game} — ronda ${GameEngine.state.round}`;
+    document.getElementById('game-info-display').textContent = `${game} — ronda ${GameEngine.state.round}`;
 
-    /* mesa */
-    switch (game) {
-      case 'chinchon': ChinchonGame.renderTable(); break;
-      case 'uno': UnoGame.renderTable(); break;
-      case 'rummikub': RummikubGame.renderTable(); break;
-      case 'virus': VirusGame.renderTable(); break;
-      case 'poker': PokerGame.renderTable(); break;
+    const gameModule = GameInterface.get(game);
+    if (gameModule) {
+      gameModule.renderTable();
+      gameModule.renderActions();
     }
 
-    /* mano */
     this.renderCurrentHand();
-
-    /* acciones */
-    switch (game) {
-      case 'chinchon': ChinchonGame.renderActions(); break;
-      case 'uno': UnoGame.renderActions(); break;
-      case 'rummikub': RummikubGame.renderActions(); break;
-      case 'virus': VirusGame.renderActions(); break;
-      case 'poker': PokerGame.renderActions(); break;
-    }
   },
 
-  /* ---- renderizar mano del jugador actual ---- */
   renderCurrentHand() {
     const game = this.currentGame;
     const player = GameEngine.getCurrentPlayer();
     const container = document.getElementById('game-hand');
 
-    CardRenderer.renderHand(player.hand, game, container, {
+    CardComponent.renderHand(player.hand, game, container, {
       selectable: true,
-      onSelect: (card, el) => {
-        /* habilitar/deshabilitar botones según selección */
+      onSelect: () => {
         const hasSelected = container.querySelector('.card.selected') !== null;
-        const discardBtn = document.getElementById('btn-chinchon-discard') ||
-                          document.getElementById('btn-uno-play');
-        if (discardBtn) discardBtn.disabled = !hasSelected;
+        const actionBtns = document.querySelectorAll('#game-actions .btn--accent');
+        actionBtns.forEach(btn => { btn.disabled = !hasSelected; });
       }
     });
   },
 
-  /* ---- pasar turno ---- */
-  passTurn() {
-    GameEngine.nextTurn();
-    this.showTurnScreen();
-  },
-
-  /* ---- modal volver atrás ---- */
   showBackModal() {
-    document.getElementById('modal-back').style.display = 'flex';
-    document.getElementById('back-password').value = '';
-    document.getElementById('back-error').textContent = '';
-
-    /* restaurar el contenido del modal */
-    const modalContent = document.querySelector('#modal-back .modal-content');
-    modalContent.innerHTML = `
-      <h3>introduce la contraseña del jugador actual</h3>
-      <input type="password" id="back-password" placeholder="contraseña">
-      <button id="btn-confirm-back">confirmar</button>
-      <button id="btn-cancel-back">cancelar</button>
-      <p id="back-error" class="error-msg"></p>
-    `;
-
-    document.getElementById('btn-confirm-back').addEventListener('click', () => {
-      this.confirmBack();
-    });
-    document.getElementById('btn-cancel-back').addEventListener('click', () => {
-      document.getElementById('modal-back').style.display = 'none';
-    });
+    ModalManager.showPasswordPrompt(GameEngine.getCurrentPlayer().name);
+    ModalManager.bindPasswordEvents(
+      (password) => {
+        if (!GameEngine.checkPassword(GameEngine.state.currentPlayerIdx, password)) {
+          ModalManager.showError('contraseña incorrecta');
+          return;
+        }
+        ModalManager.close(null);
+        TurnScreen.show();
+      },
+      () => {}
+    );
   },
 
-  confirmBack() {
-    const password = document.getElementById('back-password').value;
-    const playerIdx = GameEngine.state.currentPlayerIdx;
-
-    if (!GameEngine.checkPassword(playerIdx, password)) {
-      document.getElementById('back-error').textContent = 'contraseña incorrecta';
-      return;
-    }
-
-    document.getElementById('modal-back').style.display = 'none';
-    this.showTurnScreen();
-  },
-
-  /* ---- mostrar puntuaciones ---- */
   showScores(result) {
-    this.showScreen('screen-scores');
+    ScreenManager.show('screen-scores');
     const table = document.getElementById('scores-table');
 
     let html = '<thead><tr><th>jugador</th><th>ronda</th><th>total</th></tr></thead><tbody>';
-
     GameEngine.state.players.forEach((p, idx) => {
       const roundScore = result.roundScores ? result.roundScores[idx] : 0;
       const totalScore = result.totalScores ? result.totalScores[idx] : p.score;
       const total = typeof totalScore === 'object' ? `${totalScore.chips} 🪙` : totalScore;
-
       html += `<tr>
         <td>${p.name} ${result.winner === idx ? '👑' : ''}</td>
         <td>${roundScore >= 0 ? '+' : ''}${roundScore}</td>
         <td>${total}</td>
       </tr>`;
     });
-
     html += '</tbody>';
     table.innerHTML = html;
 
-    /* actualizar scores */
     if (result.roundScores) {
       GameEngine.state.players.forEach((p, idx) => {
-        if (typeof result.totalScores[idx] === 'number') {
-          p.score = result.totalScores[idx];
-        }
+        if (typeof result.totalScores[idx] === 'number') p.score = result.totalScores[idx];
       });
     }
   },
 
-  /* ---- siguiente ronda ---- */
   nextRound() {
     GameEngine.state.round++;
     GameEngine.prepareDeck(this.currentGame);
     GameEngine.dealCards(this.currentGame);
     GameEngine.state.currentPlayerIdx = 0;
 
-    /* re-init módulo específico */
-    switch (this.currentGame) {
-      case 'chinchon':
+    const gameModule = GameInterface.get(this.currentGame);
+    if (gameModule) {
+      if (this.currentGame === 'chinchon') {
         GameEngine.state.gameSpecific = { hasDrawn: false, closedBy: null };
-        break;
-      case 'uno':
-        UnoGame.init();
-        break;
-      case 'virus':
-        VirusGame.init();
-        break;
-      case 'poker':
+      } else if (this.currentGame === 'poker') {
         const chips = GameEngine.state.players.map(p => p.chips);
-        PokerGame.init();
+        gameModule.init();
         GameEngine.state.players.forEach((p, i) => { p.chips = chips[i]; });
-        break;
+      } else {
+        gameModule.init();
+      }
     }
 
-    this.showTurnScreen();
+    TurnScreen.show();
   },
 
-  /* ---- terminar partida ---- */
   endGame() {
-    this.showScreen('screen-main');
-    CardRenderer.renderFullDeck(this.currentGame);
+    ScreenManager.show('screen-main');
+    MainScreen.renderHeroCards(this.currentGame);
   }
 };
 
-/* ---- arrancar ---- */
 document.addEventListener('DOMContentLoaded', () => {
   App.init();
 });
