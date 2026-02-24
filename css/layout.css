@@ -1,0 +1,362 @@
+/* ========================================
+   layout.css — estructura general
+   ======================================== */
+
+/* ----- pantallas ----- */
+.screen {
+  display: none;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 0;
+}
+
+.screen.active {
+  display: flex;
+}
+
+/* ----- navegación superior ----- */
+#game-nav {
+  display: flex;
+  gap: 0;
+  padding: 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.game-tab {
+  flex: 1;
+  padding: 12px 8px;
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: lowercase;
+  transition: all 0.3s ease;
+  border-bottom: 3px solid transparent;
+}
+
+.game-tab:hover {
+  opacity: 0.8;
+}
+
+.game-tab.active {
+  border-bottom-color: currentColor;
+}
+
+/* ----- zona de cartas ----- */
+#card-display {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  overflow-y: auto;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+}
+
+/* ----- zona inferior: setup ----- */
+#game-setup {
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+#setup-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+}
+
+#setup-options label {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+#setup-options input,
+#setup-options select {
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 1px solid rgba(128,128,128,0.5);
+  background: rgba(255,255,255,0.15);
+  color: inherit;
+}
+
+#btn-play {
+  padding: 14px 48px;
+  font-size: 1.1rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.2);
+  color: inherit;
+  border: 2px solid currentColor;
+  transition: all 0.3s ease;
+}
+
+#btn-play:hover {
+  background: rgba(255,255,255,0.35);
+  transform: scale(1.05);
+}
+
+/* ----- footer ----- */
+#main-footer {
+  text-align: center;
+  padding: 8px;
+  opacity: 0.5;
+  font-size: 0.75rem;
+}
+
+/* ----- pantalla contraseñas ----- */
+#screen-passwords {
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px 20px;
+}
+
+#password-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.player-password-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.player-password-row label {
+  flex: 0 0 120px;
+  font-weight: 700;
+}
+
+.player-password-row input {
+  flex: 1;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid rgba(128,128,128,0.5);
+  background: rgba(255,255,255,0.15);
+  color: inherit;
+}
+
+#btn-start-game {
+  padding: 12px 36px;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.2);
+  color: inherit;
+  border: 2px solid currentColor;
+}
+
+/* ----- pantalla turno ----- */
+#screen-turn {
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px 20px;
+}
+
+#screen-turn h2 {
+  font-size: 1.5rem;
+}
+
+#turn-password {
+  padding: 12px;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  border: 2px solid currentColor;
+  background: rgba(255,255,255,0.15);
+  color: inherit;
+  text-align: center;
+  width: 250px;
+}
+
+#btn-unlock {
+  padding: 12px 36px;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.2);
+  color: inherit;
+  border: 2px solid currentColor;
+}
+
+.error-msg {
+  color: #ff4444;
+  font-size: 0.85rem;
+  min-height: 1.2em;
+}
+
+/* ----- pantalla juego ----- */
+#screen-game {
+  padding: 0;
+}
+
+#game-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  background: rgba(0,0,0,0.15);
+}
+
+#btn-back {
+  padding: 6px 12px;
+  border-radius: 4px;
+  background: rgba(255,255,255,0.15);
+  color: inherit;
+  border: 1px solid currentColor;
+  font-size: 0.8rem;
+}
+
+#game-table {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  gap: 10px;
+  min-height: 200px;
+}
+
+#game-hand {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 12px 16px;
+  justify-content: center;
+  background: rgba(0,0,0,0.1);
+  min-height: 120px;
+}
+
+#game-actions {
+  display: flex;
+  gap: 10px;
+  padding: 12px 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+#game-actions button {
+  padding: 10px 24px;
+  font-weight: 700;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.2);
+  color: inherit;
+  border: 2px solid currentColor;
+  font-size: 0.9rem;
+}
+
+/* ----- pantalla puntuaciones ----- */
+#screen-scores {
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px 20px;
+}
+
+#scores-table {
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+}
+
+#scores-table th,
+#scores-table td {
+  padding: 8px 12px;
+  border: 1px solid rgba(128,128,128,0.3);
+}
+
+#scores-table th {
+  font-weight: 900;
+  background: rgba(0,0,0,0.1);
+}
+
+#screen-scores button {
+  padding: 10px 24px;
+  font-weight: 700;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.2);
+  color: inherit;
+  border: 2px solid currentColor;
+}
+
+/* ----- modal ----- */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #222;
+  color: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  max-width: 350px;
+  width: 90%;
+}
+
+.modal-content input {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #555;
+  background: #333;
+  color: #fff;
+  text-align: center;
+  width: 100%;
+}
+
+.modal-content button {
+  padding: 8px 20px;
+  border-radius: 4px;
+  background: #444;
+  color: #fff;
+  border: 1px solid #666;
+}
+
+/* ----- responsive ----- */
+@media (max-width: 600px) {
+  .game-tab {
+    font-size: 0.7rem;
+    padding: 10px 4px;
+  }
+
+  #card-display {
+    padding: 10px;
+  }
+
+  #btn-play {
+    padding: 12px 32px;
+    font-size: 1rem;
+  }
+}

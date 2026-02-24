@@ -1,0 +1,323 @@
+/* ========================================
+   cards.css — estilos de las cartas
+   ======================================== */
+
+/* ----- carta base ----- */
+.card {
+  width: 70px;
+  height: 100px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: 700;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+  user-select: none;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+  gap: 2px;
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.35);
+  z-index: 10;
+}
+
+.card.selected {
+  transform: translateY(-16px) scale(1.04);
+  box-shadow: 0 14px 28px rgba(0,0,0,0.45);
+  outline: 3px solid gold;
+  outline-offset: 1px;
+}
+
+/* ----- carta oculta (bloqueada) ----- */
+.card.hidden-card {
+  background: linear-gradient(135deg, #8b0000, #4a0000);
+  color: transparent;
+  cursor: default;
+}
+
+.card.hidden-card::after {
+  content: '🂠';
+  font-size: 2rem;
+  position: absolute;
+}
+
+/* ----- animación de transformación entre juegos ----- */
+.card.transforming {
+  animation: cardFlip 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes cardFlip {
+  0%   { transform: rotateY(0deg) scale(1); opacity: 1; }
+  40%  { transform: rotateY(90deg) scale(0.85); opacity: 0.6; }
+  60%  { transform: rotateY(90deg) scale(0.85); opacity: 0.6; }
+  100% { transform: rotateY(0deg) scale(1); opacity: 1; }
+}
+
+/* ----- carta que aparece (juego con más cartas) ----- */
+.card.appearing {
+  animation: cardAppear 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes cardAppear {
+  0%   { opacity: 0; transform: scale(0.2) rotateZ(-15deg); }
+  100% { opacity: 1; transform: scale(1) rotateZ(0deg); }
+}
+
+/* ----- carta que desaparece (juego con menos cartas) ----- */
+.card.disappearing {
+  animation: cardDisappear 0.4s ease forwards;
+}
+
+@keyframes cardDisappear {
+  0%   { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(0.2) rotateZ(15deg); }
+}
+
+/* ========================================
+   chinchón: cartas clásicas españolas
+   diseño más elaborado con esquinas
+   ======================================== */
+.card[data-game="chinchon"] {
+  background: linear-gradient(170deg, #faf5e8 0%, #f0e8d0 100%);
+  color: #2a1f14;
+  border: 2px solid #a08060;
+  box-shadow: 
+    0 2px 6px rgba(0,0,0,0.2),
+    inset 0 0 0 1px rgba(255,255,255,0.4);
+}
+
+.card[data-game="chinchon"]::before {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border: 1px solid rgba(160,128,96,0.25);
+  border-radius: 5px;
+  pointer-events: none;
+}
+
+.card[data-game="chinchon"][data-suit="oros"],
+.card[data-game="chinchon"][data-suit="copas"] {
+  color: #9b1b30;
+}
+
+.card[data-game="chinchon"][data-suit="espadas"],
+.card[data-game="chinchon"][data-suit="bastos"] {
+  color: #1a1a2e;
+}
+
+.card[data-game="chinchon"] .card-value {
+  font-size: 1.15rem;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+}
+
+.card[data-game="chinchon"] .card-suit {
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+/* esquina superior izquierda con mini valor */
+.card[data-game="chinchon"] .card-corner {
+  position: absolute;
+  top: 3px;
+  left: 4px;
+  font-size: 0.55rem;
+  font-weight: 800;
+  line-height: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ========================================
+   uno: colores vivos sobre negro
+   ======================================== */
+.card[data-game="uno"] {
+  border: 3px solid rgba(255,255,255,0.9);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 900;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+  border-radius: 10px;
+}
+
+.card[data-game="uno"] .card-value {
+  font-size: 1.6rem;
+  font-weight: 900;
+}
+
+.card[data-game="uno"][data-color="amarillo"] {
+  background: linear-gradient(135deg, #ffe033 0%, #f5b800 100%);
+  color: #1a1a1a;
+  text-shadow: none;
+}
+
+.card[data-game="uno"][data-color="rojo"] {
+  background: linear-gradient(135deg, #ff3333 0%, #c00000 100%);
+}
+
+.card[data-game="uno"][data-color="azul"] {
+  background: linear-gradient(135deg, #3377ff 0%, #1540b0 100%);
+}
+
+.card[data-game="uno"][data-color="verde"] {
+  background: linear-gradient(135deg, #33cc33 0%, #108010 100%);
+}
+
+.card[data-game="uno"][data-color="wild"] {
+  background: conic-gradient(from 45deg, #ff3333, #3377ff, #33cc33, #ffe033, #ff3333);
+  border-color: #fff;
+}
+
+/* óvalo central estilo UNO */
+.card[data-game="uno"]::before {
+  content: '';
+  position: absolute;
+  width: 50px;
+  height: 70px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.18);
+  transform: rotate(-30deg);
+  pointer-events: none;
+}
+
+/* ========================================
+   rummikub: fichas con borde grueso
+   ======================================== */
+.card[data-game="rummikub"] {
+  background: linear-gradient(180deg, #fffff8 0%, #f0ede0 100%);
+  border: 3px solid #2a2a2a;
+  border-radius: 8px;
+  font-size: 1.3rem;
+  font-weight: 900;
+  width: 55px;
+  height: 75px;
+  box-shadow: 
+    0 3px 8px rgba(0,0,0,0.3),
+    inset 0 -2px 0 rgba(0,0,0,0.08);
+}
+
+.card[data-game="rummikub"][data-color="amarillo"] { color: #cc8800; }
+.card[data-game="rummikub"][data-color="rojo"]     { color: #cc0000; }
+.card[data-game="rummikub"][data-color="negro"]    { color: #111; }
+.card[data-game="rummikub"][data-color="azul"]     { color: #0044bb; }
+.card[data-game="rummikub"][data-color="wild"]     { color: #777; }
+
+/* ========================================
+   virus: cartas redondeadas y coloridas
+   ======================================== */
+.card[data-game="virus"] {
+  border-radius: 14px;
+  border: 3px solid #222;
+  font-size: 0.6rem;
+  font-weight: 800;
+  text-align: center;
+  line-height: 1.2;
+  gap: 4px;
+}
+
+.card[data-game="virus"] .card-value {
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+.card[data-game="virus"] .card-label {
+  font-size: 0.55rem;
+  text-transform: lowercase;
+  opacity: 0.8;
+  letter-spacing: 0.3px;
+}
+
+.card[data-game="virus"][data-vtype="organo"] {
+  background: linear-gradient(180deg, #fff 0%, #f8f8f0 100%);
+}
+
+.card[data-game="virus"][data-vtype="virus"] {
+  background: linear-gradient(180deg, #333 0%, #1a1a1a 100%);
+  color: #fff;
+}
+
+.card[data-game="virus"][data-vtype="medicina"] {
+  background: linear-gradient(180deg, #e8f5e9 0%, #c8e6c9 100%);
+}
+
+.card[data-game="virus"][data-vtype="tratamiento"] {
+  background: linear-gradient(180deg, #fff8e1 0%, #ffe0b2 100%);
+}
+
+.card[data-game="virus"][data-color="amarillo"] { border-color: #f9a825; }
+.card[data-game="virus"][data-color="rojo"]     { border-color: #e53935; }
+.card[data-game="virus"][data-color="azul"]     { border-color: #1e88e5; }
+.card[data-game="virus"][data-color="verde"]    { border-color: #43a047; }
+.card[data-game="virus"][data-color="multi"]    { border-color: #ab47bc; }
+
+/* ========================================
+   poker: elegante blanco y negro
+   ======================================== */
+.card[data-game="poker"] {
+  background: linear-gradient(170deg, #fff 0%, #f5f5f5 100%);
+  border: 2px solid #1a1a1a;
+  color: #1a1a1a;
+  font-size: 0.9rem;
+  box-shadow: 
+    0 2px 8px rgba(0,0,0,0.2),
+    inset 0 0 0 1px rgba(0,0,0,0.05);
+}
+
+.card[data-game="poker"]::before {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 5px;
+  pointer-events: none;
+}
+
+.card[data-game="poker"][data-suit="hearts"],
+.card[data-game="poker"][data-suit="diamonds"] {
+  color: #cc0000;
+}
+
+.card[data-game="poker"] .card-value {
+  font-size: 1.2rem;
+  font-weight: 900;
+}
+
+.card[data-game="poker"] .card-suit {
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+/* ========================================
+   responsive
+   ======================================== */
+@media (max-width: 600px) {
+  .card {
+    width: 50px;
+    height: 72px;
+    font-size: 0.55rem;
+    border-radius: 6px;
+  }
+
+  .card[data-game="rummikub"] {
+    width: 40px;
+    height: 56px;
+    font-size: 1rem;
+  }
+
+  .card[data-game="uno"] .card-value {
+    font-size: 1.2rem;
+  }
+
+  .card[data-game="poker"] .card-suit {
+    font-size: 1.2rem;
+  }
+}

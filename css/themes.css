@@ -1,0 +1,94 @@
+/* ========================================
+   themes.css — estética de cada juego
+   cada juego cambia el body[data-game]
+   ======================================== */
+
+/* ----- chinchón: fondo sencillo, cartas clásicas ----- */
+body[data-game="chinchon"] {
+  background-color: #2d5016;
+  background-image: none;
+  color: #f5f0e1;
+}
+
+body[data-game="chinchon"] #game-nav {
+  background-color: #1a3009;
+}
+
+body[data-game="chinchon"] .game-tab.active {
+  background-color: #4a7a25;
+  color: #fff;
+}
+
+/* ----- uno: fondo negro, colores vivos ----- */
+body[data-game="uno"] {
+  background-color: #111;
+  color: #fff;
+}
+
+body[data-game="uno"] #game-nav {
+  background-color: #000;
+}
+
+body[data-game="uno"] .game-tab.active {
+  background-color: #e02020;
+  color: #fff;
+}
+
+/* ----- rummikub: colores primarios, fondo claro ----- */
+body[data-game="rummikub"] {
+  background-color: #1a5276;
+  color: #fff;
+}
+
+body[data-game="rummikub"] #game-nav {
+  background-color: #0e3650;
+}
+
+body[data-game="rummikub"] .game-tab.active {
+  background-color: #e74c3c;
+  color: #fff;
+}
+
+/* ----- virus: fondo verde fosforito ----- */
+body[data-game="virus"] {
+  background-color: #39ff14;
+  color: #111;
+}
+
+body[data-game="virus"] #game-nav {
+  background-color: #20cc00;
+}
+
+body[data-game="virus"] .game-tab.active {
+  background-color: #ff1493;
+  color: #fff;
+}
+
+/* ----- poker: estampado geométrico blanco/azul ----- */
+body[data-game="poker"] {
+  background-color: #e5e5f7;
+  background-image:
+    linear-gradient(135deg, #444cf7 25%, transparent 25%),
+    linear-gradient(225deg, #444cf7 25%, transparent 25%),
+    linear-gradient(45deg, #444cf7 25%, transparent 25%),
+    linear-gradient(315deg, #444cf7 25%, transparent 25%);
+  background-position: 21px 0, 21px 0, 0 0, 0 0;
+  background-size: 21px 21px;
+  background-repeat: repeat;
+  color: #111;
+}
+
+body[data-game="poker"] #game-nav {
+  background-color: rgba(20, 20, 60, 0.95);
+  color: #fff;
+}
+
+body[data-game="poker"] .game-tab.active {
+  background-color: #fff;
+  color: #444cf7;
+}
+
+/* ----- transición suave entre temas ----- */
+body {
+  transition: background-color 0.6s ease, color 0.4s ease;
+}
