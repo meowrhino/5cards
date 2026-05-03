@@ -22,6 +22,9 @@ const HandSortable = {
     container.parentNode.replaceChild(fresh, container);
     container = fresh;
 
+    /* limpiar listeners globales de instancia anterior */
+    if (this._cleanup) this._cleanup();
+
     const THRESHOLD = 8;
     let active = null;
     let startX = 0, startY = 0;
@@ -29,11 +32,13 @@ const HandSortable = {
     let isDragging = false;
     let startIndex = -1;
     let lastHoverIndex = -1;
+    let pointerId = null;
 
-    container.addEventListener('pointerdown', (e) => {
+    const onPointerDown = (e) => {
       const card = e.target.closest('.card');
       if (!card || !container.contains(card)) return;
       active = card;
+      pointerId = e.pointerId;
       startX = e.clientX;
       startY = e.clientY;
       const rect = card.getBoundingClientRect();
@@ -41,11 +46,10 @@ const HandSortable = {
       offsetY = e.clientY - rect.top;
       startIndex = Array.from(container.children).indexOf(card);
       isDragging = false;
-      try { card.setPointerCapture(e.pointerId); } catch (_) {}
-    });
+    };
 
-    container.addEventListener('pointermove', (e) => {
-      if (!active) return;
+    const onPointerMove = (e) => {
+      if (!active || (pointerId !== null && e.pointerId !== pointerId)) return;
       const dx = e.clientX - startX;
       const dy = e.clientY - startY;
 
@@ -61,6 +65,7 @@ const HandSortable = {
         active.style.width = rect.width + 'px';
         active.style.zIndex = '1000';
         active.style.pointerEvents = 'none';
+        e.preventDefault && e.preventDefault();
       }
 
       active.style.left = (e.clientX - offsetX) + 'px';
@@ -73,49 +78,62 @@ const HandSortable = {
         const idx = Array.from(container.children).indexOf(target);
         if (idx !== -1 && idx !== lastHoverIndex) {
           lastHoverIndex = idx;
-          /* mover el active al new index visualmente */
           if (idx < startIndex) {
             container.insertBefore(active, target);
-            startIndex = Array.from(container.children).indexOf(active);
           } else {
             container.insertBefore(active, target.nextSibling);
-            startIndex = Array.from(container.children).indexOf(active);
           }
+          startIndex = Array.from(container.children).indexOf(active);
         }
       }
-    });
+    };
 
-    const finishDrag = () => {
+    const onPointerUp = (e) => {
       if (!active) return;
+      if (pointerId !== null && e.pointerId !== pointerId) return;
       const wasDragging = isDragging;
-      active.classList.remove('dragging');
-      active.style.position = '';
-      active.style.left = '';
-      active.style.top = '';
-      active.style.width = '';
-      active.style.zIndex = '';
-      active.style.pointerEvents = '';
+      const wasActive = active;
+      /* siempre limpiar estilos */
+      wasActive.classList.remove('dragging');
+      wasActive.style.position = '';
+      wasActive.style.left = '';
+      wasActive.style.top = '';
+      wasActive.style.width = '';
+      wasActive.style.zIndex = '';
+      wasActive.style.pointerEvents = '';
 
       if (wasDragging) {
-        /* aplicar reordenacion al array */
         const hand = getHand();
         const newOrder = Array.from(container.children)
           .map(el => parseInt(el.dataset.id))
           .map(id => hand.find(c => c.id === id))
           .filter(Boolean);
         if (onReorder) onReorder(newOrder);
-        /* prevenir que el click se dispare tras el drag */
-        const wasActive = active;
-        setTimeout(() => { wasActive._suppressClick = false; }, 50);
         wasActive._suppressClick = true;
+        setTimeout(() => { wasActive._suppressClick = false; }, 100);
       }
       active = null;
       isDragging = false;
       startIndex = -1;
       lastHoverIndex = -1;
+      pointerId = null;
     };
 
-    container.addEventListener('pointerup', finishDrag);
-    container.addEventListener('pointercancel', finishDrag);
+    /* pointerdown solo en el container, pero up/move en document
+       para no perder el evento si el cursor sale del contenedor */
+    container.addEventListener('pointerdown', onPointerDown);
+    document.addEventListener('pointermove', onPointerMove);
+    document.addEventListener('pointerup', onPointerUp);
+    document.addEventListener('pointercancel', onPointerUp);
+    /* tambien capturar si el window pierde foco mientras arrastramos */
+    window.addEventListener('blur', onPointerUp);
+
+    /* cleanup callback para la proxima vez que se llame enable */
+    this._cleanup = () => {
+      document.removeEventListener('pointermove', onPointerMove);
+      document.removeEventListener('pointerup', onPointerUp);
+      document.removeEventListener('pointercancel', onPointerUp);
+      window.removeEventListener('blur', onPointerUp);
+    };
   }
 };
