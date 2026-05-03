@@ -103,6 +103,6 @@
   opacity: 0.85;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .card { font-size: 0.9rem; box-shadow: 2px 2px 0 var(--tt-black); }
 }

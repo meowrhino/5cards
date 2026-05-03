@@ -24,6 +24,6 @@
   line-height: 1;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .card[data-game="rummikub"] .card-value { font-size: 1.3rem; }
 }

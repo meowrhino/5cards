@@ -77,6 +77,6 @@
   75% { transform: translateX(6px); }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   #turn-avatar { width: 64px; height: 64px; font-size: 2rem; }
 }

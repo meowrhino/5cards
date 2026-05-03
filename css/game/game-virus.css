@@ -78,7 +78,7 @@
   text-transform: uppercase;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .virus-organ-slot { width: 44px; height: 60px; }
   .organ-emoji { font-size: 1.2rem; }
 }

@@ -21,6 +21,6 @@
   line-height: 1;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .mind-number { font-size: 1.4rem; }
 }

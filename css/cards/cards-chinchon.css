@@ -64,6 +64,6 @@
   margin-top: 2px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .card[data-game="chinchon"] .card-center-area { padding: 10px 4px; }
 }

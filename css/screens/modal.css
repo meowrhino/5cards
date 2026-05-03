@@ -90,6 +90,6 @@
   box-shadow: 6px 6px 0 var(--bg-primary);
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .modal-content { padding: 20px 16px; }
 }

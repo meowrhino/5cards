@@ -31,6 +31,6 @@
   text-shadow: 1px 1px 0 var(--tt-black);
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .card[data-game="uno"] .card-value { font-size: 1.5rem; }
 }

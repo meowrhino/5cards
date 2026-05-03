@@ -194,7 +194,7 @@ body[data-game="poker"] {
 /* ========================================
    responsive: mobile first
    ======================================== */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   :root {
     --card-w: 56px;
     --card-h: 80px;

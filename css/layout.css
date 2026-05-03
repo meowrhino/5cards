@@ -212,7 +212,7 @@
 }
 
 /* responsive */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .game-tab {
     font-size: 1.05rem;
     padding: 12px 3px;

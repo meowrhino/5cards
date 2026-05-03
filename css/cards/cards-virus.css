@@ -22,6 +22,6 @@
 .card[data-game="virus"][data-vtype="medicina"]    { background: var(--tt-green); color: var(--tt-black); border-color: var(--tt-black); }
 .card[data-game="virus"][data-vtype="tratamiento"] { background: var(--tt-yellow); color: var(--tt-black); border-color: var(--tt-black); }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .card[data-game="virus"] .card-value { font-size: 1.2rem; }
 }

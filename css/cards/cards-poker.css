@@ -15,6 +15,6 @@
 
 .card[data-game="poker"] .card-center-suit { font-size: 2rem; }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .card[data-game="poker"] .card-center-suit { font-size: 1.4rem; }
 }
