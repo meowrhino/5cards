@@ -1,0 +1,125 @@
+/* ========================================
+   game-screen.css — layout de la pantalla de juego
+   ======================================== */
+
+#screen-game { padding: 0; }
+
+#game-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  background: var(--tt-black);
+  color: var(--accent);
+  border-bottom: 3px solid var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+#game-info-display {
+  opacity: 0.8;
+  font-size: 1rem;
+}
+
+#btn-back {
+  padding: 4px 12px;
+  background: var(--tt-black);
+  color: var(--accent);
+  border: 2px solid var(--accent);
+  font-size: 1rem;
+  font-family: var(--font-display);
+  cursor: pointer;
+  text-transform: lowercase;
+}
+
+#btn-back:hover {
+  background: var(--accent);
+  color: var(--bg-primary);
+}
+
+#game-table {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 12px;
+  gap: 12px;
+  min-height: 200px;
+}
+
+/* hand toolbar (sort + info) */
+#hand-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 12px;
+  background: var(--bg-secondary);
+  border-top: 2px solid var(--accent);
+  border-bottom: 2px solid var(--accent);
+  font-family: var(--font-display);
+}
+
+#hand-info {
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+#hand-tools {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.hand-tool-btn {
+  padding: 4px 10px;
+  font-size: 1rem;
+  font-family: var(--font-display);
+  background: var(--tt-black);
+  color: var(--accent);
+  border: 2px solid var(--accent);
+  cursor: pointer;
+  text-transform: lowercase;
+}
+
+.hand-tool-btn:hover {
+  background: var(--accent);
+  color: var(--bg-primary);
+}
+
+#game-hand {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--card-gap);
+  padding: 12px;
+  justify-content: center;
+  background: var(--bg-secondary);
+  min-height: 130px;
+}
+
+#game-actions {
+  display: flex;
+  gap: 8px;
+  padding: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  background: var(--bg-primary);
+}
+
+@media (max-width: 600px) {
+  #game-header { font-size: 0.95rem; padding: 6px 10px; }
+  #game-info-display { font-size: 0.85rem; }
+  #game-hand { padding: 8px 6px; min-height: 100px; }
+  #hand-toolbar { padding: 4px 8px; }
+  #hand-info { font-size: 0.95rem; }
+  .hand-tool-btn { padding: 4px 8px; font-size: 0.9rem; }
+}

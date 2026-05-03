@@ -1,0 +1,69 @@
+/* ========================================
+   cards-chinchon.css — carta española
+   pips numericos + figuras (sota/caballo/rey)
+   ======================================== */
+
+.card[data-game="chinchon"] {
+  background: var(--tt-white);
+  color: var(--tt-black);
+  border: 3px solid var(--tt-black);
+}
+
+.card[data-game="chinchon"][data-suit="oros"]    { color: var(--tt-yellow); background: var(--tt-black); border-color: var(--tt-yellow); }
+.card[data-game="chinchon"][data-suit="copas"]   { color: var(--tt-red); }
+.card[data-game="chinchon"][data-suit="espadas"] { color: var(--tt-cyan); background: var(--tt-black); border-color: var(--tt-cyan); }
+.card[data-game="chinchon"][data-suit="bastos"]  { color: var(--tt-green); }
+
+.card[data-game="chinchon"] .card-center-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 14px 6px;
+}
+
+/* pips: simbolos repetidos en grid */
+.chinchon-pips {
+  display: grid;
+  gap: 1px;
+  align-items: center;
+  justify-items: center;
+  line-height: 0.9;
+}
+
+.chinchon-pip {
+  font-size: 0.85rem;
+  line-height: 1;
+}
+
+.chinchon-pips--1 { grid-template-columns: 1fr; }
+.chinchon-pips--1 .chinchon-pip { font-size: 1.7rem; }
+.chinchon-pips--2 { grid-template-columns: 1fr; }
+.chinchon-pips--2 .chinchon-pip { font-size: 1.2rem; }
+.chinchon-pips--3 { grid-template-columns: 1fr; }
+.chinchon-pips--3 .chinchon-pip { font-size: 1rem; }
+.chinchon-pips--4 { grid-template-columns: 1fr 1fr; }
+.chinchon-pips--5 { grid-template-columns: 1fr 1fr; }
+.chinchon-pips--5 .chinchon-pip:nth-child(5) { grid-column: span 2; }
+.chinchon-pips--6 { grid-template-columns: 1fr 1fr; }
+.chinchon-pips--7 { grid-template-columns: 1fr 1fr; }
+.chinchon-pips--7 .chinchon-pip:nth-child(7) { grid-column: span 2; }
+.chinchon-pips--8 { grid-template-columns: 1fr 1fr; }
+.chinchon-pips--9 { grid-template-columns: 1fr 1fr 1fr; }
+
+/* figuras: sota / caballo / rey */
+.chinchon-figure {
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.chinchon-figure-suit {
+  font-size: 0.9rem;
+  margin-top: 2px;
+}
+
+@media (max-width: 600px) {
+  .card[data-game="chinchon"] .card-center-area { padding: 10px 4px; }
+}

@@ -1,0 +1,30 @@
+/* ========================================
+   game-rummikub.css — sets en mesa
+   ======================================== */
+
+.table-sets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  min-height: 60px;
+  align-items: center;
+}
+
+.rummikub-set {
+  display: flex;
+  gap: 2px;
+  padding: 6px;
+  background: var(--bg-secondary);
+  border: 2px solid var(--text-secondary);
+  cursor: pointer;
+  transition: border-color 100ms var(--ease-snap), box-shadow 100ms var(--ease-snap);
+}
+
+.rummikub-set:hover { border-color: var(--accent); }
+
+.rummikub-set--selected {
+  border-color: var(--accent);
+  border-width: 3px;
+  box-shadow: 4px 4px 0 var(--accent);
+}

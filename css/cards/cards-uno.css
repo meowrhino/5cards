@@ -1,0 +1,36 @@
+/* ========================================
+   cards-uno.css — bloques de color UNO
+   ======================================== */
+
+.card[data-game="uno"] {
+  border: 3px solid var(--tt-white);
+  color: var(--tt-white);
+  background: var(--tt-black);
+}
+
+.card[data-game="uno"] .card-value {
+  font-size: 2rem;
+  font-family: var(--font-display);
+}
+
+.card[data-game="uno"] .card-corner__value { font-size: 0.9rem; }
+
+.card[data-game="uno"][data-color="amarillo"] { background: var(--uno-yellow); color: var(--tt-black); border-color: var(--tt-black); }
+.card[data-game="uno"][data-color="rojo"]     { background: var(--uno-red); color: var(--tt-white); }
+.card[data-game="uno"][data-color="azul"]     { background: var(--uno-blue); color: var(--tt-black); border-color: var(--tt-black); }
+.card[data-game="uno"][data-color="verde"]    { background: var(--uno-green); color: var(--tt-black); border-color: var(--tt-black); }
+.card[data-game="uno"][data-color="wild"] {
+  background:
+    linear-gradient(135deg,
+      var(--tt-yellow) 0 25%,
+      var(--tt-red) 25% 50%,
+      var(--tt-cyan) 50% 75%,
+      var(--tt-green) 75% 100%);
+  color: var(--tt-white);
+  border-color: var(--tt-white);
+  text-shadow: 1px 1px 0 var(--tt-black);
+}
+
+@media (max-width: 600px) {
+  .card[data-game="uno"] .card-value { font-size: 1.5rem; }
+}

@@ -1,0 +1,82 @@
+/* ========================================
+   turn.css — pantalla de turno (pedir contraseña)
+   ======================================== */
+
+#screen-turn {
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 40px 20px;
+}
+
+#turn-avatar {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  font-family: var(--font-display);
+  color: var(--bg-primary);
+  border: 3px solid var(--text-primary);
+  box-shadow: 5px 5px 0 var(--text-primary);
+}
+
+#screen-turn h2 {
+  font-size: 1.8rem;
+  font-family: var(--font-display);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+#turn-password {
+  padding: 12px;
+  font-size: 1.4rem;
+  background: var(--tt-black);
+  color: var(--accent);
+  border: 3px solid var(--accent);
+  text-align: center;
+  width: 280px;
+  max-width: 90vw;
+  font-family: var(--font-display);
+  letter-spacing: 0.1em;
+}
+
+#turn-password:focus {
+  outline: none;
+  border-color: var(--accent-secondary);
+  color: var(--accent-secondary);
+}
+
+#btn-unlock {
+  padding: 12px 36px;
+  font-size: 1.5rem;
+  font-family: var(--font-display);
+  background: var(--accent);
+  color: var(--bg-primary);
+  border: 3px solid var(--bg-primary);
+  box-shadow: 4px 4px 0 var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+}
+
+#btn-unlock:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--accent);
+}
+
+.shake {
+  animation: shake 200ms steps(8, end);
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  75% { transform: translateX(6px); }
+}
+
+@media (max-width: 600px) {
+  #turn-avatar { width: 64px; height: 64px; font-size: 2rem; }
+}

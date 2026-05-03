@@ -1,0 +1,108 @@
+/* ========================================
+   cards-base.css — base de cualquier carta
+   bordes duros, planas, sombras offset
+   ======================================== */
+
+.card {
+  width: var(--card-w);
+  height: var(--card-h);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+  flex-shrink: 0;
+  border: 2px solid var(--tt-black);
+  background: var(--tt-white);
+  color: var(--tt-black);
+  box-shadow: 3px 3px 0 var(--tt-black);
+  transition: transform 80ms var(--ease-snap), box-shadow 80ms var(--ease-snap);
+  gap: 2px;
+}
+
+.card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 var(--tt-black);
+  z-index: 10;
+}
+
+.card.selected {
+  transform: translate(-4px, -8px);
+  box-shadow: 6px 8px 0 var(--accent), 6px 8px 0 4px var(--tt-black);
+  outline: 3px solid var(--accent);
+  outline-offset: -3px;
+  z-index: 11;
+}
+
+.card.dragging {
+  opacity: 0.85;
+  cursor: grabbing;
+  box-shadow: 8px 8px 0 var(--tt-black);
+  transform: rotate(2deg);
+  transition: none;
+}
+
+#game-hand .card {
+  cursor: grab;
+  touch-action: none; /* prevenir scroll mientras arrastras */
+}
+
+/* carta oculta (anverso) */
+.card.hidden-card {
+  background: var(--tt-black);
+  color: var(--accent);
+  cursor: default;
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent 0,
+    transparent 6px,
+    var(--accent) 6px,
+    var(--accent) 7px
+  );
+}
+
+.card.hidden-card::after { content: ''; }
+
+/* esquinas (chinchon, poker) */
+.card-corner {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1;
+}
+
+.card-corner--tl { top: 2px; left: 4px; }
+.card-corner--br { bottom: 2px; right: 4px; transform: rotate(180deg); }
+
+.card-corner__value {
+  font-size: 0.95rem;
+  font-family: var(--font-display);
+  line-height: 1;
+}
+
+.card-corner__suit {
+  font-size: 0.75rem;
+  line-height: 1;
+}
+
+.card-center-suit {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.card-label {
+  font-size: 0.65rem;
+  text-transform: lowercase;
+  letter-spacing: 0.04em;
+  color: inherit;
+  opacity: 0.85;
+}
+
+@media (max-width: 600px) {
+  .card { font-size: 0.9rem; box-shadow: 2px 2px 0 var(--tt-black); }
+}

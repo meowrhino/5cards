@@ -1,0 +1,95 @@
+/* ========================================
+   modal.css — overlay y contenido modal brutalista
+   ======================================== */
+
+#modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+#modal-overlay.active {
+  display: flex;
+}
+
+.modal-content {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  padding: 28px;
+  border: 4px solid var(--accent);
+  box-shadow: 8px 8px 0 var(--accent);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: center;
+  max-width: 360px;
+  width: 90%;
+}
+
+.modal-title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+}
+
+.modal-input {
+  padding: 10px;
+  background: var(--tt-black);
+  color: var(--accent);
+  border: 2px solid var(--accent);
+  text-align: center;
+  width: 100%;
+  font-size: 1.4rem;
+  font-family: var(--font-display);
+}
+
+.modal-input:focus {
+  outline: none;
+  border-color: var(--accent-secondary);
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+.modal-buttons .btn {
+  flex: 1;
+  padding: 10px;
+}
+
+.color-picker {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  width: 100%;
+}
+
+.color-choice {
+  padding: 16px;
+  background: var(--choice-bg, var(--accent));
+  color: var(--choice-text, var(--bg-primary));
+  border: 3px solid var(--bg-primary);
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  text-transform: lowercase;
+  cursor: pointer;
+  box-shadow: 4px 4px 0 var(--bg-primary);
+  transition: transform 80ms var(--ease-snap);
+}
+
+.color-choice:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--bg-primary);
+}
+
+@media (max-width: 600px) {
+  .modal-content { padding: 20px 16px; }
+}

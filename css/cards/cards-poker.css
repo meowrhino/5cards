@@ -1,0 +1,20 @@
+/* ========================================
+   cards-poker.css — carta inglesa clasica
+   ======================================== */
+
+.card[data-game="poker"] {
+  background: var(--tt-white);
+  border: 3px solid var(--tt-black);
+  color: var(--tt-black);
+}
+
+.card[data-game="poker"][data-suit="hearts"],
+.card[data-game="poker"][data-suit="diamonds"] {
+  color: var(--tt-red);
+}
+
+.card[data-game="poker"] .card-center-suit { font-size: 2rem; }
+
+@media (max-width: 600px) {
+  .card[data-game="poker"] .card-center-suit { font-size: 1.4rem; }
+}

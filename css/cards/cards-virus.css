@@ -1,0 +1,27 @@
+/* ========================================
+   cards-virus.css — bloques planos por tipo
+   ======================================== */
+
+.card[data-game="virus"] {
+  border: 3px solid var(--tt-green);
+  font-family: var(--font-display);
+  text-align: center;
+  line-height: 1.1;
+  gap: 4px;
+  background: var(--tt-black);
+  color: var(--tt-green);
+}
+
+.card[data-game="virus"] .card-value {
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.card[data-game="virus"][data-vtype="organo"]      { background: var(--tt-black); color: var(--tt-cyan); border-color: var(--tt-cyan); }
+.card[data-game="virus"][data-vtype="virus"]       { background: var(--tt-red); color: var(--tt-white); border-color: var(--tt-white); }
+.card[data-game="virus"][data-vtype="medicina"]    { background: var(--tt-green); color: var(--tt-black); border-color: var(--tt-black); }
+.card[data-game="virus"][data-vtype="tratamiento"] { background: var(--tt-yellow); color: var(--tt-black); border-color: var(--tt-black); }
+
+@media (max-width: 600px) {
+  .card[data-game="virus"] .card-value { font-size: 1.2rem; }
+}

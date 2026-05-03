@@ -1,0 +1,29 @@
+/* ========================================
+   cards-rummikub.css — fichas blanco con numero color
+   ======================================== */
+
+.card[data-game="rummikub"] {
+  width: var(--tile-w);
+  height: var(--tile-h);
+  background: var(--tt-white);
+  border: 3px solid var(--tt-black);
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  box-shadow: 3px 3px 0 var(--tt-black);
+}
+
+.card[data-game="rummikub"][data-color="amarillo"] { color: var(--tt-yellow); background: var(--tt-black); border-color: var(--tt-yellow); }
+.card[data-game="rummikub"][data-color="rojo"]     { color: var(--tt-red); }
+.card[data-game="rummikub"][data-color="negro"]    { color: var(--tt-black); }
+.card[data-game="rummikub"][data-color="azul"]     { color: var(--tt-cyan); background: var(--tt-black); border-color: var(--tt-cyan); }
+.card[data-game="rummikub"][data-color="wild"]     { color: var(--tt-magenta); background: var(--tt-black); border-color: var(--tt-magenta); }
+
+.card[data-game="rummikub"] .card-value {
+  font-size: 1.7rem;
+  font-family: var(--font-display);
+  line-height: 1;
+}
+
+@media (max-width: 600px) {
+  .card[data-game="rummikub"] .card-value { font-size: 1.3rem; }
+}

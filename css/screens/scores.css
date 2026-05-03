@@ -1,0 +1,54 @@
+/* ========================================
+   scores.css — pantalla de puntuaciones / victoria
+   ======================================== */
+
+#screen-scores {
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  padding: 40px 20px;
+}
+
+#screen-scores h2 {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  text-align: center;
+  border-bottom: 3px solid var(--accent);
+  padding-bottom: 4px;
+}
+
+#scores-table {
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+  font-family: var(--font-display);
+  border: 3px solid var(--accent);
+  background: var(--tt-black);
+}
+
+#scores-table th,
+#scores-table td {
+  padding: 8px 14px;
+  border: 2px solid var(--accent);
+  font-size: 1.3rem;
+  text-transform: uppercase;
+}
+
+#scores-table th {
+  background: var(--accent);
+  color: var(--tt-black);
+  letter-spacing: 0.06em;
+}
+
+#scores-table td {
+  color: var(--accent);
+  background: var(--tt-black);
+}
+
+#scores-table tbody tr:nth-child(even) td {
+  background: var(--bg-secondary);
+}
+
+#screen-scores .btn { min-width: 180px; }

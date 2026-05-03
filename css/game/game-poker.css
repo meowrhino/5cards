@@ -1,0 +1,87 @@
+/* ========================================
+   game-poker.css — info, comunidad, jugadores y raise modal
+   ======================================== */
+
+.poker-info {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+  font-family: var(--font-display);
+}
+
+.pot-display {
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+}
+
+.phase-badge {
+  padding: 4px 12px;
+  background: var(--accent);
+  color: var(--bg-primary);
+  font-size: 1.1rem;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border: 2px solid var(--bg-primary);
+}
+
+.community-cards {
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+  min-height: var(--card-h);
+  align-items: center;
+}
+
+.poker-players {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+  justify-content: center;
+}
+
+.poker-player {
+  padding: 8px 12px;
+  border: 3px solid var(--text-secondary);
+  background: var(--bg-secondary);
+  text-align: center;
+  min-width: 90px;
+  font-family: var(--font-display);
+}
+
+.poker-player--active {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--bg-primary);
+  box-shadow: 4px 4px 0 var(--bg-primary);
+}
+
+.poker-player--folded { opacity: 0.4; }
+.poker-player__name { font-size: 1.1rem; text-transform: uppercase; }
+.poker-player__chips { font-size: 1rem; }
+.poker-player__status {
+  color: var(--tt-red);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+.poker-player__bet { font-size: 0.9rem; }
+
+/* raise info en modal poker */
+.raise-info {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+
+@media (max-width: 600px) {
+  .poker-player { padding: 6px 10px; min-width: 70px; }
+}
