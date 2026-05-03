@@ -18,7 +18,7 @@ const GameEngine = {
     gameSpecific: {}
   },
 
-  initGame(game, numPlayers, passwords) {
+  initGame(game, numPlayers, passwords, options) {
     this.state.currentGame = game;
     this.state.currentPlayerIdx = 0;
     this.state.direction = 1;
@@ -26,6 +26,7 @@ const GameEngine = {
     this.state.round = 1;
     this.state.table = [];
     this.state.gameSpecific = {};
+    this.state.gameOptions = options || {};
 
     this.state.players = [];
     for (let i = 0; i < numPlayers; i++) {
@@ -41,14 +42,45 @@ const GameEngine = {
       });
     }
 
-    this.prepareDeck(game);
+    this.prepareDeck(game, this.state.gameOptions);
     this.dealCards(game);
   },
 
-  prepareDeck(game) {
-    const gameDeck = getCardsForGame(game, MASTER_DECK);
+  prepareDeck(game, options) {
+    let gameDeck = getCardsForGame(game, MASTER_DECK);
+
+    /* opciones especificas por juego */
+    if (game === 'chinchon' && options && options.deckMode) {
+      gameDeck = this._buildChinchonDeck(gameDeck, options.deckMode);
+    }
+
     this.state.drawPile = this.shuffle([...gameDeck]);
     this.state.discardPile = [];
+  },
+
+  /* construir baraja del chinchon segun modo:
+     - 40: clasica española (1-7 + sota + caballo + rey x4 palos)
+     - 48: incluye 8 y 9 numericos
+     - 80: dos barajas de 40 cartas cada una */
+  _buildChinchonDeck(baseDeck, mode) {
+    /* baseDeck son las 48 cartas del chinchon (1-12 x 4 palos) */
+    const filterNoEightNine = (deck) => deck.filter(c => {
+      const v = c.chinchon && c.chinchon.value;
+      return v !== 8 && v !== 9;
+    });
+
+    if (mode === 48) return baseDeck;
+    if (mode === 40) return filterNoEightNine(baseDeck);
+    if (mode === 80) {
+      const fortyDeck = filterNoEightNine(baseDeck);
+      /* duplicar con nuevos ids para evitar colisiones */
+      const dup = fortyDeck.map(c => ({
+        ...c,
+        id: c.id + 1000  /* offset para id unico */
+      }));
+      return [...fortyDeck, ...dup];
+    }
+    return filterNoEightNine(baseDeck);
   },
 
   dealCards(game) {

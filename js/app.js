@@ -87,7 +87,7 @@ const App = {
       row.innerHTML = `
         <label>jugador ${i + 1}</label>
         <input type="text" placeholder="nombre" class="player-name-input" value="jugador ${i + 1}">
-        <input type="password" placeholder="contraseña" class="player-pass-input">
+        <input type="password" placeholder="contraseña (opcional)" class="player-pass-input">
       `;
       container.appendChild(row);
     }
@@ -101,12 +101,16 @@ const App = {
     const names = Array.from(nameInputs).map(i => i.value.trim() || 'jugador');
     const passwords = Array.from(passInputs).map(i => i.value);
 
-    if (passwords.some(p => p.length === 0)) {
-      alert('todos los jugadores necesitan contraseña');
-      return;
+    /* contraseñas vacias permitidas: simplemente das a "desbloquear" sin escribir */
+
+    /* recoger opciones especificas del juego */
+    const gameOptions = {};
+    if (this.currentGame === 'chinchon') {
+      const deckEl = document.getElementById('chinchon-deck');
+      gameOptions.deckMode = deckEl ? parseInt(deckEl.value) : 40;
     }
 
-    GameEngine.initGame(this.currentGame, names.length, passwords);
+    GameEngine.initGame(this.currentGame, names.length, passwords, gameOptions);
     GameEngine.state.players.forEach((p, i) => { p.name = names[i]; });
 
     const gameModule = GameInterface.get(this.currentGame);
@@ -165,6 +169,16 @@ const App = {
         this.updateHandInfo();
       }
     });
+
+    /* drag & drop para reordenar la mano */
+    HandSortable.enable(
+      document.getElementById('game-hand'),
+      () => GameEngine.getCurrentPlayer().hand,
+      (newHand) => {
+        GameEngine.getCurrentPlayer().hand = newHand;
+        this.updateHandInfo();
+      }
+    );
 
     this.updateHandInfo();
   },
@@ -299,7 +313,7 @@ const App = {
 
   nextRound() {
     GameEngine.state.round++;
-    GameEngine.prepareDeck(this.currentGame);
+    GameEngine.prepareDeck(this.currentGame, GameEngine.state.gameOptions);
     GameEngine.dealCards(this.currentGame);
 
     const gameModule = GameInterface.get(this.currentGame);
