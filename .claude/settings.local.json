@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "defaultMode": "bypassPermissions",
+    "allow": [
+      "WebFetch(domain:www.ultraboardgames.com)",
+      "WebFetch(domain:www.unorules.com)"
+    ]
+  }
+}

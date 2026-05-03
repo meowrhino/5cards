@@ -186,9 +186,17 @@
   <script src="js/core/game-engine.js"></script>
   <script src="js/core/screen-manager.js"></script>
 
-  <!-- ui (depende de core) -->
+  <!-- ui base (depende de core) -->
   <script src="js/ui/animations.js"></script>
+  <script src="js/ui/deck-grouper.js"></script>
   <script src="js/ui/card-component.js"></script>
+  <!-- card renderers (depende de card-component) -->
+  <script src="js/ui/card-renderers/chinchon-renderer.js"></script>
+  <script src="js/ui/card-renderers/poker-renderer.js"></script>
+  <script src="js/ui/card-renderers/uno-renderer.js"></script>
+  <script src="js/ui/card-renderers/rummikub-renderer.js"></script>
+  <script src="js/ui/card-renderers/virus-renderer.js"></script>
+  <!-- ui interactiva -->
   <script src="js/ui/hand-sortable.js"></script>
   <script src="js/ui/transform-animator.js"></script>
   <script src="js/ui/modal-manager.js"></script>
@@ -232,6 +240,8 @@
   <script src="js/games/poker/poker.js"></script>
 
   <!-- app (depende de todo) -->
-  <script src="js/app.js"></script>
+  <script src="js/app/app-flow.js"></script>
+  <script src="js/app/app-hand.js"></script>
+  <script src="js/app/app.js"></script>
 </body>
 </html>
