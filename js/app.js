@@ -175,8 +175,22 @@ const App = {
       document.getElementById('game-hand'),
       () => GameEngine.getCurrentPlayer().hand,
       (newHand) => {
+        /* preservar seleccion antes de re-render */
+        const selectedIds = Array.from(document.querySelectorAll('#game-hand .card.selected'))
+          .map(el => parseInt(el.dataset.id));
         GameEngine.getCurrentPlayer().hand = newHand;
-        this.updateHandInfo();
+        /* re-render mano completa para recalcular transforms del fan effect */
+        this.renderCurrentHand();
+        /* restaurar seleccion */
+        selectedIds.forEach(id => {
+          const el = document.querySelector(`#game-hand .card[data-id="${id}"]`);
+          if (el) el.classList.add('selected');
+        });
+        /* sincronizar botones de accion */
+        const hasSelected = selectedIds.length > 0;
+        document.querySelectorAll('#game-actions .btn--accent').forEach(btn => {
+          btn.disabled = !hasSelected;
+        });
       }
     );
 
