@@ -1,138 +1,104 @@
 /* ========================================
-   transform-animator.js — la estrella
-   animacion FLIP de transformacion entre juegos
-   con glow de equivalencia
+   transform-animator.js — animacion FLIP
+   de transformacion entre juegos con glow
+   de equivalencia y deteccion de cartas
+   que aparecen/desaparecen
    ======================================== */
 
 const TransformAnimator = {
 
   _isAnimating: false,
 
-  /* transformar baraja completa de un juego a otro */
+  /* transformar baraja de un juego a otro */
   async transformDeck(container, fromGame, toGame) {
     if (this._isAnimating) return;
     this._isAnimating = true;
 
-    const cards = container.querySelectorAll('.card');
-    const toCards = getCardsForGame(toGame, MASTER_DECK);
-    const toDeckSize = toCards.length;
-    const fromDeckSize = getCardCountForGame(fromGame);
+    const existingCards = container.querySelectorAll('.card');
 
-    /* fase 1: activar glow de equivalencia + elevar cartas */
-    cards.forEach(el => {
+    /* calcular sets de IDs mostrados en cada juego */
+    const fromIds = new Set(Array.from(existingCards).map(el => parseInt(el.dataset.id)));
+    const toDisplayCards = CardComponent.getDisplayCards(toGame);
+    const toIds = new Set(toDisplayCards.map(c => c.id));
+
+    /* clasificar cartas */
+    const sharedIds = new Set([...fromIds].filter(id => toIds.has(id)));
+    const disappearingIds = new Set([...fromIds].filter(id => !toIds.has(id)));
+    const appearingIds = new Set([...toIds].filter(id => !fromIds.has(id)));
+
+    /* fase 1: glow de equivalencia */
+    existingCards.forEach(el => {
       el.classList.add('transform-glow');
     });
 
     await this._wait(150);
 
-    /* fase 2: flip — en el medio del flip, cambiar el contenido */
-    cards.forEach((el, idx) => {
+    /* fase 2: flip cartas compartidas, desaparecer las que sobran */
+    let maxDelay = 0;
+    existingCards.forEach((el, idx) => {
       const cardId = parseInt(el.dataset.id);
       const delay = Math.min(idx * 8, 200);
-      el.style.animationDelay = `${delay}ms`;
-      el.classList.add('transform-flip');
+      if (delay > maxDelay) maxDelay = delay;
 
-      /* cambiar skin a mitad del flip */
-      setTimeout(() => {
-        const card = MASTER_DECK[cardId];
-        if (!card) return;
+      if (sharedIds.has(cardId)) {
+        /* flip con cambio de skin a mitad */
+        el.style.animationDelay = `${delay}ms`;
+        el.classList.add('transform-flip');
 
-        const data = card[toGame];
-        if (data) {
-          el.dataset.game = toGame;
-          /* actualizar equiv */
-          const equivIdx = SuitEquivalence.getIndex(card, toGame);
-          if (equivIdx !== null) el.dataset.equiv = equivIdx;
-          else delete el.dataset.equiv;
+        setTimeout(() => {
+          const card = MASTER_DECK[cardId];
+          if (!card) return;
 
-          /* actualizar contenido via renderer */
-          const renderer = CardComponent.renderers[toGame];
-          if (renderer) {
+          const data = card[toGame];
+          if (data) {
+            el.dataset.game = toGame;
+            const equivIdx = SuitEquivalence.getIndex(card, toGame);
+            if (equivIdx !== null) el.dataset.equiv = equivIdx;
+            else delete el.dataset.equiv;
+
             /* limpiar atributos del juego anterior */
             delete el.dataset.suit;
             delete el.dataset.color;
             delete el.dataset.vtype;
             delete el.dataset.type;
-            renderer(el, data, card);
+
+            const renderer = CardComponent.renderers[toGame];
+            if (renderer) renderer(el, data, card);
           }
-        } else {
-          /* esta carta no existe en el juego destino */
-          el.classList.add('transform-disappear');
-        }
-      }, delay + 250); /* mitad del flip de 500ms */
+        }, delay + 250);
+
+      } else if (disappearingIds.has(cardId)) {
+        /* carta que no existe en el juego destino */
+        el.style.animationDelay = `${delay}ms`;
+        el.classList.add('transform-disappear');
+      }
     });
 
-    await this._wait(600);
+    /* esperar a que terminen flip (500ms) + max delay */
+    await this._wait(maxDelay + 550);
 
-    /* fase 3: re-renderizar completamente con el nuevo juego */
-    CardComponent.renderFullDeck(toGame, container);
+    /* fase 3: re-renderizar con el juego nuevo */
+    CardComponent.renderDeckDisplay(toGame, container);
 
-    /* animar cartas que aparecen en el nuevo juego */
-    if (toDeckSize > fromDeckSize) {
+    /* fase 4: animar cartas nuevas que aparecen */
+    if (appearingIds.size > 0) {
       const newCards = container.querySelectorAll('.card');
+      let appearDelay = 0;
       newCards.forEach(el => {
         const id = parseInt(el.dataset.id);
-        if (id >= fromDeckSize) {
+        if (appearingIds.has(id)) {
+          el.style.animationDelay = `${appearDelay}ms`;
           el.classList.add('transform-appear');
+          appearDelay += 15;
         }
       });
     }
 
-    await this._wait(400);
+    await this._wait(500);
 
     /* limpiar clases de animacion */
     container.querySelectorAll('.card').forEach(el => {
       el.classList.remove('transform-glow', 'transform-flip', 'transform-appear', 'transform-disappear');
-      el.style.animationDelay = '';
-    });
-
-    this._isAnimating = false;
-  },
-
-  /* transformar las hero cards (pantalla principal) */
-  async transformHeroCards(container, fromGame, toGame) {
-    if (this._isAnimating) return;
-    this._isAnimating = true;
-
-    const heroCards = container.querySelectorAll('.hero-card');
-
-    /* fase 1: glow */
-    heroCards.forEach(el => el.classList.add('transform-glow'));
-    await this._wait(200);
-
-    /* fase 2: flip con cambio de skin a mitad */
-    heroCards.forEach((el, idx) => {
-      const delay = idx * 100;
-      el.style.animationDelay = `${delay}ms`;
-      el.classList.add('transform-flip');
-
-      setTimeout(() => {
-        const cardId = parseInt(el.dataset.id);
-        const card = MASTER_DECK[cardId];
-        if (!card) return;
-
-        const data = card[toGame];
-        if (data) {
-          el.dataset.game = toGame;
-          const equivIdx = SuitEquivalence.getIndex(card, toGame);
-          if (equivIdx !== null) el.dataset.equiv = equivIdx;
-
-          delete el.dataset.suit;
-          delete el.dataset.color;
-          delete el.dataset.vtype;
-          delete el.dataset.type;
-
-          const renderer = CardComponent.renderers[toGame];
-          if (renderer) renderer(el, data, card);
-        }
-      }, delay + 250);
-    });
-
-    await this._wait(800);
-
-    /* limpiar */
-    heroCards.forEach(el => {
-      el.classList.remove('transform-glow', 'transform-flip');
       el.style.animationDelay = '';
     });
 

@@ -1,167 +1,184 @@
 /* ========================================
    tokens.css — design tokens del sistema
-   CSS custom properties centralizadas
+   estetica: brutalismo + teletexto + vanilla html
    ======================================== */
 
-/* --- tipografia --- */
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Inter:wght@400;600;700;900&display=swap');
+/* --- tipografias: VT323 monospace pixel + IBM Plex Mono ---*/
+@import url('https://fonts.googleapis.com/css2?family=VT323&family=IBM+Plex+Mono:wght@400;500;700&display=swap');
 
 :root {
-  --font-display: 'Fredoka', 'Baloo 2', system-ui, sans-serif;
-  --font-ui: 'Inter', system-ui, -apple-system, sans-serif;
+  /* tipos: VT323 para todo, IBM Plex como fallback */
+  --font-display: 'VT323', 'IBM Plex Mono', ui-monospace, monospace;
+  --font-ui: 'VT323', 'IBM Plex Mono', ui-monospace, monospace;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
 
-  /* dimensiones de cartas */
+  /* dimensiones */
   --card-w: 72px;
   --card-h: 104px;
-  --card-radius: 10px;
-  --card-gap: 8px;
-
-  /* rummikub tiles (mas pequeñas) */
+  --card-radius: 0px;        /* brutalismo: sin radius */
+  --card-gap: 4px;
   --tile-w: 56px;
   --tile-h: 78px;
 
-  /* transiciones */
-  --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
-  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
-  --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  --transform-duration: 800ms;
+  /* transiciones cortas y duras */
+  --ease-step: steps(8, end);
+  --ease-snap: cubic-bezier(0.5, 0, 0.5, 1);
+  --transform-duration: 400ms;
+
+  /* palette teletexto base (siempre disponible) */
+  --tt-black:   #000000;
+  --tt-white:   #FFFFFF;
+  --tt-red:     #FF0000;
+  --tt-green:   #00FF00;
+  --tt-yellow:  #FFFF00;
+  --tt-blue:    #0000FF;
+  --tt-magenta: #FF00FF;
+  --tt-cyan:    #00FFFF;
 
   /* colores de equivalencia (constantes entre juegos) */
-  --equiv-0: #F5A623;  /* Oros / Diamonds / Amarillo */
-  --equiv-1: #E74C3C;  /* Copas / Hearts / Rojo */
-  --equiv-2: #3498DB;  /* Espadas / Spades / Azul */
-  --equiv-3: #27AE60;  /* Bastos / Clubs / Verde */
+  --equiv-0: var(--tt-yellow);  /* oros / diamonds */
+  --equiv-1: var(--tt-red);     /* copas / hearts */
+  --equiv-2: var(--tt-cyan);    /* espadas / spades */
+  --equiv-3: var(--tt-green);   /* bastos / clubs */
 
-  /* sombras comunes */
-  --shadow-card: 0 2px 8px rgba(0,0,0,0.25);
-  --shadow-card-hover: 0 8px 24px rgba(0,0,0,0.35);
-  --shadow-card-selected: 0 12px 32px rgba(0,0,0,0.45);
-  --shadow-glow-0: 0 0 16px 4px rgba(245,166,35,0.5);
-  --shadow-glow-1: 0 0 16px 4px rgba(231,76,60,0.5);
-  --shadow-glow-2: 0 0 16px 4px rgba(52,152,219,0.5);
-  --shadow-glow-3: 0 0 16px 4px rgba(39,174,96,0.5);
+  /* radios: brutalismo = sin radius (0) */
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
 
-  /* radios */
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 16px;
-  --radius-xl: 24px;
+  /* bordes brutalistas: gruesos y duros */
+  --border-thin:  2px solid currentColor;
+  --border-thick: 4px solid currentColor;
+
+  /* sombras brutalistas (offset duro, no blur) */
+  --shadow-card: 4px 4px 0 var(--tt-black);
+  --shadow-card-hover: 6px 6px 0 var(--tt-black);
+  --shadow-card-selected: 8px 8px 0 var(--tt-black);
+  --shadow-glow-0: 0 0 0 3px var(--equiv-0);
+  --shadow-glow-1: 0 0 0 3px var(--equiv-1);
+  --shadow-glow-2: 0 0 0 3px var(--equiv-2);
+  --shadow-glow-3: 0 0 0 3px var(--equiv-3);
 }
 
 /* ========================================
-   chinchon: taberna española clasica
-   verde profundo, acentos dorados
+   chinchon: verde + amarillo (campo de juego clasico)
    ======================================== */
 body[data-game="chinchon"] {
-  --bg-primary: #1B3A1B;
-  --bg-secondary: #0F260F;
-  --bg-surface: rgba(255,255,255,0.06);
-  --bg-surface-solid: #2D5016;
-  --accent: #C9A96E;
-  --accent-secondary: #8B6914;
-  --text-primary: #F5EDD6;
-  --text-secondary: rgba(245,237,214,0.6);
-  --nav-bg: #0F260F;
-  --nav-active-bg: #4A7A25;
-  --nav-active-text: #fff;
-  --btn-bg: rgba(201,169,110,0.15);
-  --btn-border: #C9A96E;
-  --card-bg: linear-gradient(170deg, #FBF6EC 0%, #F0E6CC 100%);
-  --card-border: #A08060;
-  --card-suit-red: #9B1B30;
-  --card-suit-black: #1A1A2E;
+  --bg-primary: #007700;
+  --bg-secondary: #003300;
+  --bg-surface: #005500;
+  --bg-surface-solid: #005500;
+  --accent: var(--tt-yellow);
+  --accent-secondary: var(--tt-white);
+  --text-primary: var(--tt-white);
+  --text-secondary: var(--tt-yellow);
+  --nav-bg: var(--tt-black);
+  --nav-active-bg: var(--tt-yellow);
+  --nav-active-text: var(--tt-black);
+  --btn-bg: var(--tt-black);
+  --btn-text: var(--tt-yellow);
+  --btn-border: var(--tt-yellow);
+  --card-bg: var(--tt-white);
+  --card-border: var(--tt-black);
+  --card-suit-red: var(--tt-red);
+  --card-suit-black: var(--tt-black);
 }
 
 /* ========================================
-   uno: fiesta vibrante, negro + neones
+   uno: negro + 4 colores teletexto puros
    ======================================== */
 body[data-game="uno"] {
-  --bg-primary: #0D0D0D;
-  --bg-secondary: #000000;
-  --bg-surface: rgba(255,255,255,0.06);
+  --bg-primary: var(--tt-black);
+  --bg-secondary: var(--tt-black);
+  --bg-surface: #1A1A1A;
   --bg-surface-solid: #1A1A1A;
-  --accent: #FF2D2D;
-  --accent-secondary: #FFD600;
-  --text-primary: #FFFFFF;
-  --text-secondary: rgba(255,255,255,0.5);
-  --nav-bg: #000000;
-  --nav-active-bg: #E02020;
-  --nav-active-text: #fff;
-  --btn-bg: rgba(255,45,45,0.15);
-  --btn-border: #E02020;
-  --uno-yellow: linear-gradient(135deg, #FFE033 0%, #F5B800 100%);
-  --uno-red: linear-gradient(135deg, #FF3333 0%, #C00000 100%);
-  --uno-blue: linear-gradient(135deg, #3377FF 0%, #1540B0 100%);
-  --uno-green: linear-gradient(135deg, #33CC33 0%, #108010 100%);
+  --accent: var(--tt-red);
+  --accent-secondary: var(--tt-yellow);
+  --text-primary: var(--tt-white);
+  --text-secondary: var(--tt-yellow);
+  --nav-bg: var(--tt-black);
+  --nav-active-bg: var(--tt-red);
+  --nav-active-text: var(--tt-white);
+  --btn-bg: var(--tt-black);
+  --btn-text: var(--tt-yellow);
+  --btn-border: var(--tt-yellow);
+  --uno-yellow: var(--tt-yellow);
+  --uno-red: var(--tt-red);
+  --uno-blue: var(--tt-cyan);
+  --uno-green: var(--tt-green);
 }
 
 /* ========================================
-   rummikub: elegancia, azul profundo
+   rummikub: azul oscuro + magenta + amarillo
    ======================================== */
 body[data-game="rummikub"] {
-  --bg-primary: #0C2D48;
-  --bg-secondary: #071E32;
-  --bg-surface: rgba(255,255,255,0.06);
-  --bg-surface-solid: #1A4A6E;
-  --accent: #E8B931;
-  --accent-secondary: #E74C3C;
-  --text-primary: #FFFFFF;
-  --text-secondary: rgba(255,255,255,0.5);
-  --nav-bg: #071E32;
-  --nav-active-bg: #E74C3C;
-  --nav-active-text: #fff;
-  --btn-bg: rgba(232,185,49,0.15);
-  --btn-border: #E8B931;
-  --tile-bg: linear-gradient(180deg, #FFFFF8 0%, #F0EDE0 100%);
-  --tile-border: #2A2A2A;
+  --bg-primary: #000080;
+  --bg-secondary: #000040;
+  --bg-surface: #000050;
+  --bg-surface-solid: #000050;
+  --accent: var(--tt-magenta);
+  --accent-secondary: var(--tt-yellow);
+  --text-primary: var(--tt-white);
+  --text-secondary: var(--tt-cyan);
+  --nav-bg: var(--tt-black);
+  --nav-active-bg: var(--tt-magenta);
+  --nav-active-text: var(--tt-white);
+  --btn-bg: var(--tt-black);
+  --btn-text: var(--tt-magenta);
+  --btn-border: var(--tt-magenta);
+  --tile-bg: var(--tt-white);
+  --tile-border: var(--tt-black);
 }
 
 /* ========================================
-   virus: laboratorio oscuro, acentos neon
+   virus: negro + verde fluo + magenta
    ======================================== */
 body[data-game="virus"] {
-  --bg-primary: #0A1628;
-  --bg-secondary: #060F1D;
-  --bg-surface: rgba(57,255,20,0.04);
-  --bg-surface-solid: #122240;
-  --accent: #39FF14;
-  --accent-secondary: #FF1493;
-  --text-primary: #E0F7E8;
-  --text-secondary: rgba(224,247,232,0.5);
-  --nav-bg: #060F1D;
-  --nav-active-bg: #39FF14;
-  --nav-active-text: #0A1628;
-  --btn-bg: rgba(57,255,20,0.1);
-  --btn-border: #39FF14;
+  --bg-primary: var(--tt-black);
+  --bg-secondary: var(--tt-black);
+  --bg-surface: #001100;
+  --bg-surface-solid: #001100;
+  --accent: var(--tt-green);
+  --accent-secondary: var(--tt-magenta);
+  --text-primary: var(--tt-green);
+  --text-secondary: var(--tt-cyan);
+  --nav-bg: var(--tt-black);
+  --nav-active-bg: var(--tt-green);
+  --nav-active-text: var(--tt-black);
+  --btn-bg: var(--tt-black);
+  --btn-text: var(--tt-green);
+  --btn-border: var(--tt-green);
 }
 
 /* ========================================
-   poker: casino nocturno, dorados
+   poker: rojo casino + amarillo dorado
    ======================================== */
 body[data-game="poker"] {
-  --bg-primary: #0B1426;
-  --bg-secondary: #060D1A;
-  --bg-surface: rgba(212,175,55,0.04);
-  --bg-surface-solid: #162040;
-  --accent: #D4AF37;
-  --accent-secondary: #C0392B;
-  --text-primary: #F5F0E1;
-  --text-secondary: rgba(245,240,225,0.5);
-  --nav-bg: #060D1A;
-  --nav-active-bg: #D4AF37;
-  --nav-active-text: #0B1426;
-  --btn-bg: rgba(212,175,55,0.12);
-  --btn-border: #D4AF37;
+  --bg-primary: #800000;
+  --bg-secondary: #400000;
+  --bg-surface: #500000;
+  --bg-surface-solid: #500000;
+  --accent: var(--tt-yellow);
+  --accent-secondary: var(--tt-white);
+  --text-primary: var(--tt-white);
+  --text-secondary: var(--tt-yellow);
+  --nav-bg: var(--tt-black);
+  --nav-active-bg: var(--tt-yellow);
+  --nav-active-text: var(--tt-black);
+  --btn-bg: var(--tt-black);
+  --btn-text: var(--tt-yellow);
+  --btn-border: var(--tt-yellow);
 }
 
 /* ========================================
-   responsive
+   responsive: mobile first
    ======================================== */
 @media (max-width: 600px) {
   :root {
-    --card-w: 54px;
-    --card-h: 78px;
-    --card-gap: 5px;
+    --card-w: 56px;
+    --card-h: 80px;
+    --card-gap: 3px;
     --tile-w: 42px;
     --tile-h: 60px;
   }

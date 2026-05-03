@@ -1,8 +1,8 @@
 /* ========================================
-   layout.css — estructura general
+   layout.css — estructura general brutalista
    ======================================== */
 
-/* --- pantallas --- */
+/* pantallas */
 .screen {
   display: none;
   flex-direction: column;
@@ -15,7 +15,7 @@
   display: flex;
 }
 
-/* --- nav superior --- */
+/* nav superior */
 #game-nav {
   display: flex;
   gap: 0;
@@ -27,16 +27,17 @@
 
 .game-tab {
   flex: 1;
-  padding: 14px 8px;
+  padding: 14px 6px;
   text-align: center;
-  font-size: 0.8rem;
-  font-weight: 700;
+  font-size: 1.4rem;
   font-family: var(--font-display);
-  letter-spacing: 0.5px;
-  text-transform: lowercase;
-  transition: all 0.3s ease;
-  border-bottom: 3px solid transparent;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   color: var(--text-secondary);
+  background: var(--nav-bg);
+  border: 0;
+  min-height: 48px;
+  cursor: pointer;
 }
 
 .game-tab:hover {
@@ -44,81 +45,55 @@
 }
 
 .game-tab.active {
-  border-bottom-color: currentColor;
+  background: var(--nav-active-bg);
+  color: var(--nav-active-text);
 }
 
-/* --- hero area (pantalla principal) --- */
-#hero-area {
+/* deck showcase */
+#deck-showcase {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
-  padding: 32px 20px 16px;
-}
-
-#hero-cards {
-  display: flex;
   gap: 12px;
-  justify-content: center;
-  align-items: center;
-  min-height: 150px;
-  perspective: 800px;
-}
+  padding: 20px 16px;
+  flex: 1;
+  overflow-y: auto;
 
-#equiv-strip {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-  flex-wrap: wrap;
-  padding: 8px 16px;
+  /* preview cards mas pequeñas */
+  --card-w: 44px;
+  --card-h: 64px;
+  --card-gap: 3px;
+  --tile-w: 38px;
+  --tile-h: 54px;
 }
 
 #game-info-card {
   text-align: center;
   padding: 8px 16px;
-  font-size: 0.8rem;
-  opacity: 0.7;
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 4px;
+  font-family: var(--font-display);
 }
 
 .game-info__cards {
-  font-weight: 700;
-  font-family: var(--font-display);
-  font-size: 0.9rem;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent);
 }
 
 .game-info__desc {
-  font-size: 0.75rem;
-  opacity: 0.7;
-}
-
-/* --- full deck toggle --- */
-#full-deck-area {
-  padding: 0 20px 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-}
-
-#btn-toggle-deck {
-  font-size: 0.75rem;
-  opacity: 0.5;
-  text-decoration: underline;
-  padding: 4px 8px;
-  font-family: var(--font-ui);
-}
-
-#btn-toggle-deck:hover {
-  opacity: 0.8;
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  text-transform: lowercase;
 }
 
 #full-deck-display {
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 4px;
   align-items: center;
   justify-content: center;
 }
@@ -130,7 +105,41 @@
   justify-content: center;
 }
 
-/* --- setup (config del juego) --- */
+/* preview cards: simplificar */
+#deck-showcase .card-corner {
+  display: none;
+}
+
+#deck-showcase .card-center-suit {
+  font-size: 1.2rem;
+}
+
+#deck-showcase .card-value {
+  font-size: 1rem;
+}
+
+#deck-showcase .card-label {
+  font-size: 0.5rem;
+}
+
+#deck-showcase .card[data-game="uno"]::before {
+  width: 30px;
+  height: 42px;
+}
+
+.deck-badge {
+  display: inline-block;
+  padding: 4px 14px;
+  font-size: 1rem;
+  font-family: var(--font-display);
+  color: var(--bg-primary);
+  background: var(--accent);
+  border: 2px solid var(--bg-primary);
+  margin-top: 6px;
+  text-transform: uppercase;
+}
+
+/* setup panel */
 #game-setup {
   padding: 16px 20px 8px;
   display: flex;
@@ -142,78 +151,103 @@
 #setup-options {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 14px;
   align-items: center;
   justify-content: center;
 }
 
 #setup-options label {
-  font-size: 0.8rem;
-  font-weight: 600;
-  font-family: var(--font-ui);
+  font-size: 1.1rem;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 #setup-options input,
 #setup-options select {
   padding: 6px 10px;
-  border-radius: var(--radius-sm);
-  border: 1.5px solid var(--text-secondary);
-  background: var(--bg-surface);
-  color: var(--text-primary);
-  font-size: 0.85rem;
+  background: var(--tt-black);
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  min-height: 36px;
 }
 
 #btn-play {
-  padding: 16px 56px;
-  font-size: 1.1rem;
-  font-weight: 700;
+  padding: 14px 48px;
+  font-size: 2rem;
   font-family: var(--font-display);
   text-transform: lowercase;
-  letter-spacing: 1px;
-  border-radius: var(--radius-lg);
-  background: var(--btn-bg);
-  color: var(--accent);
-  border: 2px solid var(--accent);
-  transition: all 0.3s ease;
+  letter-spacing: 0.08em;
+  background: var(--accent);
+  color: var(--bg-primary);
+  border: 4px solid var(--bg-primary);
+  box-shadow: 6px 6px 0 var(--accent);
+  cursor: pointer;
 }
 
 #btn-play:hover {
-  background: var(--accent);
-  color: var(--bg-primary);
-  transform: scale(1.05);
+  transform: translate(-3px, -3px);
+  box-shadow: 9px 9px 0 var(--accent);
 }
 
-/* --- footer --- */
+#btn-play:active {
+  transform: translate(3px, 3px);
+  box-shadow: 0 0 0 var(--accent);
+}
+
+/* footer */
 #main-footer {
   text-align: center;
-  padding: 12px;
-  opacity: 0.3;
-  font-size: 0.7rem;
-  font-family: var(--font-ui);
+  padding: 10px;
+  font-size: 1rem;
+  font-family: var(--font-display);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
 }
 
-/* --- responsive --- */
+/* responsive */
 @media (max-width: 600px) {
   .game-tab {
-    font-size: 0.68rem;
-    padding: 12px 4px;
+    font-size: 1.05rem;
+    padding: 12px 3px;
   }
 
-  #hero-area {
-    padding: 20px 12px 12px;
-  }
-
-  #hero-cards {
+  #deck-showcase {
+    --card-w: 32px;
+    --card-h: 48px;
+    --card-gap: 2px;
+    --tile-w: 28px;
+    --tile-h: 42px;
+    padding: 10px 8px;
     gap: 8px;
   }
 
-  #btn-play {
-    padding: 14px 40px;
-    font-size: 1rem;
+  #deck-showcase .card-center-suit {
+    font-size: 0.9rem;
+  }
+  #deck-showcase .card-value {
+    font-size: 0.8rem;
+  }
+  #deck-showcase .card[data-game="uno"]::before {
+    width: 22px;
+    height: 32px;
+  }
+  #deck-showcase .card-label {
+    display: none;
   }
 
-  #equiv-strip {
+  #btn-play {
+    padding: 12px 36px;
+    font-size: 1.6rem;
+  }
+
+  #setup-options {
     gap: 10px;
-    font-size: 0.7rem;
   }
 }

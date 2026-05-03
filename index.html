@@ -32,25 +32,10 @@
       <button class="game-tab" data-game="poker">poker</button>
     </nav>
 
-    <!-- hero: cartas representativas con transformacion -->
-    <div id="hero-area">
-      <div id="hero-cards">
-        <!-- se generan con JS -->
-      </div>
-
-      <!-- franja de equivalencias -->
-      <div id="equiv-strip" class="equiv-strip">
-        <!-- se genera con JS -->
-      </div>
-
-      <!-- info del juego actual -->
+    <!-- baraja + info del juego -->
+    <div id="deck-showcase">
       <div id="game-info-card"></div>
-    </div>
-
-    <!-- toggle baraja completa -->
-    <div id="full-deck-area">
-      <button id="btn-toggle-deck">ver baraja completa</button>
-      <div id="full-deck-display" style="display:none;"></div>
+      <div id="full-deck-display"></div>
     </div>
 
     <!-- configuracion + jugar -->
@@ -69,12 +54,21 @@
 
         <!-- opciones chinchon -->
         <div id="chinchon-options" class="game-options">
-          <label>limite: <input type="number" id="chinchon-limit" value="100" min="50" max="200" step="10"></label>
+          <label>limite: <select id="chinchon-limit">
+            <option value="51">51</option>
+            <option value="101" selected>101</option>
+            <option value="151">151</option>
+          </select></label>
         </div>
 
         <!-- opciones poker -->
         <div id="poker-options" class="game-options" style="display:none;">
           <label>fichas: <input type="number" id="poker-chips" value="1000" min="100" step="100"></label>
+          <label>variante: <select id="poker-variant">
+            <option value="no-limit" selected>no-limit</option>
+            <option value="limit">limit</option>
+            <option value="pot-limit">pot-limit</option>
+          </select></label>
         </div>
 
         <!-- opciones virus -->
@@ -133,6 +127,14 @@
       <!-- zona de juego central -->
     </div>
 
+    <div id="hand-toolbar">
+      <span id="hand-info"></span>
+      <div id="hand-tools">
+        <button id="btn-sort-value" class="hand-tool-btn" title="ordenar por valor">↕ valor</button>
+        <button id="btn-sort-suit" class="hand-tool-btn" title="ordenar por palo">↕ palo</button>
+      </div>
+    </div>
+
     <div id="game-hand">
       <!-- mano del jugador actual -->
     </div>
@@ -169,6 +171,9 @@
   <!-- SCRIPTS (orden de dependencias)               -->
   <!-- ============================================ -->
 
+  <!-- libs externas: anime.js para animaciones brutalistas -->
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.min.js"></script>
+
   <!-- core (sin dependencias entre si) -->
   <script src="js/core/event-bus.js"></script>
   <script src="js/core/suit-equivalence.js"></script>
@@ -177,19 +182,48 @@
   <script src="js/core/screen-manager.js"></script>
 
   <!-- ui (depende de core) -->
+  <script src="js/ui/animations.js"></script>
   <script src="js/ui/card-component.js"></script>
   <script src="js/ui/transform-animator.js"></script>
   <script src="js/ui/modal-manager.js"></script>
   <script src="js/ui/main-screen.js"></script>
   <script src="js/ui/turn-screen.js"></script>
+  <script src="js/ui/score-screen.js"></script>
 
-  <!-- games (depende de core + ui) -->
+  <!-- games: interface comun -->
   <script src="js/games/game-interface.js"></script>
-  <script src="js/games/chinchon.js"></script>
-  <script src="js/games/uno.js"></script>
-  <script src="js/games/rummikub.js"></script>
-  <script src="js/games/virus.js"></script>
-  <script src="js/games/poker.js"></script>
+
+  <!-- chinchon: rules + scoring + render + orquestador -->
+  <script src="js/games/chinchon/chinchon-rules.js"></script>
+  <script src="js/games/chinchon/chinchon-scoring.js"></script>
+  <script src="js/games/chinchon/chinchon-render.js"></script>
+  <script src="js/games/chinchon/chinchon.js"></script>
+
+  <!-- uno -->
+  <script src="js/games/uno/uno-rules.js"></script>
+  <script src="js/games/uno/uno-scoring.js"></script>
+  <script src="js/games/uno/uno-render.js"></script>
+  <script src="js/games/uno/uno.js"></script>
+
+  <!-- rummikub -->
+  <script src="js/games/rummikub/rummikub-rules.js"></script>
+  <script src="js/games/rummikub/rummikub-scoring.js"></script>
+  <script src="js/games/rummikub/rummikub-render.js"></script>
+  <script src="js/games/rummikub/rummikub.js"></script>
+
+  <!-- virus -->
+  <script src="js/games/virus/virus-rules.js"></script>
+  <script src="js/games/virus/virus-actions.js"></script>
+  <script src="js/games/virus/virus-treatments.js"></script>
+  <script src="js/games/virus/virus-render.js"></script>
+  <script src="js/games/virus/virus.js"></script>
+
+  <!-- poker -->
+  <script src="js/games/poker/poker-evaluator.js"></script>
+  <script src="js/games/poker/poker-side-pots.js"></script>
+  <script src="js/games/poker/poker-betting.js"></script>
+  <script src="js/games/poker/poker-render.js"></script>
+  <script src="js/games/poker/poker.js"></script>
 
   <!-- app (depende de todo) -->
   <script src="js/app.js"></script>

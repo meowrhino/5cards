@@ -1,347 +1,222 @@
 /* ========================================
-   cards.css — estilos de las cartas
-   rediseño con personalidad por juego
+   cards.css — cartas brutalistas
+   bordes duros, planas, sin gradientes ni shadows blur
    ======================================== */
 
-/* --- carta base --- */
+/* carta base */
 .card {
   width: var(--card-w);
   height: var(--card-h);
-  border-radius: var(--card-radius);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-ui);
-  font-size: 0.7rem;
-  font-weight: 700;
+  font-family: var(--font-display);
+  font-size: 1rem;
   position: relative;
   cursor: pointer;
-  transition: transform 300ms var(--ease-out-back), box-shadow 300ms ease;
-  transform-style: preserve-3d;
   user-select: none;
   flex-shrink: 0;
-  box-shadow: var(--shadow-card);
+  border: 2px solid var(--tt-black);
+  background: var(--tt-white);
+  color: var(--tt-black);
+  box-shadow: 3px 3px 0 var(--tt-black);
+  transition: transform 80ms var(--ease-snap), box-shadow 80ms var(--ease-snap);
   gap: 2px;
 }
 
 .card:hover {
-  transform: translateY(-6px) scale(1.02);
-  box-shadow: var(--shadow-card-hover);
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 var(--tt-black);
   z-index: 10;
 }
 
 .card.selected {
-  transform: translateY(-14px) scale(1.04);
-  box-shadow: var(--shadow-card-selected);
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
+  transform: translate(-4px, -8px);
+  box-shadow: 6px 8px 0 var(--accent), 6px 8px 0 4px var(--tt-black);
+  outline: 3px solid var(--accent);
+  outline-offset: -3px;
+  z-index: 11;
 }
 
-/* --- carta oculta --- */
+/* carta oculta (anverso) */
 .card.hidden-card {
-  background: linear-gradient(135deg, #2a1f3d, #1a1035);
-  color: transparent;
+  background: var(--tt-black);
+  color: var(--accent);
   cursor: default;
-  border: 2px solid rgba(255,255,255,0.1);
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent 0,
+    transparent 6px,
+    var(--accent) 6px,
+    var(--accent) 7px
+  );
 }
 
 .card.hidden-card::after {
-  content: '🂠';
-  font-size: 1.8rem;
-  position: absolute;
-  opacity: 0.6;
+  content: '';
 }
 
-/* --- hero cards (mas grandes en pantalla principal) --- */
-.hero-card {
-  width: calc(var(--card-w) * 1.4);
-  height: calc(var(--card-h) * 1.4);
-  font-size: 1rem;
-}
-
-.hero-card .card-value { font-size: 1.6rem !important; }
-.hero-card .card-center-suit { font-size: 2.4rem !important; }
-.hero-card .card-corner__value { font-size: 0.7rem !important; }
-.hero-card .card-corner__suit { font-size: 0.75rem !important; }
-
-/* --- esquinas (chinchon, poker) --- */
+/* esquinas (chinchon, poker) */
 .card-corner {
   position: absolute;
   display: flex;
   flex-direction: column;
   align-items: center;
   line-height: 1;
-  gap: 0;
 }
 
-.card-corner--tl {
-  top: 4px;
-  left: 5px;
-}
-
-.card-corner--br {
-  bottom: 4px;
-  right: 5px;
-  transform: rotate(180deg);
-}
+.card-corner--tl { top: 2px; left: 4px; }
+.card-corner--br { bottom: 2px; right: 4px; transform: rotate(180deg); }
 
 .card-corner__value {
-  font-size: 0.6rem;
-  font-weight: 900;
+  font-size: 0.95rem;
+  font-family: var(--font-display);
+  line-height: 1;
 }
 
 .card-corner__suit {
-  font-size: 0.55rem;
+  font-size: 0.75rem;
   line-height: 1;
 }
 
-/* --- centro (chinchon, poker) --- */
 .card-center-suit {
-  font-size: 1.8rem;
+  font-size: 2rem;
   line-height: 1;
 }
 
-/* --- label (virus) --- */
 .card-label {
-  font-size: 0.5rem;
+  font-size: 0.65rem;
   text-transform: lowercase;
-  opacity: 0.7;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.04em;
+  color: inherit;
+  opacity: 0.85;
 }
 
 /* ========================================
-   chinchon: carta clasica española
-   pergamino, borde ornamental, elegante
+   chinchon: blanco + suit colors
    ======================================== */
 .card[data-game="chinchon"] {
-  background: var(--card-bg);
-  color: #2a1f14;
-  border: 2px solid var(--card-border, #A08060);
-  box-shadow:
-    var(--shadow-card),
-    inset 0 0 0 1px rgba(255,255,255,0.3);
+  background: var(--tt-white);
+  color: var(--tt-black);
+  border: 3px solid var(--tt-black);
 }
 
-/* borde ornamental interior */
-.card[data-game="chinchon"]::before {
-  content: '';
-  position: absolute;
-  inset: 4px;
-  border: 1px solid rgba(160,128,96,0.2);
-  border-radius: 6px;
-  pointer-events: none;
-}
+.card[data-game="chinchon"][data-suit="oros"] { color: var(--tt-yellow); background: var(--tt-black); border-color: var(--tt-yellow); }
+.card[data-game="chinchon"][data-suit="copas"] { color: var(--tt-red); }
+.card[data-game="chinchon"][data-suit="espadas"] { color: var(--tt-cyan); background: var(--tt-black); border-color: var(--tt-cyan); }
+.card[data-game="chinchon"][data-suit="bastos"] { color: var(--tt-green); }
 
-.card[data-game="chinchon"][data-suit="oros"],
-.card[data-game="chinchon"][data-suit="copas"] {
-  color: var(--card-suit-red, #9B1B30);
-}
-
-.card[data-game="chinchon"][data-suit="espadas"],
-.card[data-game="chinchon"][data-suit="bastos"] {
-  color: var(--card-suit-black, #1A1A2E);
-}
-
-.card[data-game="chinchon"] .card-corner__value {
-  font-size: 0.6rem;
-  font-weight: 900;
-}
-
-.card[data-game="chinchon"] .card-center-suit {
-  font-size: 1.6rem;
-}
+.card[data-game="chinchon"] .card-center-suit { font-size: 1.8rem; }
 
 /* ========================================
-   uno: color vivo, ovalo central
+   uno: bloques de color planos
    ======================================== */
 .card[data-game="uno"] {
-  border: 3px solid rgba(255,255,255,0.85);
-  color: #fff;
-  font-weight: 900;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.35);
-  border-radius: 12px;
-}
-
-/* ovalo central */
-.card[data-game="uno"]::before {
-  content: '';
-  position: absolute;
-  width: 48px;
-  height: 68px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.15);
-  transform: rotate(-25deg);
-  pointer-events: none;
+  border: 3px solid var(--tt-white);
+  color: var(--tt-white);
+  background: var(--tt-black);
 }
 
 .card[data-game="uno"] .card-value {
-  font-size: 1.5rem;
-  font-weight: 900;
-  z-index: 1;
+  font-size: 2rem;
+  font-family: var(--font-display);
 }
 
 .card[data-game="uno"] .card-corner__value {
-  font-size: 0.55rem;
-  z-index: 1;
+  font-size: 0.9rem;
 }
 
-.card[data-game="uno"][data-color="amarillo"] {
-  background: var(--uno-yellow, linear-gradient(135deg, #FFE033, #F5B800));
-  color: #1a1a1a;
-  text-shadow: none;
-}
-
-.card[data-game="uno"][data-color="rojo"] {
-  background: var(--uno-red, linear-gradient(135deg, #FF3333, #C00000));
-}
-
-.card[data-game="uno"][data-color="azul"] {
-  background: var(--uno-blue, linear-gradient(135deg, #3377FF, #1540B0));
-}
-
-.card[data-game="uno"][data-color="verde"] {
-  background: var(--uno-green, linear-gradient(135deg, #33CC33, #108010));
-}
-
-.card[data-game="uno"][data-color="wild"] {
-  background: conic-gradient(from 45deg, #FF3333, #3377FF, #33CC33, #FFE033, #FF3333);
-  border-color: #fff;
+.card[data-game="uno"][data-color="amarillo"] { background: var(--uno-yellow); color: var(--tt-black); border-color: var(--tt-black); }
+.card[data-game="uno"][data-color="rojo"]     { background: var(--uno-red); color: var(--tt-white); }
+.card[data-game="uno"][data-color="azul"]     { background: var(--uno-blue); color: var(--tt-black); border-color: var(--tt-black); }
+.card[data-game="uno"][data-color="verde"]    { background: var(--uno-green); color: var(--tt-black); border-color: var(--tt-black); }
+.card[data-game="uno"][data-color="wild"]     {
+  background:
+    linear-gradient(135deg,
+      var(--tt-yellow) 0 25%,
+      var(--tt-red) 25% 50%,
+      var(--tt-cyan) 50% 75%,
+      var(--tt-green) 75% 100%);
+  color: var(--tt-white);
+  border-color: var(--tt-white);
+  text-shadow: 1px 1px 0 var(--tt-black);
 }
 
 /* ========================================
-   rummikub: fichas con efecto 3D
+   rummikub: fichas blanco + numero color
    ======================================== */
 .card[data-game="rummikub"] {
   width: var(--tile-w);
   height: var(--tile-h);
-  background: var(--tile-bg, linear-gradient(180deg, #FFFFF8, #F0EDE0));
-  border: 2.5px solid #2a2a2a;
-  border-radius: 8px;
-  font-size: 1.4rem;
-  font-weight: 900;
-  box-shadow:
-    0 3px 0 #c0b8a0,
-    0 4px 8px rgba(0,0,0,0.3),
-    inset 0 1px 0 rgba(255,255,255,0.6);
+  background: var(--tt-white);
+  border: 3px solid var(--tt-black);
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  box-shadow: 3px 3px 0 var(--tt-black);
 }
 
-.card[data-game="rummikub"][data-color="amarillo"] { color: #cc8800; }
-.card[data-game="rummikub"][data-color="rojo"]     { color: #cc0000; }
-.card[data-game="rummikub"][data-color="negro"]    { color: #111; }
-.card[data-game="rummikub"][data-color="azul"]     { color: #0044bb; }
-.card[data-game="rummikub"][data-color="wild"]     { color: #777; }
+.card[data-game="rummikub"][data-color="amarillo"] { color: var(--tt-yellow); background: var(--tt-black); border-color: var(--tt-yellow); }
+.card[data-game="rummikub"][data-color="rojo"]     { color: var(--tt-red); }
+.card[data-game="rummikub"][data-color="negro"]    { color: var(--tt-black); }
+.card[data-game="rummikub"][data-color="azul"]     { color: var(--tt-cyan); background: var(--tt-black); border-color: var(--tt-cyan); }
+.card[data-game="rummikub"][data-color="wild"]     { color: var(--tt-magenta); background: var(--tt-black); border-color: var(--tt-magenta); }
 
-/* ========================================
-   virus: laboratorio clinico
-   ======================================== */
-.card[data-game="virus"] {
-  border-radius: 14px;
-  border: 2.5px solid #333;
-  font-size: 0.6rem;
-  font-weight: 800;
-  text-align: center;
-  line-height: 1.2;
-  gap: 4px;
-}
-
-.card[data-game="virus"] .card-value {
-  font-size: 1.4rem;
+.card[data-game="rummikub"] .card-value {
+  font-size: 1.7rem;
+  font-family: var(--font-display);
   line-height: 1;
 }
 
-.card[data-game="virus"][data-vtype="organo"] {
-  background: linear-gradient(180deg, #fff 0%, #f5f5f0 100%);
-  color: #333;
+/* ========================================
+   virus: bloques planos por tipo
+   ======================================== */
+.card[data-game="virus"] {
+  border: 3px solid var(--tt-green);
+  font-family: var(--font-display);
+  text-align: center;
+  line-height: 1.1;
+  gap: 4px;
+  background: var(--tt-black);
+  color: var(--tt-green);
 }
 
-.card[data-game="virus"][data-vtype="virus"] {
-  background: linear-gradient(180deg, #1a1a2e 0%, #0d0d1a 100%);
-  color: #ff4444;
-  border-color: #ff4444;
+.card[data-game="virus"] .card-value {
+  font-size: 1.6rem;
+  line-height: 1;
 }
 
-.card[data-game="virus"][data-vtype="medicina"] {
-  background: linear-gradient(180deg, #e8f5e9 0%, #c8e6c9 100%);
-  color: #2e7d32;
-}
-
-.card[data-game="virus"][data-vtype="tratamiento"] {
-  background: linear-gradient(180deg, #fff8e1 0%, #ffe0b2 100%);
-  color: #e65100;
-}
-
-/* borde de color segun palo */
-.card[data-game="virus"][data-color="amarillo"] { border-color: #f9a825; }
-.card[data-game="virus"][data-color="rojo"]     { border-color: #e53935; }
-.card[data-game="virus"][data-color="azul"]     { border-color: #1e88e5; }
-.card[data-game="virus"][data-color="verde"]    { border-color: #43a047; }
-.card[data-game="virus"][data-color="multi"]    { border-color: #ab47bc; }
-
-/* virus card tiene borde rojo siempre */
-.card[data-game="virus"][data-vtype="virus"][data-color="amarillo"],
-.card[data-game="virus"][data-vtype="virus"][data-color="rojo"],
-.card[data-game="virus"][data-vtype="virus"][data-color="azul"],
-.card[data-game="virus"][data-vtype="virus"][data-color="verde"],
-.card[data-game="virus"][data-vtype="virus"][data-color="multi"] {
-  border-color: #ff4444;
-}
+.card[data-game="virus"][data-vtype="organo"]      { background: var(--tt-black); color: var(--tt-cyan); border-color: var(--tt-cyan); }
+.card[data-game="virus"][data-vtype="virus"]       { background: var(--tt-red); color: var(--tt-white); border-color: var(--tt-white); }
+.card[data-game="virus"][data-vtype="medicina"]    { background: var(--tt-green); color: var(--tt-black); border-color: var(--tt-black); }
+.card[data-game="virus"][data-vtype="tratamiento"] { background: var(--tt-yellow); color: var(--tt-black); border-color: var(--tt-black); }
 
 /* ========================================
-   poker: casino elegante
+   poker: blanco + corazones/diamantes rojos
    ======================================== */
 .card[data-game="poker"] {
-  background: linear-gradient(170deg, #fff 0%, #f8f7f5 100%);
-  border: 2px solid #1a1a1a;
-  color: #1a1a1a;
-  box-shadow:
-    var(--shadow-card),
-    inset 0 0 0 1px rgba(0,0,0,0.04);
-}
-
-/* borde interior sutil */
-.card[data-game="poker"]::before {
-  content: '';
-  position: absolute;
-  inset: 3px;
-  border: 1px solid rgba(212,175,55,0.15);
-  border-radius: 7px;
-  pointer-events: none;
+  background: var(--tt-white);
+  border: 3px solid var(--tt-black);
+  color: var(--tt-black);
 }
 
 .card[data-game="poker"][data-suit="hearts"],
 .card[data-game="poker"][data-suit="diamonds"] {
-  color: #B91C1C;
+  color: var(--tt-red);
 }
 
 .card[data-game="poker"] .card-center-suit {
-  font-size: 1.8rem;
-}
-
-.card[data-game="poker"] .card-corner__value {
-  font-size: 0.65rem;
-  font-weight: 900;
+  font-size: 2rem;
 }
 
 /* ========================================
    responsive
    ======================================== */
 @media (max-width: 600px) {
+  .card { font-size: 0.9rem; box-shadow: 2px 2px 0 var(--tt-black); }
   .card[data-game="chinchon"] .card-center-suit,
-  .card[data-game="poker"] .card-center-suit {
-    font-size: 1.3rem;
-  }
-
-  .card[data-game="uno"] .card-value {
-    font-size: 1.2rem;
-  }
-
-  .card[data-game="rummikub"] {
-    font-size: 1.1rem;
-  }
-
-  .hero-card {
-    width: calc(var(--card-w) * 1.2);
-    height: calc(var(--card-h) * 1.2);
-  }
+  .card[data-game="poker"] .card-center-suit { font-size: 1.4rem; }
+  .card[data-game="uno"] .card-value { font-size: 1.5rem; }
+  .card[data-game="rummikub"] .card-value { font-size: 1.3rem; }
+  .card[data-game="virus"] .card-value { font-size: 1.2rem; }
 }

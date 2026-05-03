@@ -1,19 +1,46 @@
 /* ========================================
-   themes.css — estetica visual por juego
-   usa tokens de tokens.css
+   themes.css — estetica brutalista teletexto
+   bordes duros, planos, sombras offset, sin gradientes
    ======================================== */
 
-/* --- transicion suave entre temas --- */
 body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  transition: background-color 0.5s ease, color 0.4s ease;
+  /* sin transition: brutalismo es snap */
 }
 
-/* --- nav superior --- */
+/* fondo: scanlines sutiles tipo CRT (sin blend-mode para no oscurecer texto) */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0,
+    transparent 3px,
+    rgba(0, 0, 0, 0.08) 3px,
+    rgba(0, 0, 0, 0.08) 4px
+  );
+  z-index: 9999;
+}
+
+/* nav superior: bandas planas */
 #game-nav {
   background-color: var(--nav-bg);
-  transition: background-color 0.5s ease;
+  border-bottom: var(--border-thick);
+  border-color: var(--accent);
+}
+
+.game-tab {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-right: 2px solid var(--accent);
+}
+
+.game-tab:last-child {
+  border-right: 0;
 }
 
 .game-tab.active {
@@ -21,121 +48,135 @@ body {
   color: var(--nav-active-text);
 }
 
-/* --- chinchon: textura de fieltro sutil --- */
-body[data-game="chinchon"] {
-  background-image:
-    radial-gradient(ellipse at 20% 50%, rgba(74,122,37,0.15) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 50%, rgba(74,122,37,0.1) 0%, transparent 50%);
-}
-
-/* --- uno: puntos de luz sutiles --- */
-body[data-game="uno"] {
-  background-image:
-    radial-gradient(circle at 30% 30%, rgba(255,45,45,0.05) 0%, transparent 40%),
-    radial-gradient(circle at 70% 70%, rgba(51,119,255,0.05) 0%, transparent 40%);
-}
-
-/* --- rummikub: degradado profundo --- */
-body[data-game="rummikub"] {
-  background-image: linear-gradient(180deg, var(--bg-primary) 0%, #071E32 100%);
-}
-
-/* --- virus: rejilla laboratorio --- */
-body[data-game="virus"] {
-  background-image:
-    repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(57,255,20,0.02) 40px, rgba(57,255,20,0.02) 41px),
-    repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(57,255,20,0.02) 40px, rgba(57,255,20,0.02) 41px);
-}
-
-/* --- poker: resplandor dorado --- */
-body[data-game="poker"] {
-  background-image: radial-gradient(ellipse at 50% 0%, rgba(212,175,55,0.06) 0%, transparent 60%);
-}
-
-/* --- botones --- */
+/* ========================================
+   botones brutalistas: cuadrados, sombra offset
+   ======================================== */
 .btn {
-  padding: 12px 28px;
-  font-weight: 700;
-  font-family: var(--font-ui);
-  border-radius: var(--radius-md);
-  font-size: 0.9rem;
+  padding: 10px 22px;
+  font-family: var(--font-display);
+  font-size: 1.4rem;
   text-transform: lowercase;
-  letter-spacing: 0.3px;
-  transition: all 200ms ease;
-  border: 2px solid transparent;
+  letter-spacing: 0.04em;
+  border: 3px solid var(--btn-border, var(--accent));
+  background: var(--btn-bg, var(--bg-surface-solid));
+  color: var(--btn-text, var(--accent));
+  box-shadow: 4px 4px 0 var(--btn-border, var(--accent));
+  transition: transform 80ms var(--ease-snap), box-shadow 80ms var(--ease-snap);
+  line-height: 1;
+}
+
+.btn:hover:not(:disabled) {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--btn-border, var(--accent));
+}
+
+.btn:active:not(:disabled) {
+  transform: translate(2px, 2px);
+  box-shadow: 0 0 0 var(--btn-border, var(--accent));
+}
+
+.btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
 }
 
 .btn--accent {
-  background: var(--btn-bg);
-  color: var(--accent);
+  background: var(--accent);
+  color: var(--bg-primary);
   border-color: var(--accent);
 }
 
-.btn--accent:hover {
-  background: var(--accent);
-  color: var(--bg-primary);
-  transform: scale(1.03);
-}
-
-.btn--accent:disabled {
-  opacity: 0.3;
-  pointer-events: none;
-}
-
 .btn--ghost {
-  background: transparent;
-  color: var(--text-secondary);
-  border-color: var(--text-secondary);
-}
-
-.btn--ghost:hover {
+  background: var(--bg-secondary);
   color: var(--text-primary);
   border-color: var(--text-primary);
-  background: var(--bg-surface);
+  box-shadow: 4px 4px 0 var(--text-primary);
+}
+
+.btn--ghost:hover:not(:disabled) {
+  box-shadow: 6px 6px 0 var(--text-primary);
 }
 
 .btn--danger {
-  background: rgba(231,76,60,0.1);
-  color: #E74C3C;
-  border-color: #E74C3C;
+  background: var(--tt-black);
+  color: var(--tt-red);
+  border-color: var(--tt-red);
+  box-shadow: 4px 4px 0 var(--tt-red);
 }
 
-.btn--danger:hover {
-  background: #E74C3C;
-  color: #fff;
+.btn--danger:hover:not(:disabled) {
+  background: var(--tt-red);
+  color: var(--tt-white);
 }
 
-/* --- status badges --- */
+/* ========================================
+   status badges: bloques duros
+   ======================================== */
 .status-badge {
   display: inline-block;
-  padding: 4px 14px;
-  border-radius: var(--radius-xl);
-  font-weight: 700;
-  font-size: 0.8rem;
-  font-family: var(--font-ui);
+  padding: 4px 12px;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  text-transform: uppercase;
   background: var(--badge-color, var(--accent));
-  color: #fff;
+  color: var(--bg-primary);
+  border: 2px solid var(--bg-primary);
+  letter-spacing: 0.04em;
 }
 
 .status-badge--danger {
-  background: #E74C3C;
+  background: var(--tt-red);
+  color: var(--tt-white);
 }
 
-/* --- textos auxiliares --- */
+/* ========================================
+   textos auxiliares
+   ======================================== */
 .placeholder-text {
-  opacity: 0.3;
-  font-size: 0.8rem;
-  font-style: italic;
+  opacity: 0.4;
+  font-size: 1rem;
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
 }
 
 .pile-count {
-  font-size: 0.75rem;
-  opacity: 0.5;
-  font-family: var(--font-ui);
+  font-size: 1rem;
+  opacity: 0.7;
+  font-family: var(--font-display);
+  text-transform: uppercase;
 }
 
 .error-msg {
-  color: #ff4444;
-  font-size: 0.85rem;
+  color: var(--tt-red);
+  font-size: 1rem;
   min-height: 1.2em;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* ========================================
+   inputs: cajas brutalistas
+   ======================================== */
+input, select {
+  background: var(--tt-black);
+  color: var(--accent);
+  border: 2px solid var(--accent);
+  padding: 6px 10px;
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  outline: none;
+}
+
+input:focus, select:focus {
+  background: var(--bg-surface-solid);
+  border-color: var(--accent-secondary);
+  color: var(--accent-secondary);
+}
+
+select {
+  cursor: pointer;
 }

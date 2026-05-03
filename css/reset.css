@@ -1,5 +1,5 @@
 /* ========================================
-   reset.css — normalizacion basica
+   reset.css — normalizacion + base brutalista
    ======================================== */
 
 *, *::before, *::after {
@@ -14,17 +14,22 @@ html {
 }
 
 body {
-  font-family: var(--font-ui, 'Inter', system-ui, -apple-system, sans-serif);
-  line-height: 1.5;
+  font-family: var(--font-ui, monospace);
+  font-size: 1.25rem;       /* VT323 necesita tamaño grande para legibilidad */
+  line-height: 1.2;
   min-height: 100vh;
   overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
+  /* brutalismo: pixelar nitido en lugar de antialiasing suave */
+  -webkit-font-smoothing: none;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: geometricPrecision;
 }
 
 h1, h2, h3, h4 {
-  font-family: var(--font-display, 'Fredoka', system-ui, sans-serif);
-  line-height: 1.2;
+  font-family: var(--font-display, monospace);
+  line-height: 1.1;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 button {
@@ -34,6 +39,7 @@ button {
   border: none;
   background: none;
   -webkit-tap-highlight-color: transparent;
+  text-transform: lowercase;
 }
 
 input, select {
@@ -52,6 +58,19 @@ img {
 }
 
 ::selection {
-  background: var(--accent, #C9A96E);
-  color: var(--bg-primary, #1B3A1B);
+  background: var(--accent, #FFFF00);
+  color: var(--bg-primary, #000);
+}
+
+/* scrollbars brutalistas */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary, #000);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--accent, #FFFF00);
+  border: 2px solid var(--bg-secondary, #000);
 }

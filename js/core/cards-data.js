@@ -229,7 +229,8 @@ function buildMasterDeck() {
     } else {
       const jokerIdx = pos - 104;
       if (jokerIdx >= 0 && jokerIdx < 2) {
-        rummCard = { value: 0, color: 'wild', label: 'comodin', display: '★', series: 0 };
+        const jokerEmoji = jokerIdx === 0 ? '🌑' : '🌕';
+        rummCard = { value: 0, color: 'wild', label: 'comodin', display: jokerEmoji, series: 0 };
       }
     }
 

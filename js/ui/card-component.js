@@ -86,6 +86,105 @@ const CardComponent = {
     });
   },
 
+  /* renderizar baraja unica (sin duplicados) con badge x2 */
+  renderFullDeckUnique(game, container) {
+    const cards = getCardsForGame(game, MASTER_DECK);
+    let unique;
+
+    if (game === 'uno') {
+      unique = cards.filter(c => {
+        const d = c.uno;
+        if (!d) return false;
+        if (d.type === 'wild' || d.type === 'wild4') return d.copy <= 4;
+        return d.copy === 1;
+      });
+    } else if (game === 'rummikub') {
+      unique = cards.filter(c => {
+        const d = c.rummikub;
+        if (!d) return false;
+        return d.series <= 1;
+      });
+    } else {
+      unique = cards;
+    }
+
+    const groups = this.groupCardsUnique(unique, game);
+    container.innerHTML = '';
+
+    groups.forEach(group => {
+      const row = document.createElement('div');
+      row.className = 'card-row';
+      group.forEach(card => {
+        row.appendChild(this.create(card, game));
+      });
+      container.appendChild(row);
+    });
+
+    /* badge x2 */
+    const badge = document.createElement('div');
+    badge.className = 'deck-badge';
+    badge.textContent = 'x2';
+    container.appendChild(badge);
+  },
+
+  /* agrupar cartas unicas (sin copias/series duplicadas) */
+  groupCardsUnique(cards, game) {
+    const groups = {};
+
+    cards.forEach(card => {
+      const data = card[game];
+      if (!data) return;
+
+      let groupKey;
+      if (game === 'uno') groupKey = data.color;
+      else if (game === 'rummikub') groupKey = data.color;
+      else groupKey = data.suit || data.color || data.type;
+
+      if (!groups[groupKey]) groups[groupKey] = [];
+      groups[groupKey].push(card);
+    });
+
+    Object.values(groups).forEach(group => {
+      group.sort((a, b) => {
+        const aVal = a[game].value || a[game].subIndex || 0;
+        const bVal = b[game].value || b[game].subIndex || 0;
+        return aVal - bVal;
+      });
+    });
+
+    return Object.values(groups);
+  },
+
+  /* obtener cartas a mostrar en preview (sin duplicados para UNO/rummikub) */
+  getDisplayCards(game) {
+    const allCards = getCardsForGame(game, MASTER_DECK);
+    if (game === 'uno') {
+      return allCards.filter(c => {
+        const d = c.uno;
+        if (!d) return false;
+        if (d.type === 'wild' || d.type === 'wild4') return d.copy <= 4;
+        return d.copy === 1;
+      });
+    }
+    if (game === 'rummikub') {
+      return allCards.filter(c => {
+        const d = c.rummikub;
+        if (!d) return false;
+        return d.series <= 1;
+      });
+    }
+    return allCards;
+  },
+
+  /* renderizar baraja para preview (auto-elige full vs unique) */
+  renderDeckDisplay(game, container) {
+    if (game === 'uno' || game === 'rummikub') {
+      this.renderFullDeckUnique(game, container);
+    } else {
+      this.renderFullDeck(game, container);
+    }
+  },
+
   /* agrupar cartas por palo/color */
   groupCards(cards, game) {
     const groups = {};

@@ -1,11 +1,11 @@
 /* ========================================
-   game.css — componentes de partida
+   game.css — componentes de partida brutalistas
    ======================================== */
 
-/* --- mesa central (mazo + descarte) --- */
+/* mesa central */
 .table-center {
   display: flex;
-  gap: 20px;
+  gap: 16px;
   align-items: center;
   justify-content: center;
 }
@@ -13,22 +13,35 @@
 .draw-pile {
   width: var(--card-w);
   height: var(--card-h);
-  border-radius: var(--card-radius);
-  background: linear-gradient(135deg, #2a1f3d, #1a1035);
+  background: var(--tt-black);
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent 0,
+    transparent 6px,
+    var(--accent) 6px,
+    var(--accent) 7px
+  );
+  border: 3px solid var(--accent);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 3px 12px rgba(0,0,0,0.4);
-  font-size: 1.5rem;
-  color: rgba(255,255,255,0.3);
-  border: 2px solid rgba(255,255,255,0.08);
-  transition: box-shadow 200ms ease, transform 200ms ease;
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--accent);
+  transition: transform 80ms var(--ease-snap), box-shadow 80ms var(--ease-snap);
+  box-shadow: 4px 4px 0 var(--accent);
 }
 
-.draw-pile:hover {
-  box-shadow: 0 6px 20px rgba(0,0,0,0.5);
-  transform: translateY(-2px);
+.draw-pile:hover:not(.draw-pile--disabled) {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--accent);
+}
+
+.draw-pile--disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
 }
 
 .discard-slot {
@@ -37,49 +50,52 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 2px dashed var(--text-secondary);
 }
 
-/* --- indicador de direccion (uno) --- */
+/* indicador de direccion (uno) */
 .direction-indicator {
-  font-size: 1.8rem;
-  opacity: 0.4;
+  font-size: 2rem;
+  color: var(--accent);
   font-family: var(--font-display);
+  line-height: 1;
 }
 
-/* --- virus bodies --- */
+/* ========================================
+   virus: cuerpos
+   ======================================== */
 .virus-bodies {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 12px;
   justify-content: center;
 }
 
 .virus-body {
-  padding: 14px;
-  border: 2px solid rgba(128,128,128,0.2);
-  border-radius: var(--radius-md);
-  background: var(--bg-surface);
-  min-width: 120px;
-  transition: border-color 200ms ease;
+  padding: 10px;
+  border: 3px solid var(--text-secondary);
+  background: var(--bg-secondary);
+  min-width: 130px;
 }
 
 .virus-body--active {
   border-color: var(--accent);
-  box-shadow: 0 0 12px rgba(57,255,20,0.1);
+  box-shadow: 4px 4px 0 var(--accent);
 }
 
 .virus-body__name {
-  width: 100%;
   text-align: center;
-  font-weight: 700;
-  font-size: 0.8rem;
-  font-family: var(--font-ui);
-  margin-bottom: 10px;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  color: var(--accent);
+  letter-spacing: 0.04em;
 }
 
 .virus-body__slots {
   display: flex;
-  gap: 6px;
+  gap: 4px;
   flex-wrap: wrap;
   justify-content: center;
 }
@@ -87,52 +103,60 @@
 .virus-organ-slot {
   width: 52px;
   height: 72px;
-  border: 2px dashed rgba(128,128,128,0.25);
-  border-radius: 8px;
+  border: 3px dashed var(--text-secondary);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: 0.65rem;
+  font-size: 0.7rem;
   position: relative;
   cursor: pointer;
-  transition: border-color 200ms ease, background 200ms ease;
+  background: var(--bg-primary);
   gap: 2px;
 }
 
 .virus-organ-slot:hover {
   border-color: var(--accent);
-  background: var(--bg-surface);
 }
 
 .virus-organ-slot.targeted {
-  border-color: var(--accent-secondary, #FF1493);
+  border-color: var(--accent-secondary);
   border-style: solid;
-  background: rgba(255,20,147,0.06);
+  background: var(--accent-secondary);
+  color: var(--tt-black);
+}
+
+.virus-organ-slot.source {
+  border-color: var(--accent);
+  border-style: solid;
+  background: var(--accent);
+  color: var(--tt-black);
 }
 
 .organ-emoji {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   line-height: 1;
 }
 
 .organ-status {
-  font-size: 0.6rem;
+  font-size: 0.65rem;
   line-height: 1;
 }
 
 .organ-placeholder {
-  opacity: 0.15;
-  font-size: 0.7rem;
-  font-weight: 700;
+  opacity: 0.3;
+  font-size: 0.85rem;
+  font-family: var(--font-display);
   text-transform: uppercase;
 }
 
-/* --- rummikub sets --- */
+/* ========================================
+   rummikub: sets en mesa
+   ======================================== */
 .table-sets {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 8px;
   justify-content: center;
   min-height: 60px;
   align-items: center;
@@ -141,41 +165,56 @@
 .rummikub-set {
   display: flex;
   gap: 2px;
-  padding: 5px;
-  background: var(--bg-surface);
-  border-radius: var(--radius-sm);
-  border: 1px solid rgba(128,128,128,0.15);
+  padding: 6px;
+  background: var(--bg-secondary);
+  border: 2px solid var(--text-secondary);
+  cursor: pointer;
+  transition: border-color 100ms var(--ease-snap), box-shadow 100ms var(--ease-snap);
 }
 
-/* --- poker --- */
+.rummikub-set:hover {
+  border-color: var(--accent);
+}
+
+.rummikub-set--selected {
+  border-color: var(--accent);
+  border-width: 3px;
+  box-shadow: 4px 4px 0 var(--accent);
+}
+
+/* ========================================
+   poker
+   ======================================== */
 .poker-info {
   display: flex;
   gap: 16px;
   align-items: center;
   justify-content: center;
-  margin-bottom: 12px;
-}
-
-.pot-display {
-  font-size: 1.1rem;
-  font-weight: 900;
+  margin-bottom: 8px;
   font-family: var(--font-display);
 }
 
+.pot-display {
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+}
+
 .phase-badge {
-  padding: 3px 12px;
-  border-radius: var(--radius-xl);
-  background: var(--bg-surface);
-  font-size: 0.7rem;
-  font-weight: 600;
-  font-family: var(--font-ui);
-  text-transform: lowercase;
-  border: 1px solid rgba(128,128,128,0.2);
+  padding: 4px 12px;
+  background: var(--accent);
+  color: var(--bg-primary);
+  font-size: 1.1rem;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border: 2px solid var(--bg-primary);
 }
 
 .community-cards {
   display: flex;
-  gap: 8px;
+  gap: 4px;
   justify-content: center;
   min-height: var(--card-h);
   align-items: center;
@@ -183,24 +222,26 @@
 
 .poker-players {
   display: flex;
-  gap: 10px;
+  gap: 8px;
   flex-wrap: wrap;
-  margin-top: 16px;
+  margin-top: 12px;
   justify-content: center;
 }
 
 .poker-player {
-  padding: 10px 14px;
-  border: 1.5px solid rgba(128,128,128,0.2);
-  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  border: 3px solid var(--text-secondary);
+  background: var(--bg-secondary);
   text-align: center;
-  min-width: 80px;
-  transition: border-color 200ms ease;
+  min-width: 90px;
+  font-family: var(--font-display);
 }
 
 .poker-player--active {
   border-color: var(--accent);
-  background: var(--bg-surface);
+  background: var(--accent);
+  color: var(--bg-primary);
+  box-shadow: 4px 4px 0 var(--bg-primary);
 }
 
 .poker-player--folded {
@@ -208,44 +249,98 @@
 }
 
 .poker-player__name {
-  font-weight: 700;
-  font-size: 0.8rem;
+  font-size: 1.1rem;
+  text-transform: uppercase;
 }
 
 .poker-player__chips {
-  font-size: 0.75rem;
+  font-size: 1rem;
 }
 
 .poker-player__status {
-  color: #E74C3C;
-  font-size: 0.65rem;
-  font-weight: 700;
+  color: var(--tt-red);
+  font-size: 0.9rem;
+  text-transform: uppercase;
 }
 
 .poker-player__bet {
-  font-size: 0.65rem;
-  opacity: 0.7;
+  font-size: 0.9rem;
 }
 
-/* --- responsive --- */
+/* ========================================
+   indicadores de fase y hints
+   ======================================== */
+.turn-phase-indicator {
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  padding: 6px 14px;
+  color: var(--accent);
+  background: var(--bg-secondary);
+  border: 2px solid var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  display: inline-block;
+  margin: 0 auto;
+}
+
+.action-hint {
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--text-secondary);
+  padding: 6px 0;
+  text-transform: lowercase;
+}
+
+/* pile count */
+.pile-count {
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* placeholder text */
+.placeholder-text {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--text-secondary);
+  opacity: 0.6;
+  text-transform: uppercase;
+}
+
+/* raise info en modal poker */
+.raise-info {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+
+/* responsive */
 @media (max-width: 600px) {
   .draw-pile {
-    width: var(--card-w);
-    height: var(--card-h);
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
-
   .virus-organ-slot {
     width: 44px;
     height: 60px;
   }
-
   .organ-emoji {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
   }
-
   .poker-player {
-    padding: 8px 10px;
+    padding: 6px 10px;
     min-width: 70px;
+  }
+  .turn-phase-indicator {
+    font-size: 1rem;
+    padding: 4px 10px;
   }
 }
