@@ -84,6 +84,12 @@ const GameEngine = {
   },
 
   dealCards(game) {
+    /* the-mind controla su propio reparto por nivel */
+    if (game === 'the-mind') {
+      this.state.players.forEach(p => { p.hand = []; });
+      return;
+    }
+
     const count = GAME_INFO[game] ? GAME_INFO[game].perPlayer : 7;
 
     this.state.players.forEach(player => {

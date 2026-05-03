@@ -146,6 +146,26 @@ const ScoreScreen = {
       this._hideNextButton(true);
     },
 
+    'the-mind'(result) {
+      const players = GameEngine.state.players;
+      const won = result.gameWin;
+      const lvl = result.level;
+      this._setTitle(won
+        ? `★ MENTES SINCRONIZADAS ★ TODOS GANAN`
+        : `FIN ▶ NIVEL ${lvl} · sin vidas`
+      );
+      const rows = players.map((p) => ({
+        cells: [
+          p.name + (won ? ' 👑' : ''),
+          'nivel ' + lvl,
+          won ? 'GANA' : '—'
+        ]
+      }));
+      this._renderTable(rows, ['JUGADOR', 'NIVEL', 'ESTADO']);
+      /* the-mind no tiene siguiente ronda */
+      this._hideNextButton(true);
+    },
+
     poker(result) {
       const players = GameEngine.state.players;
       const winner = players[result.winner];

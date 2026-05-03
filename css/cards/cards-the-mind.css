@@ -1,0 +1,26 @@
+/* ========================================
+   cards-the-mind.css — cartas numeradas
+   colores por rango: low (1-24), lowmid (25-49), mid (50-79), high (80-100)
+   ======================================== */
+
+.card[data-game="the-mind"] {
+  background: var(--tt-black);
+  color: var(--tt-cyan);
+  border: 3px solid var(--tt-cyan);
+  font-family: var(--font-display);
+}
+
+.card[data-game="the-mind"][data-tier="low"]    { color: var(--tt-green);   border-color: var(--tt-green); }
+.card[data-game="the-mind"][data-tier="lowmid"] { color: var(--tt-yellow);  border-color: var(--tt-yellow); }
+.card[data-game="the-mind"][data-tier="mid"]    { color: var(--tt-magenta); border-color: var(--tt-magenta); }
+.card[data-game="the-mind"][data-tier="high"]   { color: var(--tt-red);     border-color: var(--tt-red); }
+
+.mind-number {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+@media (max-width: 600px) {
+  .mind-number { font-size: 1.4rem; }
+}

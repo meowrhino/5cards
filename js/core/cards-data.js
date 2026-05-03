@@ -10,14 +10,15 @@
    5. chinchon =  48 (pos 0-47)
    ======================================== */
 
-const GAMES = ['chinchon', 'uno', 'rummikub', 'virus', 'poker'];
+const GAMES = ['chinchon', 'uno', 'rummikub', 'virus', 'poker', 'the-mind'];
 
 const GAME_INFO = {
   chinchon: { name: 'chinchon', display: 'chinchon', cards: 48, perPlayer: 7, desc: 'clasico español de escaleras y grupos' },
   uno:      { name: 'uno',      display: 'uno',      cards: 108, perPlayer: 7, desc: 'colores, acciones y cambios de sentido' },
   rummikub: { name: 'rummikub', display: 'rummikub', cards: 106, perPlayer: 14, desc: 'fichas numericas, grupos y escaleras' },
   virus:    { name: 'virus',    display: 'virus',    cards: 68, perPlayer: 3, desc: 'organos, virus y medicinas' },
-  poker:    { name: 'poker',    display: 'poker',    cards: 52, perPlayer: 2, desc: 'texas holdem simplificado' }
+  poker:    { name: 'poker',    display: 'poker',    cards: 52, perPlayer: 2, desc: 'texas holdem simplificado' },
+  'the-mind': { name: 'the-mind', display: 'the mind', cards: 100, perPlayer: 1, desc: 'cooperativo: jugar 1-100 en orden sin hablar' }
 };
 
 /* simbolos de palos */
@@ -245,6 +246,12 @@ function buildMasterDeck() {
       uno: { value: 50, color: 'wild', type: 'wild4', label: '+4', display: '+4', copy: 7 + i },
       rummikub: null, virus: null
     };
+  }
+
+  /* ---- THE MIND: las primeras 100 cartas tienen valor 1-100 ---- */
+  for (let i = 0; i < 108; i++) {
+    if (!deck[i]) continue;
+    deck[i]['the-mind'] = i < 100 ? { value: i + 1, display: String(i + 1) } : null;
   }
 
   return deck;

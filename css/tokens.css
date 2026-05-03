@@ -152,6 +152,26 @@ body[data-game="virus"] {
 }
 
 /* ========================================
+   the-mind: cyan + magenta cooperativo zen
+   ======================================== */
+body[data-game="the-mind"] {
+  --bg-primary: var(--tt-black);
+  --bg-secondary: #001020;
+  --bg-surface: #001020;
+  --bg-surface-solid: #001020;
+  --accent: var(--tt-cyan);
+  --accent-secondary: var(--tt-magenta);
+  --text-primary: var(--tt-cyan);
+  --text-secondary: var(--tt-magenta);
+  --nav-bg: var(--tt-black);
+  --nav-active-bg: var(--tt-cyan);
+  --nav-active-text: var(--tt-black);
+  --btn-bg: var(--tt-black);
+  --btn-text: var(--tt-cyan);
+  --btn-border: var(--tt-cyan);
+}
+
+/* ========================================
    poker: rojo casino + amarillo dorado
    ======================================== */
 body[data-game="poker"] {

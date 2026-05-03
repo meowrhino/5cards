@@ -1,0 +1,75 @@
+/* ========================================
+   game-the-mind.css — UI cooperativa
+   ======================================== */
+
+.mind-info {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  margin-bottom: 8px;
+}
+
+.mind-stat {
+  padding: 4px 12px;
+  background: var(--tt-black);
+  color: var(--accent);
+  border: 2px solid var(--accent);
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.mind-last-played {
+  text-align: center;
+  padding: 12px 24px;
+  background: var(--tt-black);
+  color: var(--accent);
+  border: 4px solid var(--accent);
+  box-shadow: 6px 6px 0 var(--accent);
+  font-family: var(--font-display);
+  margin: 8px 0;
+}
+
+.mind-last-played__label {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.7;
+}
+
+.mind-last-played__value {
+  font-size: 3rem;
+  line-height: 1;
+  margin-top: 4px;
+}
+
+.mind-opponents {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.mind-opponent {
+  padding: 6px 12px;
+  border: 2px solid var(--text-secondary);
+  background: var(--bg-secondary);
+  font-family: var(--font-display);
+  text-align: center;
+  min-width: 100px;
+}
+
+.mind-opponent__name {
+  font-size: 1rem;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.mind-opponent__count {
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  margin-top: 2px;
+}

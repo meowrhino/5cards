@@ -58,6 +58,11 @@ const DeckGrouper = {
     if (game === 'uno') return data.color + (data.copy === 2 ? '_2' : '_1');
     if (game === 'rummikub') return data.color + '_s' + data.series;
     if (game === 'virus') return data.type;
+    if (game === 'the-mind') {
+      /* agrupar por decenas para preview ordenado */
+      const tens = Math.floor((data.value - 1) / 10);
+      return 'd' + tens;
+    }
     return data.suit || data.color || data.type;
   },
 

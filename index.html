@@ -25,12 +25,14 @@
   <link rel="stylesheet" href="css/cards/cards-rummikub.css">
   <link rel="stylesheet" href="css/cards/cards-virus.css">
   <link rel="stylesheet" href="css/cards/cards-poker.css">
+  <link rel="stylesheet" href="css/cards/cards-the-mind.css">
   <!-- componentes de juego -->
   <link rel="stylesheet" href="css/game/game-table.css">
   <link rel="stylesheet" href="css/game/game-virus.css">
   <link rel="stylesheet" href="css/game/game-rummikub.css">
   <link rel="stylesheet" href="css/game/game-poker.css">
   <link rel="stylesheet" href="css/game/game-hints.css">
+  <link rel="stylesheet" href="css/game/game-the-mind.css">
 </head>
 <body data-game="chinchon">
 
@@ -39,13 +41,14 @@
   <!-- ============================================ -->
   <div id="screen-main" class="screen active">
 
-    <!-- menu superior: 5 juegos -->
+    <!-- menu superior: juegos -->
     <nav id="game-nav">
       <button class="game-tab active" data-game="chinchon">chinchon</button>
       <button class="game-tab" data-game="uno">uno</button>
       <button class="game-tab" data-game="rummikub">rummikub</button>
       <button class="game-tab" data-game="virus">virus</button>
       <button class="game-tab" data-game="poker">poker</button>
+      <button class="game-tab" data-game="the-mind">the mind</button>
     </nav>
 
     <!-- baraja + info del juego -->
@@ -101,6 +104,11 @@
         <!-- opciones rummikub -->
         <div id="rummikub-options" class="game-options" style="display:none;">
           <label>minimo: <input type="number" id="rummikub-min" value="30" min="20" max="50" step="5"></label>
+        </div>
+
+        <!-- opciones the mind -->
+        <div id="the-mind-options" class="game-options" style="display:none;">
+          <span class="action-hint">cooperativo · sin hablar · 2-4 jugadores</span>
         </div>
       </div>
 
@@ -212,6 +220,7 @@
   <script src="js/ui/card-renderers/uno-renderer.js"></script>
   <script src="js/ui/card-renderers/rummikub-renderer.js"></script>
   <script src="js/ui/card-renderers/virus-renderer.js"></script>
+  <script src="js/ui/card-renderers/the-mind-renderer.js"></script>
   <!-- ui interactiva -->
   <script src="js/ui/hand-sortable.js"></script>
   <script src="js/ui/transform-animator.js"></script>
@@ -254,6 +263,11 @@
   <script src="js/games/poker/poker-betting.js"></script>
   <script src="js/games/poker/poker-render.js"></script>
   <script src="js/games/poker/poker.js"></script>
+
+  <!-- the mind (cooperativo) -->
+  <script src="js/games/the-mind/the-mind-rules.js"></script>
+  <script src="js/games/the-mind/the-mind-render.js"></script>
+  <script src="js/games/the-mind/the-mind.js"></script>
 
   <!-- app (depende de todo) -->
   <script src="js/app/app-flow.js"></script>
