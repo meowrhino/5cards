@@ -2,8 +2,13 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="theme-color" content="#1B3A1B">
+  <meta name="description" content="5cards — una baraja, varios juegos. Partidas locales pasando un solo movil, y el archivo libre de reglas de los juegos de baraja.">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="manifest" href="manifest.json">
   <title>5cards</title>
 
   <!-- CSS base -->
@@ -15,9 +20,13 @@
   <!-- pantallas -->
   <link rel="stylesheet" href="css/screens/passwords.css">
   <link rel="stylesheet" href="css/screens/turn.css">
+  <link rel="stylesheet" href="css/screens/unlock.css">
+  <link rel="stylesheet" href="css/screens/handoff.css">
   <link rel="stylesheet" href="css/screens/game-screen.css">
   <link rel="stylesheet" href="css/screens/scores.css">
   <link rel="stylesheet" href="css/screens/modal.css">
+  <link rel="stylesheet" href="css/screens/rules.css">
+  <link rel="stylesheet" href="css/screens/resume.css">
   <!-- cartas por juego -->
   <link rel="stylesheet" href="css/cards/cards-base.css">
   <link rel="stylesheet" href="css/cards/cards-chinchon.css">
@@ -28,6 +37,8 @@
   <link rel="stylesheet" href="css/cards/cards-the-mind.css">
   <!-- componentes de juego -->
   <link rel="stylesheet" href="css/game/game-table.css">
+  <link rel="stylesheet" href="css/game/game-news.css">
+  <link rel="stylesheet" href="css/game/game-hand.css">
   <link rel="stylesheet" href="css/game/game-virus.css">
   <link rel="stylesheet" href="css/game/game-rummikub.css">
   <link rel="stylesheet" href="css/game/game-poker.css">
@@ -41,8 +52,7 @@
   <!-- ============================================ -->
   <div id="screen-main" class="screen active">
 
-    <!-- menu superior: juegos -->
-    <nav id="game-nav">
+    <nav id="game-nav" aria-label="juegos">
       <button class="game-tab active" data-game="chinchon">chinchon</button>
       <button class="game-tab" data-game="uno">uno</button>
       <button class="game-tab" data-game="rummikub">rummikub</button>
@@ -51,27 +61,21 @@
       <button class="game-tab" data-game="the-mind">the mind</button>
     </nav>
 
-    <!-- baraja + info del juego -->
+    <!-- partida sin terminar -->
+    <div id="resume-banner" hidden></div>
+
     <div id="deck-showcase">
       <div id="game-info-card"></div>
       <div id="full-deck-display"></div>
     </div>
 
-    <!-- configuracion + jugar -->
     <div id="game-setup">
       <div id="setup-options">
         <div id="player-config">
           <label for="num-players">jugadores:</label>
-          <select id="num-players">
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-          </select>
+          <select id="num-players"></select>
         </div>
 
-        <!-- opciones chinchon -->
         <div id="chinchon-options" class="game-options">
           <label>limite: <select id="chinchon-limit">
             <option value="51">51</option>
@@ -85,7 +89,6 @@
           </select></label>
         </div>
 
-        <!-- opciones poker -->
         <div id="poker-options" class="game-options" style="display:none;">
           <label>fichas: <input type="number" id="poker-chips" value="1000" min="100" step="100"></label>
           <label>variante: <select id="poker-variant">
@@ -95,24 +98,20 @@
           </select></label>
         </div>
 
-        <!-- opciones virus -->
         <div id="virus-options" class="game-options" style="display:none;"></div>
-
-        <!-- opciones uno -->
         <div id="uno-options" class="game-options" style="display:none;"></div>
 
-        <!-- opciones rummikub -->
         <div id="rummikub-options" class="game-options" style="display:none;">
           <label>minimo: <input type="number" id="rummikub-min" value="30" min="20" max="50" step="5"></label>
         </div>
 
-        <!-- opciones the mind -->
         <div id="the-mind-options" class="game-options" style="display:none;">
-          <span class="action-hint">cooperativo · sin hablar · 2-4 jugadores</span>
+          <span class="action-hint">cooperativo · sin hablar</span>
         </div>
       </div>
 
       <button id="btn-play">jugar</button>
+      <button id="btn-rules" class="btn btn--ghost">📖 archivo de reglas</button>
     </div>
 
     <footer id="main-footer">
@@ -121,25 +120,49 @@
   </div>
 
   <!-- ============================================ -->
-  <!-- PANTALLA CONTRASEÑAS                          -->
+  <!-- PANTALLA CONFIGURAR JUGADORES                 -->
   <!-- ============================================ -->
   <div id="screen-passwords" class="screen">
     <h2>configurar jugadores</h2>
-    <div id="password-fields">
-      <!-- se genera con JS -->
+
+    <div id="auth-section">
+      <span class="auth-label">como desbloquea cada uno su mano</span>
+      <div id="auth-modes"></div>
+      <p id="auth-hint" class="action-hint"></p>
     </div>
-    <button id="btn-start-game">empezar partida</button>
+
+    <div id="password-fields"></div>
+
+    <div class="screen-actions">
+      <button id="btn-start-game" class="btn btn--accent">empezar partida</button>
+      <button id="btn-setup-back" class="btn btn--ghost">← volver</button>
+    </div>
   </div>
 
   <!-- ============================================ -->
-  <!-- PANTALLA TURNO: pedir contraseña              -->
+  <!-- PANTALLA TURNO: bloqueo entre jugadores       -->
   <!-- ============================================ -->
   <div id="screen-turn" class="screen">
     <div id="turn-avatar"></div>
-    <h2 id="turn-title">turno de <span id="turn-player-name"></span></h2>
-    <input type="password" id="turn-password" placeholder="contraseña" autocomplete="off">
-    <button id="btn-unlock">desbloquear</button>
-    <p id="turn-error" class="error-msg"></p>
+    <h2 id="turn-title"></h2>
+    <p id="turn-pending" class="turn-pending"></p>
+    <div id="turn-unlock"></div>
+    <p id="turn-error" class="error-msg" role="alert"></p>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- PANTALLA TRASPASO: pasar el movil             -->
+  <!-- ============================================ -->
+  <div id="screen-handoff" class="screen">
+    <h2 class="handoff-title">tu turno ha terminado</h2>
+    <ul id="handoff-summary" class="handoff-summary"></ul>
+    <div class="handoff-arrow">↓</div>
+    <p class="handoff-next-label">pasa el movil a</p>
+    <p id="handoff-next" class="handoff-next"></p>
+    <div class="screen-actions">
+      <button id="btn-handoff-ready" class="btn btn--accent btn--big">listo, lo paso</button>
+      <button id="btn-handoff-undo" class="btn btn--ghost">↶ deshacer mi turno</button>
+    </div>
   </div>
 
   <!-- ============================================ -->
@@ -149,28 +172,28 @@
     <div id="game-header">
       <span id="game-current-player"></span>
       <span id="game-info-display"></span>
-      <button id="btn-back" title="volver atras">← atras</button>
+      <div class="header-tools">
+        <button id="btn-lock" class="header-btn" title="tapar mi mano" aria-label="tapar mi mano">🔒</button>
+        <button id="btn-menu" class="header-btn" title="menu" aria-label="menu">☰</button>
+      </div>
     </div>
 
-    <div id="game-table">
-      <!-- zona de juego central -->
-    </div>
+    <div id="game-news" hidden></div>
+
+    <div id="game-table"></div>
 
     <div id="hand-toolbar">
       <span id="hand-info"></span>
       <div id="hand-tools">
         <button id="btn-sort-value" class="hand-tool-btn" title="ordenar por valor">↕ valor</button>
         <button id="btn-sort-suit" class="hand-tool-btn" title="ordenar por palo">↕ palo</button>
+        <button id="btn-reorder" class="hand-tool-btn" title="mover cartas de sitio" aria-pressed="false">✋ mover</button>
       </div>
     </div>
 
-    <div id="game-hand">
-      <!-- mano del jugador actual -->
-    </div>
+    <div id="game-hand" role="group" aria-label="tu mano"></div>
 
-    <div id="game-actions">
-      <!-- botones de accion segun el juego -->
-    </div>
+    <div id="game-actions"></div>
   </div>
 
   <!-- ============================================ -->
@@ -178,100 +201,153 @@
   <!-- ============================================ -->
   <div id="screen-scores" class="screen">
     <h2>puntuaciones</h2>
-    <table id="scores-table">
-      <!-- se genera con JS -->
-    </table>
-    <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center;">
+    <table id="scores-table"></table>
+    <div class="screen-actions">
       <button id="btn-next-round" class="btn btn--accent">siguiente ronda</button>
       <button id="btn-end-game" class="btn btn--ghost">terminar</button>
     </div>
   </div>
 
   <!-- ============================================ -->
-  <!-- MODAL                                         -->
+  <!-- PANTALLA REGLAS: el archivo libre             -->
   <!-- ============================================ -->
-  <div id="modal-overlay">
-    <div class="modal-content">
-      <!-- contenido dinamico -->
+  <div id="screen-rules" class="screen">
+    <div id="rules-header">
+      <button id="btn-rules-back" class="header-btn" aria-label="volver">←</button>
+      <h2 class="rules-title">archivo de reglas</h2>
+      <span id="rules-count" class="rules-count"></span>
     </div>
+
+    <div id="rules-filters">
+      <input type="search" id="rules-search" placeholder="buscar juego" aria-label="buscar juego">
+      <select id="rules-deck" aria-label="tipo de baraja">
+        <option value="todas">toda baraja</option>
+        <option value="espanola">española</option>
+        <option value="francesa">francesa</option>
+      </select>
+      <select id="rules-players" aria-label="numero de jugadores">
+        <option value="">cualquier nº</option>
+        <option value="2">2 jugadores</option>
+        <option value="3">3 jugadores</option>
+        <option value="4">4 jugadores</option>
+        <option value="5">5 jugadores</option>
+        <option value="6">6 jugadores</option>
+        <option value="8">8 jugadores</option>
+      </select>
+    </div>
+
+    <div id="rules-list"></div>
+    <div id="rules-detail" hidden></div>
+  </div>
+
+  <!-- MODAL -->
+  <div id="modal-overlay">
+    <div class="modal-content"></div>
   </div>
 
   <!-- ============================================ -->
   <!-- SCRIPTS (orden de dependencias)               -->
   <!-- ============================================ -->
 
-  <!-- libs externas: anime.js para animaciones brutalistas -->
-  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.min.js"></script>
+  <!-- libs: local para poder jugar sin conexion -->
+  <script src="vendor/anime.min.js"></script>
 
-  <!-- core (sin dependencias entre si) -->
+  <!-- core -->
   <script src="js/core/event-bus.js"></script>
+  <script src="js/core/serialize.js"></script>
   <script src="js/core/suit-equivalence.js"></script>
   <script src="js/core/cards-data.js"></script>
+  <script src="js/core/card-label.js"></script>
+  <script src="js/core/game-log.js"></script>
   <script src="js/core/game-engine.js"></script>
+  <script src="js/core/snapshot.js"></script>
+  <script src="js/core/persistence.js"></script>
+  <script src="js/core/device.js"></script>
   <script src="js/core/screen-manager.js"></script>
 
-  <!-- ui base (depende de core) -->
+  <!-- ui base -->
   <script src="js/ui/animations.js"></script>
   <script src="js/ui/deck-grouper.js"></script>
   <script src="js/ui/card-component.js"></script>
-  <!-- card renderers (depende de card-component) -->
+  <!-- card renderers -->
   <script src="js/ui/card-renderers/chinchon-renderer.js"></script>
   <script src="js/ui/card-renderers/poker-renderer.js"></script>
   <script src="js/ui/card-renderers/uno-renderer.js"></script>
   <script src="js/ui/card-renderers/rummikub-renderer.js"></script>
   <script src="js/ui/card-renderers/virus-renderer.js"></script>
   <script src="js/ui/card-renderers/the-mind-renderer.js"></script>
+  <!-- modos de desbloqueo -->
+  <script src="js/ui/unlock/unlock-modes.js"></script>
+  <script src="js/ui/unlock/unlock-hold.js"></script>
+  <script src="js/ui/unlock/unlock-pin.js"></script>
+  <script src="js/ui/unlock/unlock-text.js"></script>
   <!-- ui interactiva -->
   <script src="js/ui/hand-sortable.js"></script>
   <script src="js/ui/transform-animator.js"></script>
   <script src="js/ui/modal-manager.js"></script>
+  <script src="js/ui/action-hint.js"></script>
   <script src="js/ui/main-screen.js"></script>
+  <script src="js/ui/player-setup.js"></script>
   <script src="js/ui/turn-screen.js"></script>
+  <script src="js/ui/handoff-screen.js"></script>
+  <script src="js/ui/news-panel.js"></script>
+  <script src="js/ui/game-menu.js"></script>
   <script src="js/ui/score-screen.js"></script>
+  <script src="js/ui/resume-banner.js"></script>
 
-  <!-- games: interface comun -->
+  <!-- archivo de reglas -->
+  <script src="js/rules/rules-data.js"></script>
+  <script src="js/ui/rules-screen.js"></script>
+
+  <!-- games -->
   <script src="js/games/game-interface.js"></script>
 
-  <!-- chinchon: rules + scoring + render + orquestador -->
   <script src="js/games/chinchon/chinchon-rules.js"></script>
   <script src="js/games/chinchon/chinchon-scoring.js"></script>
   <script src="js/games/chinchon/chinchon-render.js"></script>
   <script src="js/games/chinchon/chinchon.js"></script>
 
-  <!-- uno -->
   <script src="js/games/uno/uno-rules.js"></script>
   <script src="js/games/uno/uno-scoring.js"></script>
   <script src="js/games/uno/uno-render.js"></script>
   <script src="js/games/uno/uno.js"></script>
 
-  <!-- rummikub -->
   <script src="js/games/rummikub/rummikub-rules.js"></script>
   <script src="js/games/rummikub/rummikub-scoring.js"></script>
   <script src="js/games/rummikub/rummikub-render.js"></script>
   <script src="js/games/rummikub/rummikub.js"></script>
 
-  <!-- virus -->
   <script src="js/games/virus/virus-rules.js"></script>
   <script src="js/games/virus/virus-actions.js"></script>
   <script src="js/games/virus/virus-treatments.js"></script>
   <script src="js/games/virus/virus-render.js"></script>
   <script src="js/games/virus/virus.js"></script>
 
-  <!-- poker -->
   <script src="js/games/poker/poker-evaluator.js"></script>
   <script src="js/games/poker/poker-side-pots.js"></script>
   <script src="js/games/poker/poker-betting.js"></script>
   <script src="js/games/poker/poker-render.js"></script>
   <script src="js/games/poker/poker.js"></script>
 
-  <!-- the mind (cooperativo) -->
   <script src="js/games/the-mind/the-mind-rules.js"></script>
   <script src="js/games/the-mind/the-mind-render.js"></script>
   <script src="js/games/the-mind/the-mind.js"></script>
 
-  <!-- app (depende de todo) -->
+  <!-- app -->
+  <script src="js/app/turn-flow.js"></script>
   <script src="js/app/app-flow.js"></script>
   <script src="js/app/app-hand.js"></script>
   <script src="js/app/app.js"></script>
+
+  <script>
+    /* offline: jugar en el metro o en un bar sin cobertura */
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js').catch(() => {
+          /* file:// o sin permisos: la app funciona igual, solo sin cache */
+        });
+      });
+    }
+  </script>
 </body>
 </html>

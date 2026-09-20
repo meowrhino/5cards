@@ -15,11 +15,13 @@ const GameEngine = {
     table: [],
     phase: 'setup',
     round: 1,
+    authMode: 'hold',
     gameSpecific: {}
   },
 
   initGame(game, numPlayers, passwords, options) {
     this.state.currentGame = game;
+    this.state.authMode = (options && options.authMode) || 'hold';
     this.state.currentPlayerIdx = 0;
     this.state.direction = 1;
     this.state.phase = 'playing';
@@ -38,10 +40,12 @@ const GameEngine = {
         body: {},
         chips: 1000,
         bet: 0,
-        folded: false
+        folded: false,
+        lastSeenLog: 0
       });
     }
 
+    GameLog.reset();
     this.prepareDeck(game, this.state.gameOptions);
     this.dealCards(game);
   },
@@ -116,7 +120,7 @@ const GameEngine = {
     return arr;
   },
 
-  drawCard(playerIdx) {
+  drawCard(playerIdx, options) {
     if (this.state.drawPile.length === 0) {
       if (this.state.discardPile.length > 1) {
         const top = this.state.discardPile.pop();
@@ -128,6 +132,8 @@ const GameEngine = {
     }
     const card = this.state.drawPile.pop();
     this.state.players[playerIdx].hand.push(card);
+    if (!options || !options.silent) GameLog.push(playerIdx, 'robo del mazo', '🂠');
+    this.touch();
     return card;
   },
 
@@ -137,12 +143,21 @@ const GameEngine = {
     if (cardIndex === -1) return null;
     const card = player.hand.splice(cardIndex, 1)[0];
     this.state.discardPile.push(card);
+    GameLog.push(playerIdx, 'jugo ' + CardLabel.of(card, this.state.currentGame), '🃏');
+    this.touch();
     return card;
   },
 
-  nextTurn() {
+  /* a quien le tocaria sin mover el turno todavia */
+  peekNextTurn(from) {
     const n = this.state.players.length;
-    this.state.currentPlayerIdx = (this.state.currentPlayerIdx + this.state.direction + n) % n;
+    const start = from === undefined ? this.state.currentPlayerIdx : from;
+    return (start + this.state.direction + n) % n;
+  },
+
+  nextTurn() {
+    this.state.currentPlayerIdx = this.peekNextTurn();
+    this.touch();
     return this.state.currentPlayerIdx;
   },
 
@@ -156,7 +171,13 @@ const GameEngine = {
   },
 
   checkPassword(playerIdx, password) {
+    if (this.state.authMode === 'hold') return true;
     return this.state.players[playerIdx].password === password;
+  },
+
+  /* el estado ha cambiado: avisar para guardar */
+  touch() {
+    EventBus.emit('state:changed');
   },
 
   getCurrentPlayer() {

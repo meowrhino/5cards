@@ -42,12 +42,18 @@ const CardComponent = {
     return el;
   },
 
+  /* a partir de aqui la mano va en carril horizontal y el abanico
+     solo estorba: las cartas giradas se tapan entre si */
+  FAN_MAX: 7,
+
   /* renderizar mano de cartas en un contenedor con fan effect */
   renderHand(cards, game, container, options = {}) {
     container.innerHTML = '';
+    const fan = cards.length > 2 && cards.length <= this.FAN_MAX && !options.noFan;
+
     cards.forEach((card, idx) => {
       const el = this.create(card, game, options);
-      if (cards.length > 2 && !options.noFan) {
+      if (fan) {
         const mid = (cards.length - 1) / 2;
         const angle = (idx - mid) * 2;
         const lift = -Math.abs(idx - mid) * 2;

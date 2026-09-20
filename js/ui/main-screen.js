@@ -9,8 +9,31 @@ const MainScreen = {
 
   init() {
     this.renderGameInfo(this.currentGame);
+    this.renderPlayerOptions(this.currentGame);
     this.renderDeck(this.currentGame);
     this.bindTabs();
+  },
+
+  /* el selector de jugadores se ajusta al juego: the-mind es 2-4,
+     chinchon llega a 8, poker a 7... */
+  renderPlayerOptions(game) {
+    const select = document.getElementById('num-players');
+    const info = GAME_INFO[game];
+    if (!select || !info) return;
+
+    const previous = parseInt(select.value, 10);
+    const min = info.minPlayers || 2;
+    const max = info.maxPlayers || 6;
+
+    select.innerHTML = '';
+    for (let n = min; n <= max; n++) {
+      const opt = document.createElement('option');
+      opt.value = String(n);
+      opt.textContent = String(n);
+      select.appendChild(opt);
+    }
+    /* conservar la eleccion anterior si sigue siendo valida */
+    select.value = String(Math.min(Math.max(previous || min, min), max));
   },
 
   bindTabs() {
@@ -33,6 +56,7 @@ const MainScreen = {
 
         /* actualizar info */
         this.renderGameInfo(newGame);
+        this.renderPlayerOptions(newGame);
 
         /* animar transicion de baraja */
         const container = document.getElementById('full-deck-display');

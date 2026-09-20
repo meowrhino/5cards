@@ -1,0 +1,17 @@
+{
+  "name": "5cards — una baraja, muchos juegos",
+  "short_name": "5cards",
+  "description": "Partidas de cartas pasando un solo movil, y el archivo libre de reglas de los juegos de baraja.",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#1B3A1B",
+  "theme_color": "#1B3A1B",
+  "lang": "es",
+  "categories": ["games", "entertainment"],
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable" }
+  ]
+}

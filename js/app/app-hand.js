@@ -92,20 +92,40 @@ const AppHand = {
     }
   },
 
-  bindTools() {
-    const btnValue = document.getElementById('btn-sort-value');
-    const btnSuit = document.getElementById('btn-sort-suit');
+  /* rebind sin duplicar listeners: se reemplaza el nodo */
+  _rebind(id, handler) {
+    const btn = document.getElementById(id);
+    if (!btn) return null;
+    const fresh = btn.cloneNode(true);
+    btn.parentNode.replaceChild(fresh, btn);
+    fresh.addEventListener('click', handler);
+    return fresh;
+  },
 
-    if (btnValue) {
-      const newBtn = btnValue.cloneNode(true);
-      btnValue.parentNode.replaceChild(newBtn, btnValue);
-      newBtn.addEventListener('click', () => this.sort('value'));
-    }
-    if (btnSuit) {
-      const newBtn = btnSuit.cloneNode(true);
-      btnSuit.parentNode.replaceChild(newBtn, btnSuit);
-      newBtn.addEventListener('click', () => this.sort('suit'));
-    }
+  bindTools() {
+    this._rebind('btn-sort-value', () => this.sort('value'));
+    this._rebind('btn-sort-suit', () => this.sort('suit'));
+    this._rebind('btn-reorder', () => this.toggleReorder());
+    this._syncReorderButton();
+  },
+
+  /* modo mover: mientras esta activo se arrastra para reordenar y no
+     se hojea el carril */
+  toggleReorder() {
+    const hand = document.getElementById('game-hand');
+    if (!hand) return;
+    hand.classList.toggle('reordering');
+    this._syncReorderButton();
+  },
+
+  _syncReorderButton() {
+    const hand = document.getElementById('game-hand');
+    const btn = document.getElementById('btn-reorder');
+    if (!hand || !btn) return;
+    const on = hand.classList.contains('reordering');
+    btn.classList.toggle('active', on);
+    btn.setAttribute('aria-pressed', String(on));
+    btn.title = on ? 'terminar de mover cartas' : 'mover cartas de sitio';
   },
 
   sort(mode) {

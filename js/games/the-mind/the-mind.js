@@ -55,6 +55,8 @@ const TheMindGame = {
     player.hand = player.hand.filter(c => c.id !== cardId);
     GameEngine.state.discardPile.push(card);
 
+    GameLog.push(playerIdx, `tiro el ${playedValue}`, '🎴');
+
     if (!validation.success) {
       /* descartar todas las cartas mas bajas + perder vida */
       validation.failedCards.forEach(({ playerIdx: pIdx, cards }) => {
@@ -65,6 +67,8 @@ const TheMindGame = {
         });
       });
       gs.lives -= 1;
+      const perdidas = validation.failedCards.reduce((n, f) => n + f.cards.length, 0);
+      GameLog.push(null, `fallo: se descartan ${perdidas} cartas mas bajas · quedan ${gs.lives} vidas`, '💔');
       gs.lastFail = { player: playerIdx, value: playedValue, failed: validation.failedCards };
       gs.lastPlayedValue = Math.max(playedValue, ...validation.failedCards.flatMap(f => f.cards.map(c => c['the-mind'].value)));
 
@@ -103,6 +107,7 @@ const TheMindGame = {
     const gs = GameEngine.state.gameSpecific;
     gs.shurikens -= 1;
     gs.shurikenVotes = new Set();
+    GameLog.push(null, 'shuriken: cada uno descarta su carta mas baja', '🌟');
     /* descartar la carta mas baja de cada jugador */
     GameEngine.state.players.forEach(p => {
       if (p.hand.length === 0) return;
@@ -128,6 +133,7 @@ const TheMindGame = {
     if (gs.level >= gs.maxLevel) {
       return this._endGame(true);
     }
+    GameLog.push(null, `nivel ${gs.level} superado`, '✅');
     gs.level += 1;
     /* preparar nueva ronda */
     GameEngine.prepareDeck('the-mind');

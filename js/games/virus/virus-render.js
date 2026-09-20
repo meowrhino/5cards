@@ -76,7 +76,7 @@ const VirusRender = {
         if (isTrasplante) {
           if (gs.sourceColor === undefined) {
             if (playerIdx !== currentIdx) {
-              alert('primero elige TU propio organo');
+              ActionHint.show('primero elige TU propio organo');
               return;
             }
             gs.sourcePlayer = playerIdx;
@@ -135,7 +135,7 @@ const VirusRender = {
       const cardId = parseInt(selected.dataset.id);
       const ok = game.playCard(GameEngine.state.currentPlayerIdx, cardId, gs.targetPlayer, gs.targetColor);
       if (!ok) {
-        alert('no se puede jugar esta carta con esa seleccion');
+        ActionHint.show('no se puede jugar esta carta con esa seleccion');
         return;
       }
       this.renderTable(game);

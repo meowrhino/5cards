@@ -12,13 +12,15 @@
 
 const GAMES = ['chinchon', 'uno', 'rummikub', 'virus', 'poker', 'the-mind'];
 
+/* minPlayers/maxPlayers: el selector de jugadores se genera con esto,
+   antes era un 2-6 fijo para todos y dejaba montar partidas imposibles */
 const GAME_INFO = {
-  chinchon: { name: 'chinchon', display: 'chinchon', cards: 48, perPlayer: 7, desc: 'clasico español de escaleras y grupos' },
-  uno:      { name: 'uno',      display: 'uno',      cards: 108, perPlayer: 7, desc: 'colores, acciones y cambios de sentido' },
-  rummikub: { name: 'rummikub', display: 'rummikub', cards: 106, perPlayer: 14, desc: 'fichas numericas, grupos y escaleras' },
-  virus:    { name: 'virus',    display: 'virus',    cards: 68, perPlayer: 3, desc: 'organos, virus y medicinas' },
-  poker:    { name: 'poker',    display: 'poker',    cards: 52, perPlayer: 2, desc: 'texas holdem simplificado' },
-  'the-mind': { name: 'the-mind', display: 'the mind', cards: 100, perPlayer: 1, desc: 'cooperativo: jugar 1-100 en orden sin hablar' }
+  chinchon: { name: 'chinchon', display: 'chinchon', cards: 48, perPlayer: 7, minPlayers: 2, maxPlayers: 8, rules: 'chinchon', desc: 'clasico español de escaleras y grupos' },
+  uno:      { name: 'uno',      display: 'uno',      cards: 108, perPlayer: 7, minPlayers: 2, maxPlayers: 8, rules: 'pumba', desc: 'colores, acciones y cambios de sentido' },
+  rummikub: { name: 'rummikub', display: 'rummikub', cards: 106, perPlayer: 14, minPlayers: 2, maxPlayers: 4, rules: null, desc: 'fichas numericas, grupos y escaleras' },
+  virus:    { name: 'virus',    display: 'virus',    cards: 68, perPlayer: 3, minPlayers: 2, maxPlayers: 6, rules: null, desc: 'organos, virus y medicinas' },
+  poker:    { name: 'poker',    display: 'poker',    cards: 52, perPlayer: 2, minPlayers: 2, maxPlayers: 7, rules: 'texas-holdem', desc: 'texas holdem simplificado' },
+  'the-mind': { name: 'the-mind', display: 'the mind', cards: 100, perPlayer: 1, minPlayers: 2, maxPlayers: 4, rules: null, desc: 'cooperativo: jugar 1-100 en orden sin hablar' }
 };
 
 /* simbolos de palos */

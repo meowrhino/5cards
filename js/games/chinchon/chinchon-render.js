@@ -40,7 +40,10 @@ const ChinchonRender = {
       discardEl.addEventListener('click', () => {
         if (gs.hasDrawn) return;
         const card = GameEngine.state.discardPile.pop();
-        GameEngine.state.players[GameEngine.state.currentPlayerIdx].hand.push(card);
+        const idx = GameEngine.state.currentPlayerIdx;
+        GameEngine.state.players[idx].hand.push(card);
+        /* de donde roba cada uno es informacion publica y decisiva */
+        GameLog.push(idx, `robo ${CardLabel.of(card, 'chinchon')} del descarte`, '📥');
         gs.hasDrawn = true;
         this.renderTable(game);
         this.renderActions(game);
@@ -107,6 +110,7 @@ const ChinchonRender = {
       if (!game.canCloseAfterDiscard(playerIdx, cardId)) return;
       GameEngine.playCard(GameEngine.state.currentPlayerIdx, cardId);
       handObserver.disconnect();
+      GameLog.push(GameEngine.state.currentPlayerIdx, 'cerro la ronda', '🔔');
       const result = game.closeRound(GameEngine.state.currentPlayerIdx);
       EventBus.emit('round:ended', result);
     });

@@ -57,7 +57,7 @@ const RummikubRender = {
         e.stopPropagation();
         if (gs.hasDrawn) return;
         if (!gs.hasPlayedFirst[playerIdx]) {
-          alert('haz tu primera jugada (>=' + game.minFirstPlay + ' pts) antes de añadir a sets existentes');
+          ActionHint.show('haz tu primera jugada (>=' + game.minFirstPlay + ' pts) antes de añadir a sets existentes');
           return;
         }
         const setIdx = parseInt(setEl.dataset.setIdx);
@@ -73,7 +73,7 @@ const RummikubRender = {
         const cards = cardIds.map(id => player.hand.find(c => c.id === id)).filter(Boolean);
         const targetSet = gs.tableSets[setIdx];
         if (!game.canAddToSet(targetSet.cards, cards)) {
-          alert('estas cartas no forman un set valido al añadirse aqui');
+          ActionHint.show('estas cartas no forman un set valido al añadirse aqui');
           return;
         }
         cards.forEach(card => {
@@ -130,14 +130,14 @@ const RummikubRender = {
       const cards = cardIds.map(id => player.hand.find(c => c.id === id)).filter(Boolean);
 
       if (!game.isValidSet(cards)) {
-        alert('estas cartas no forman un set valido (grupo o escalera)');
+        ActionHint.show('estas cartas no forman un set valido (grupo o escalera)');
         return;
       }
 
       if (!gs.hasPlayedFirst[playerIdx]) {
         const value = game.sumValues(cards);
         if (value < game.minFirstPlay) {
-          alert(`primera jugada debe sumar al menos ${game.minFirstPlay} pts (esta suma ${value})`);
+          ActionHint.show(`primera jugada debe sumar al menos ${game.minFirstPlay} pts (esta suma ${value})`);
           return;
         }
         gs.hasPlayedFirst[playerIdx] = true;

@@ -93,3 +93,52 @@
 @media (max-width: 768px) {
   .modal-content { padding: 20px 16px; }
 }
+
+/* ========================================
+   menu de partida + textos de modal
+   ======================================== */
+
+.menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  margin: 12px 0;
+}
+
+.menu-item {
+  width: 100%;
+  min-height: 52px;
+  padding: 12px 14px;
+  text-align: left;
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  background: var(--tt-black);
+  color: var(--accent);
+  border: 3px solid var(--accent);
+  cursor: pointer;
+  text-transform: lowercase;
+}
+
+.menu-item:hover {
+  background: var(--accent);
+  color: var(--bg-primary);
+}
+
+.menu-item--danger {
+  color: var(--tt-red);
+  border-color: var(--tt-red);
+}
+
+.menu-item--danger:hover {
+  background: var(--tt-red);
+  color: var(--tt-white);
+}
+
+.modal-text {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  text-align: center;
+  margin: 8px 0 14px;
+}

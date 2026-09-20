@@ -1,0 +1,186 @@
+/* ========================================
+   unlock.css — controles de desbloqueo del turno
+   (mantener pulsado / PIN / contraseña)
+   ======================================== */
+
+#turn-unlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  max-width: 320px;
+}
+
+/* --- modo mantener pulsado --- */
+
+.unlock-hold {
+  position: relative;
+  width: 100%;
+  min-height: 96px;
+  padding: 18px 20px;
+  background: var(--tt-black);
+  color: var(--accent);
+  border: 4px solid var(--accent);
+  box-shadow: 6px 6px 0 var(--accent);
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  overflow: hidden;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.unlock-hold small {
+  font-size: 1.05rem;
+  opacity: 0.75;
+  text-transform: lowercase;
+  letter-spacing: 0;
+}
+
+.unlock-hold__fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 0;
+  background: var(--accent);
+  opacity: 0.28;
+  pointer-events: none;
+}
+
+.unlock-hold__label {
+  position: relative;
+  z-index: 1;
+  line-height: 1.2;
+}
+
+.unlock-hold:active {
+  transform: translate(3px, 3px);
+  box-shadow: 3px 3px 0 var(--accent);
+}
+
+/* --- modo PIN --- */
+
+.pin-dots {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+}
+
+.pin-dot {
+  width: 18px;
+  height: 18px;
+  border: 3px solid var(--accent);
+  background: transparent;
+}
+
+.pin-dot--on {
+  background: var(--accent);
+}
+
+.pin-pad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  width: 100%;
+}
+
+.pin-key {
+  min-height: 56px;
+  font-family: var(--font-display);
+  font-size: 1.9rem;
+  background: var(--tt-black);
+  color: var(--accent);
+  border: 3px solid var(--accent);
+  cursor: pointer;
+}
+
+.pin-key:active {
+  background: var(--accent);
+  color: var(--bg-primary);
+}
+
+.pin-key--wide {
+  font-size: 1.5rem;
+}
+
+/* --- modo contraseña de texto --- */
+
+.unlock-input {
+  width: 100%;
+  padding: 12px;
+  font-size: 1.4rem;
+  background: var(--tt-black);
+  color: var(--accent);
+  border: 3px solid var(--accent);
+  text-align: center;
+  font-family: var(--font-display);
+  letter-spacing: 0.1em;
+}
+
+.unlock-input:focus {
+  outline: none;
+  border-color: var(--accent-secondary);
+  color: var(--accent-secondary);
+}
+
+.unlock-submit {
+  width: 100%;
+  min-height: 52px;
+  padding: 12px 36px;
+  font-size: 1.5rem;
+  font-family: var(--font-display);
+  background: var(--accent);
+  color: var(--bg-primary);
+  border: 3px solid var(--bg-primary);
+  box-shadow: 4px 4px 0 var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+}
+
+/* --- selector de modo en el setup --- */
+
+#auth-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  max-width: 480px;
+}
+
+.auth-label {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-secondary);
+}
+
+#auth-modes {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.auth-mode {
+  padding: 8px 12px;
+  min-height: 44px;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  background: var(--tt-black);
+  color: var(--text-secondary);
+  border: 2px solid var(--text-secondary);
+  cursor: pointer;
+  text-transform: lowercase;
+}
+
+.auth-mode.active {
+  color: var(--bg-primary);
+  background: var(--accent);
+  border-color: var(--accent);
+}

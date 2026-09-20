@@ -45,3 +45,37 @@
 @media (max-width: 768px) {
   .turn-phase-indicator { font-size: 1rem; padding: 4px 10px; }
 }
+
+/* ========================================
+   avisos flotantes (sustituyen a alert())
+   ======================================== */
+
+.action-toast {
+  position: fixed;
+  left: 50%;
+  bottom: calc(96px + env(safe-area-inset-bottom));
+  transform: translateX(-50%);
+  z-index: 500;
+  max-width: min(92vw, 420px);
+  padding: 10px 16px;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  line-height: 1.25;
+  text-align: center;
+  border: 3px solid var(--tt-black);
+  box-shadow: 4px 4px 0 var(--tt-black);
+}
+
+.action-toast[hidden] {
+  display: none;
+}
+
+.action-toast--error {
+  background: var(--tt-red);
+  color: var(--tt-white);
+}
+
+.action-toast--info {
+  background: var(--accent);
+  color: var(--bg-primary);
+}

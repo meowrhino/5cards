@@ -1,56 +1,93 @@
 /* ========================================
-   turn-screen.js — pantalla de turno
-   pedir contraseña + transicion al juego
+   turn-screen.js — pantalla de bloqueo entre turnos
+
+   dos usos:
+     'turn'  empieza el turno de otro jugador
+     'lock'  el mismo jugador ha tapado su mano (pausa, auto-bloqueo)
+
+   el control de desbloqueo lo monta el modo activo (ver js/ui/unlock/).
    ======================================== */
 
 const TurnScreen = {
 
-  show() {
+  AVATAR_COLORS: ['var(--equiv-0)', 'var(--equiv-1)', 'var(--equiv-2)', 'var(--equiv-3)'],
+
+  show(reason = 'turn') {
     const player = GameEngine.getCurrentPlayer();
-    const nameEl = document.getElementById('turn-player-name');
-    const passInput = document.getElementById('turn-password');
-    const errorEl = document.getElementById('turn-error');
-    const avatarEl = document.getElementById('turn-avatar');
+    if (!player) return;
 
-    if (nameEl) nameEl.textContent = player.name;
-    if (passInput) passInput.value = '';
-    if (errorEl) errorEl.textContent = '';
-
-    /* avatar: inicial del nombre con color de indice */
-    if (avatarEl) {
-      const initial = (player.name[0] || '?').toUpperCase();
-      const colors = ['var(--equiv-0)', 'var(--equiv-1)', 'var(--equiv-2)', 'var(--equiv-3)'];
-      const color = colors[GameEngine.state.currentPlayerIdx % colors.length];
-      avatarEl.textContent = initial;
-      avatarEl.style.background = color;
-    }
+    this._renderAvatar(player);
+    this._renderTitle(player, reason);
+    this._renderPending(player);
+    this._mountUnlock(player);
 
     ScreenManager.show('screen-turn');
-    if (passInput) passInput.focus();
   },
 
-  tryUnlock() {
-    const password = document.getElementById('turn-password').value;
-    const playerIdx = GameEngine.state.currentPlayerIdx;
+  _renderAvatar(player) {
+    const el = document.getElementById('turn-avatar');
+    if (!el) return;
+    el.textContent = (player.name[0] || '?').toUpperCase();
+    el.style.background = this.AVATAR_COLORS[GameEngine.state.currentPlayerIdx % this.AVATAR_COLORS.length];
+  },
+
+  _renderTitle(player, reason) {
+    const el = document.getElementById('turn-title');
+    if (!el) return;
+    el.innerHTML = reason === 'lock'
+      ? 'mano tapada'
+      : `turno de <span id="turn-player-name">${player.name}</span>`;
+  },
+
+  /* cuantas novedades le esperan sin desvelar cuales */
+  _renderPending(player) {
+    const el = document.getElementById('turn-pending');
+    if (!el) return;
+    const pending = GameLog.unseenFor(GameEngine.state.currentPlayerIdx).length;
+    el.textContent = pending > 0
+      ? `${pending} novedad${pending === 1 ? '' : 'es'} desde tu ultimo turno`
+      : '';
+  },
+
+  _mountUnlock(player) {
+    const container = document.getElementById('turn-unlock');
     const errorEl = document.getElementById('turn-error');
+    if (!container) return;
+    if (errorEl) errorEl.textContent = '';
 
-    if (!GameEngine.checkPassword(playerIdx, password)) {
-      if (errorEl) errorEl.textContent = 'contraseña incorrecta';
-      /* shake animation */
-      const input = document.getElementById('turn-password');
-      if (input) {
-        input.classList.add('shake');
-        setTimeout(() => input.classList.remove('shake'), 400);
+    const mode = UnlockModes.get(GameEngine.state.authMode);
+    mode.mount(container, {
+      playerName: player.name,
+      verify: (value) => GameEngine.checkPassword(GameEngine.state.currentPlayerIdx, value),
+      onSuccess: () => this.unlock(),
+      onError: (msg) => {
+        if (errorEl) errorEl.textContent = msg;
+        Device.buzz([40, 60, 40]);
       }
-      return;
-    }
+    });
+  },
 
-    /* resetear estado de turno */
+  unlock() {
+    const idx = GameEngine.state.currentPlayerIdx;
+
+    /* resetear banderas de turno que usan los juegos */
     const gs = GameEngine.state.gameSpecific;
     if (gs.hasDrawn !== undefined) gs.hasDrawn = false;
     if (gs.hasPlayed !== undefined) gs.hasPlayed = false;
 
+    /* punto de retorno: mientras no pase el movil puede deshacer */
+    Snapshot.capture();
+    TurnFlow.beginTurn();
+
     ScreenManager.show('screen-game');
     EventBus.emit('game:render');
+    NewsPanel.showUnseen(idx);
+    GameLog.markSeen(idx);
+    Persistence.scheduleSave();
+  },
+
+  /* compat: el boton de desbloquear viejo llamaba a esto */
+  tryUnlock() {
+    this.unlock();
   }
 };

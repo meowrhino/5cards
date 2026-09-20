@@ -17,6 +17,8 @@ const ScreenManager = {
       }
     });
     this.currentScreenId = screenId;
+    /* quien quiera reaccionar (wake lock, auto-bloqueo) escucha esto */
+    EventBus.emit('screen:changed', screenId);
   },
 
   getCurrent() {

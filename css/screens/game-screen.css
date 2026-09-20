@@ -23,19 +23,25 @@
   font-size: 1rem;
 }
 
-#btn-back {
-  padding: 8px 14px;
+.header-tools {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.header-btn {
+  min-width: 44px;
   min-height: 44px;
+  padding: 6px 10px;
   background: var(--tt-black);
   color: var(--accent);
   border: 2px solid var(--accent);
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-family: var(--font-display);
   cursor: pointer;
-  text-transform: lowercase;
 }
 
-#btn-back:hover {
+.header-btn:hover {
   background: var(--accent);
   color: var(--bg-primary);
 }
@@ -48,7 +54,8 @@
   justify-content: center;
   padding: 16px 12px;
   gap: 12px;
-  min-height: 200px;
+  min-height: 120px;
+  overflow-y: auto;
 }
 
 /* hand toolbar (sort + info) */
@@ -98,20 +105,12 @@
   color: var(--bg-primary);
 }
 
-#game-hand {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--card-gap);
-  padding: 12px;
-  justify-content: center;
-  background: var(--bg-secondary);
-  min-height: 130px;
-}
-
 #game-actions {
   display: flex;
   gap: 8px;
   padding: 12px;
+  /* la barra de gestos del movil se come los ultimos pixeles */
+  padding-bottom: calc(12px + env(safe-area-inset-bottom));
   justify-content: center;
   flex-wrap: wrap;
   background: var(--bg-primary);
@@ -120,7 +119,6 @@
 @media (max-width: 768px) {
   #game-header { font-size: 0.95rem; padding: 6px 10px; }
   #game-info-display { font-size: 0.85rem; }
-  #game-hand { padding: 8px 6px; min-height: 100px; }
   #hand-toolbar { padding: 4px 8px; }
   #hand-info { font-size: 0.95rem; }
   .hand-tool-btn { padding: 4px 8px; font-size: 0.9rem; }

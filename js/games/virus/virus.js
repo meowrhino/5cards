@@ -37,11 +37,16 @@ const VirusGame = {
     }
 
     if (success) {
+      const target = targetPlayerIdx !== undefined && targetPlayerIdx !== playerIdx
+        ? ` sobre ${GameEngine.state.players[targetPlayerIdx].name}`
+        : '';
+      GameLog.push(playerIdx, `jugo ${CardLabel.of(card, 'virus')}${target}`, '🧪');
       player.hand.splice(cardIndex, 1);
       this.refillHand(playerIdx);
       gs.hasActed = true;
 
       if (this.checkWin(playerIdx)) {
+        GameLog.push(playerIdx, 'completo su cuerpo y gano', '🏆');
         EventBus.emit('round:ended', {
           roundScores: GameEngine.state.players.map((p, i) => i === playerIdx ? 1 : 0),
           totalScores: GameEngine.state.players.map(p => p.score),
@@ -69,6 +74,7 @@ const VirusGame = {
     });
     this.refillHand(playerIdx);
     gs.hasActed = true;
+    GameLog.push(playerIdx, `descarto ${cardIds.length} carta${cardIds.length === 1 ? '' : 's'}`, '🗑️');
     this.endTurn();
     return true;
   },

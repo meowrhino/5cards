@@ -1,0 +1,43 @@
+/* ========================================
+   resume.css — cartel de partida sin terminar
+   ======================================== */
+
+#resume-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 10px 12px 0;
+  padding: 10px 12px;
+  border: 3px solid var(--accent);
+  background: var(--bg-secondary);
+}
+
+#resume-banner[hidden] {
+  display: none;
+}
+
+.resume-text {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-display);
+  color: var(--text-primary);
+}
+
+.resume-text strong {
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.resume-text small {
+  font-size: 1rem;
+  color: var(--text-secondary);
+}
+
+.resume-actions {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}

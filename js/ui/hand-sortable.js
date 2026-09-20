@@ -41,9 +41,13 @@ const HandSortable = {
   },
 
   _onPointerDown(e) {
+    /* la mano es un carril horizontal: hojear y arrastrar serian el
+       mismo gesto, asi que reordenar solo funciona en modo 'mover' */
+    if (!this._container || !this._container.classList.contains('reordering')) return;
+
     /* solo activar si el target es una carta del container actual */
     const card = e.target.closest('.card');
-    if (!card || !this._container || !this._container.contains(card)) return;
+    if (!card || !this._container.contains(card)) return;
 
     this._active = card;
     const s = this._state;

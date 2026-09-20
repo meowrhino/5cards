@@ -44,9 +44,11 @@ const UnoRender = {
       if (gs.hasPlayed || gs.hasDrawn) return;
 
       if (gs.mustDraw > 0) {
-        for (let i = 0; i < gs.mustDraw; i++) {
-          GameEngine.drawCard(playerIdx);
+        const penalty = gs.mustDraw;
+        for (let i = 0; i < penalty; i++) {
+          GameEngine.drawCard(playerIdx, { silent: true });
         }
+        GameLog.push(playerIdx, `se comio +${penalty} cartas`, '😖');
         gs.mustDraw = 0;
         gs.stackOpen = false;
         EventBus.emit('hand:updated');
@@ -129,7 +131,7 @@ const UnoRender = {
     const topCard = GameEngine.getTopDiscard();
     if (!card || !game.canPlay(card, topCard, playerHand)) {
       if (card && card.uno && card.uno.type === 'wild4') {
-        alert('no puedes jugar +4 si tienes cartas del color activo');
+        ActionHint.show('no puedes jugar +4 si tienes cartas del color activo');
       }
       return;
     }

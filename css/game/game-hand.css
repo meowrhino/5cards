@@ -1,0 +1,73 @@
+/* ========================================
+   game-hand.css — la mano del jugador
+
+   antes era un flex-wrap: con 14 cartas (el reparto de rummikub) se
+   apilaba en tres filas superpuestas y tapaba los botones. ahora es un
+   carril horizontal que se hojea con el pulgar, como una mano real.
+   ======================================== */
+
+#game-hand {
+  display: flex;
+  gap: var(--card-gap);
+  align-items: center;
+  /* safe center: centra si caben, y si no, no recorta la primera */
+  justify-content: safe center;
+  padding: 12px;
+  background: var(--bg-secondary);
+  min-height: 130px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x proximity;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+}
+
+#game-hand .card {
+  flex: 0 0 auto;
+  scroll-snap-align: center;
+}
+
+/* la carta elegida se levanta por encima del carril */
+#game-hand .card.selected {
+  z-index: 2;
+}
+
+/* barra de scroll visible pero discreta */
+#game-hand::-webkit-scrollbar {
+  height: 6px;
+}
+
+#game-hand::-webkit-scrollbar-thumb {
+  background: var(--accent);
+}
+
+/* --- modo reordenar ---
+   arrastrar y hojear son el mismo gesto en un carril horizontal, asi
+   que se separan: por defecto se hojea, y con el boton "mover" se
+   arrastra para reordenar. */
+#game-hand.reordering {
+  overflow-x: auto;
+  outline: 3px dashed var(--accent);
+  outline-offset: -3px;
+}
+
+#game-hand.reordering .card {
+  touch-action: none;
+}
+
+.hand-tool-btn.active {
+  background: var(--accent);
+  color: var(--bg-primary);
+}
+
+/* aviso de cuantas cartas quedan fuera de vista */
+.hand-overflow-hint {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  font-family: var(--font-display);
+}
+
+@media (max-width: 768px) {
+  #game-hand { padding: 8px 6px; min-height: 100px; }
+}
