@@ -1,0 +1,419 @@
+{
+  "slug": "truco",
+  "name": "El Truco",
+  "url": "https://www.nhfournier.es/como-jugar/truco/",
+  "description": "Consulta el manual de cómo jugar al truco, con las instrucciones completas: tipo de cartas, tanteos, número de jugadores y más tutoriales",
+  "intro": [
+    "El Truco es un juego muy popular en América del Sur. Deriva del truc o truque valenciano. El juego consta de dos fases diferenciales. En la primera, se apuesta sobre la mejor combinación de cartas de las diferentes manos (flor y envido) y en la segunda, sobre las bazas jugadas con esas manos (truco)."
+  ],
+  "sections": [
+    {
+      "heading": "Objetivo del juego",
+      "paragraphs": [
+        "Sumar los 30 tantos, 15 malos los primeros y 15 buenos los segundos, necesarios para ganar un chico. La partida se gana cuando un equipo consigue dos chicos. Si hay empate en los dos primeros chicos, el tercero y definitivo es el bueno."
+      ],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Sumar los 30 tantos, 15 malos los primeros y 15 buenos los segundos, necesarios para ganar un chico. La partida se gana cuando un equipo consigue dos chicos. Si hay empate en los dos primeros chicos, el tercero y definitivo es el bueno."
+        }
+      ]
+    },
+    {
+      "heading": "Baraja de cartas",
+      "paragraphs": [
+        "Se juega con la baraja española de 40 cartas."
+      ],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Se juega con la baraja española de 40 cartas."
+        }
+      ]
+    },
+    {
+      "heading": "Número de jugadores",
+      "paragraphs": [
+        "Pueden participar en el juego de dos a ocho jugadores.",
+        "Partidas de dos jugadores. Juegan uno contra el otro.",
+        "Partidas de tres jugadores o con gallo. Es el único caso en el que el número de jugadores es impar. En ellas, uno de los jugadores, el gallo, juega contra los otros dos. El gallo tiene el privilegio de darse cuatro cartas, para elegir tres y descartar una, sin que sea vista por sus dos adversarios.",
+        "Estas partidas pueden jugarse de dos modos: a gallo fijo o a gallo por turno. En el primer caso, siempre es el mismo jugador el que compite contra los otros dos, que forman un fondo común con sus tantos. En el segundo, los tres jugadores se alternan en la función de gallo, que será el dador. En este caso, los tantos obtenidos por la pareja se anotan a cada uno de los que la componen en cada ronda.",
+        "Partidas de cuatro jugadores. Son las más corrientes. Se trata de dos parejas enfrentadas. Partidas de seis jugadores. Los jugadores forman dos bandos de tres y se sientan de modo que queden enfrentados jugadores de distinto equipo.",
+        "En el primer juego parcial, llamado redondo o redondilla, participan todos los jugadores. En el siguiente o siguientes, llamado pica/pica o pico a pico, juegan independientemente, con una sola baraja y un único reparto de cartas, cada jugador contra el jugador rival que está sentado enfrente. El bando al que pertenezca un jugador que se inmiscuya en el juego de otros, pierde y tiene que devolver los tantos que se hubieran cobrado. El equipo no infractor cobrará 4 tantos.",
+        "Cuando un bando llega a las 10 buenas (25 tantos), deja de jugarse pico a pico, jugándose sólo redondas. Algunos dejan de jugar pico a pico en cuanto uno de los bandos entre en buenas, es decir, cuando se ha anotado 15 tantos. Cuando se juega pico a pico, la falta envido vale 6 tantos y lo máximo que puede apostarse en la contraflor son también 6 tantos, que más la contraflor, implica que el ganador se anota 12 tantos.",
+        "Partidas de ocho jugadores. Estas partidas son raras, pero se juegan como las de seis jugadores, alternando los juegos de redonda y los de pico a pico."
+      ],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Pueden participar en el juego de dos a ocho jugadores."
+        },
+        {
+          "type": "p",
+          "text": "Partidas de dos jugadores. Juegan uno contra el otro."
+        },
+        {
+          "type": "p",
+          "text": "Partidas de tres jugadores o con gallo. Es el único caso en el que el número de jugadores es impar. En ellas, uno de los jugadores, el gallo, juega contra los otros dos. El gallo tiene el privilegio de darse cuatro cartas, para elegir tres y descartar una, sin que sea vista por sus dos adversarios."
+        },
+        {
+          "type": "p",
+          "text": "Estas partidas pueden jugarse de dos modos: a gallo fijo o a gallo por turno. En el primer caso, siempre es el mismo jugador el que compite contra los otros dos, que forman un fondo común con sus tantos. En el segundo, los tres jugadores se alternan en la función de gallo, que será el dador. En este caso, los tantos obtenidos por la pareja se anotan a cada uno de los que la componen en cada ronda."
+        },
+        {
+          "type": "p",
+          "text": "Partidas de cuatro jugadores. Son las más corrientes. Se trata de dos parejas enfrentadas. Partidas de seis jugadores. Los jugadores forman dos bandos de tres y se sientan de modo que queden enfrentados jugadores de distinto equipo."
+        },
+        {
+          "type": "p",
+          "text": "En el primer juego parcial, llamado redondo o redondilla, participan todos los jugadores. En el siguiente o siguientes, llamado pica/pica o pico a pico, juegan independientemente, con una sola baraja y un único reparto de cartas, cada jugador contra el jugador rival que está sentado enfrente. El bando al que pertenezca un jugador que se inmiscuya en el juego de otros, pierde y tiene que devolver los tantos que se hubieran cobrado. El equipo no infractor cobrará 4 tantos."
+        },
+        {
+          "type": "p",
+          "text": "Cuando un bando llega a las 10 buenas (25 tantos), deja de jugarse pico a pico, jugándose sólo redondas. Algunos dejan de jugar pico a pico en cuanto uno de los bandos entre en buenas, es decir, cuando se ha anotado 15 tantos. Cuando se juega pico a pico, la falta envido vale 6 tantos y lo máximo que puede apostarse en la contraflor son también 6 tantos, que más la contraflor, implica que el ganador se anota 12 tantos."
+        },
+        {
+          "type": "p",
+          "text": "Partidas de ocho jugadores. Estas partidas son raras, pero se juegan como las de seis jugadores, alternando los juegos de redonda y los de pico a pico."
+        }
+      ]
+    },
+    {
+      "heading": "Orden y valor de las cartas",
+      "paragraphs": [
+        "El orden de las cartas es válido para el truco y determina el ganador de la baza. El valor de las cartas lo es para las apuestas sobre flor y envido.",
+        "En el Truco hay cuatro cartas especiales que se conocen como cartas bravas y son las superiores de toda la baraja. El orden de estas cartas, de mayor a menor, es el siguiente: as de espadas (espadilla), as de bastos (bastillo), siete de espadas y siete de oros (sietes bravos).",
+        "Para el resto, el orden, de mayor a menor, es: treses, doses, ases falsos (as de oros y de copas), cartas negras (reyes, caballos y sotas), sietes falsos (siete de copas y de bastos), seises, cincos y cuatros.",
+        "El valor de las cartas, para la flor y el envido, es el siguiente: las cartas negras valen 0 y las restantes tienen el valor en tantos que señala su índice."
+      ],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "El orden de las cartas es válido para el truco y determina el ganador de la baza. El valor de las cartas lo es para las apuestas sobre flor y envido."
+        },
+        {
+          "type": "p",
+          "text": "En el Truco hay cuatro cartas especiales que se conocen como cartas bravas y son las superiores de toda la baraja. El orden de estas cartas, de mayor a menor, es el siguiente: as de espadas (espadilla), as de bastos (bastillo), siete de espadas y siete de oros (sietes bravos)."
+        },
+        {
+          "type": "p",
+          "text": "Para el resto, el orden, de mayor a menor, es: treses, doses, ases falsos (as de oros y de copas), cartas negras (reyes, caballos y sotas), sietes falsos (siete de copas y de bastos), seises, cincos y cuatros."
+        },
+        {
+          "type": "p",
+          "text": "El valor de las cartas, para la flor y el envido, es el siguiente: las cartas negras valen 0 y las restantes tienen el valor en tantos que señala su índice."
+        }
+      ]
+    },
+    {
+      "heading": "Distribución de las cartas",
+      "paragraphs": [
+        "Antes de iniciar la partida se determina, normalmente por sorteo, quien será el primero en dar las cartas. El turno de dar es rotativo y en sentido contrario a las agujas del reloj.",
+        "El dador baraja las cartas y da a cortar el mazo al contrario situado a su izquierda no pudiendo tomarse tres cartas o menos, ni dejarse tres cartas o menos. No está permitido que corte cualquier otro jugador, ni que se haga más de un corte en el mazo, aunque sí que se golpee sin hacer corte alguno. Después, reparte tres cartas a cada jugador, de una en una, empezando por la derecha. Si una de las cartas cae boca arriba, el que la recibe así puede elegir entre quedarse con ella o exigir un nuevo reparto."
+      ],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Antes de iniciar la partida se determina, normalmente por sorteo, quien será el primero en dar las cartas. El turno de dar es rotativo y en sentido contrario a las agujas del reloj."
+        },
+        {
+          "type": "p",
+          "text": "El dador baraja las cartas y da a cortar el mazo al contrario situado a su izquierda no pudiendo tomarse tres cartas o menos, ni dejarse tres cartas o menos. No está permitido que corte cualquier otro jugador, ni que se haga más de un corte en el mazo, aunque sí que se golpee sin hacer corte alguno. Después, reparte tres cartas a cada jugador, de una en una, empezando por la derecha. Si una de las cartas cae boca arriba, el que la recibe así puede elegir entre quedarse con ella o exigir un nuevo reparto."
+        }
+      ]
+    },
+    {
+      "heading": "Inicio y marcha del juego",
+      "paragraphs": [
+        "El jugador a la derecha del dador es el “mano” y cuenta con ciertas preferencias en el juego, además de ser el primero en jugar. El último jugador de cada bando, es el “pie”, que suele actuar como capitán y estratega del equipo. Cada jugador estudia las posibilidades que ofrecen sus cartas y, si tiene flor o buen envido, lo comunicará por señas a su compañero o compañeros, al tiempo que observa las de los otros jugadores. Empieza a jugar el “mano”, que puede cantar flor si la tiene, apostar a envido o jugar una de sus cartas. independientemente de lo que haga, cada jugador en su turno tiene esas tres opciones hasta que se juega una carta, ya que en este caso se empieza a jugar el truco y ya no se admite que se cante flor o envido, aunque sí responder a esos cantos. Resueltas las apuestas, se juegan las cartas para conocer al ganador del truco. Tras finalizar éste, se procede a la anotación del juego parcial. Durante el juego, se dice que un jugador o un bando va a la pesca cuando guarda silencio a la espera de que los contrarios sean los primeros en apostar o trucar para entonces responderles."
+      ],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "El jugador a la derecha del dador es el “mano” y cuenta con ciertas preferencias en el juego, además de ser el primero en jugar. El último jugador de cada bando, es el “pie”, que suele actuar como capitán y estratega del equipo. Cada jugador estudia las posibilidades que ofrecen sus cartas y, si tiene flor o buen envido, lo comunicará por señas a su compañero o compañeros, al tiempo que observa las de los otros jugadores. Empieza a jugar el “mano”, que puede cantar flor si la tiene, apostar a envido o jugar una de sus cartas. independientemente de lo que haga, cada jugador en su turno tiene esas tres opciones hasta que se juega una carta, ya que en este caso se empieza a jugar el truco y ya no se admite que se cante flor o envido, aunque sí responder a esos cantos. Resueltas las apuestas, se juegan las cartas para conocer al ganador del truco. Tras finalizar éste, se procede a la anotación del juego parcial. Durante el juego, se dice que un jugador o un bando va a la pesca cuando guarda silencio a la espera de que los contrarios sean los primeros en apostar o trucar para entonces responderles."
+        }
+      ]
+    },
+    {
+      "heading": "Las declaraciones",
+      "paragraphs": [
+        "La flor y el envido deben declararse durante la primera baza y el truco, en cualquier momento de la mano. Estas declaraciones se hacen siguiendo el orden flor, envido y truco y cada jugador debe respetarlo. Como es obligatorio cantar primero la flor, si el primer jugador no la tiene y no quiere apostar sobre envido, puede tirar una carta iniciando el truco o cantar truco antes de tirar su carta. Los siguiente jugadores pueden apostar sobre flor o envido, pero antes de contestar la apuesta de truco, ya que en caso contrario perdería la opción de hacerlo. Cuando uno de los jugadores hace una apuesta sobre envido, los otros tienen la posibilidad de responder a esa apuesta, aunque hayan jugado su primera carta, pero no habrá apuestas de envido después de que todos hayan jugado su primera carta."
+      ],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "La flor y el envido deben declararse durante la primera baza y el truco, en cualquier momento de la mano. Estas declaraciones se hacen siguiendo el orden flor, envido y truco y cada jugador debe respetarlo. Como es obligatorio cantar primero la flor, si el primer jugador no la tiene y no quiere apostar sobre envido, puede tirar una carta iniciando el truco o cantar truco antes de tirar su carta. Los siguiente jugadores pueden apostar sobre flor o envido, pero antes de contestar la apuesta de truco, ya que en caso contrario perdería la opción de hacerlo. Cuando uno de los jugadores hace una apuesta sobre envido, los otros tienen la posibilidad de responder a esa apuesta, aunque hayan jugado su primera carta, pero no habrá apuestas de envido después de que todos hayan jugado su primera carta."
+        }
+      ]
+    },
+    {
+      "heading": "Las jugadas del Truco",
+      "paragraphs": [
+        "Las tres maneras de conseguir puntos en una partida de Truco son:",
+        "Flor",
+        "Para cantar y apostar flor es necesario que las tres cartas de la mano sean del mismo palo. El valor de esta jugada es la suma del valor de las cartas más 20 puntos.",
+        "Esta jugada es rara y las reglas para apostar sobre ella son algo complicadas. La mayoría de los jugadores prefieren eliminarla de sus partidas ya que en ella incide mucho la suerte en el reparto.",
+        "Es obligatorio anunciarla para evitar una penalización pero no se permite anunciarla si no se tiene. El anuncio deber realizarse antes de jugar la primera baza o de aceptar cualquier otro tipo de declaración de envido de los jugadores anteriores, quedando las jugadas de truco en suspenso hasta que se haya resuelto la jugada. Anunciada la flor, hay que esperar a que hablen los jugadores siguientes, ya que todas las declaraciones sobre flor deben quedar resueltas antes de seguir el juego. Los que hayan jugado la primera baza ya no podrán hacerlo.",
+        "Cuando un jugador tiene tres cartas del mismo palo lo anuncia diciendo “flor”. Si algún jugador más tiene flor, el equipo del jugador que la tenga de más valor se anotará, además de 3 puntos de la flor propia, 3 más por cada flor anunciada. El valor de la flor es la suma del valor de las cartas más 20 puntos.",
+        "La mejor es la formada por el cinco, el seis y el siete, ya que vale 38 tantos y la peor, la formada por cartas negras, que sólo vale 20 tantos. Cuando un jugador anuncia flor, hay cuatro posibles respuestas por parte de los jugadores contrarios:",
+        "Flor. Indica que se tiene otra flor. El equipo con la mejor flor ganará 3 puntos por cada una. A esta flor, se puede responder también declarando contraflor.",
+        "Con flor me achico. El jugador tiene flor, pero acepta como ganadora la de los contrarios. Con esta declaración termina la flor y el equipo ganador se anota los tantos correspondientes. – Contraflor. Sirve para anunciar la flor y retar al bando contrario a hablar de nuevo. Al declarar contraflor se apuestan 6 tantos (o 9 si hubiera tres equipos) al que tenga mejor flor.",
+        "Contraflor al resto. Se anuncia la flor propia y, a la vez, se eleva la apuesta hasta el número de puntos necesario para que el equipo que lleva más alcance los 30, además de 3 puntos por cada flor anunciada.",
+        "Después de anunciar contraflor, los contrarios tienen tres opciones: con flor quiero, que sirve para aceptar la apuesta realizada; con flor me achico,",
+        "con lo cual el que anunció la contraflor se apunta los tantos apostados y aceptados hasta ese momento; y contraflor al resto. Las respuestas a esta declaración son sólo dos: con flor me achico y con flor quiero. Si se acepta la apuesta y la gana el equipo que va por delante, gana también la partida. Si el que gana es el equipo que tenía menos puntos, se anotará los puntos que el otro equipo necesitaba para llegar a los 30 puntos y 3 puntos por cada flor anunciada.",
+        "Cuando han terminado todos los anuncios relativos a la flor se procede a la resolución de las apuestas. Por turno a partir del mano, cada jugador declara el valor de su flor. Si éste no supera el declarado por un jugador anterior, puede decir que las cartas de contrario “son buenas” y dar la apuesta por perdida, a menos que otro jugador posterior del mismo bando mejore el valor anunciado.",
+        "El jugador con la flor ganadora debe mostrar sus cartas antes de anotarse los puntos.",
+        "Al final del juego, cualquier jugador que sospeche que otro tenía flor y no la ha anunciado, puede retarlo pidiendo o exigiendo flor. Para ello dice “pido flor”. Si la tenía, el equipo retador recibe 3 puntos, más todos los puntos de la mano contraria pero si muestra dos cartas de distinto palo, el equipo retado se anota 3 o 4 puntos."
+      ],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Las tres maneras de conseguir puntos en una partida de Truco son:"
+        },
+        {
+          "type": "p",
+          "text": "Flor"
+        },
+        {
+          "type": "p",
+          "text": "Para cantar y apostar flor es necesario que las tres cartas de la mano sean del mismo palo. El valor de esta jugada es la suma del valor de las cartas más 20 puntos."
+        },
+        {
+          "type": "p",
+          "text": "Esta jugada es rara y las reglas para apostar sobre ella son algo complicadas. La mayoría de los jugadores prefieren eliminarla de sus partidas ya que en ella incide mucho la suerte en el reparto."
+        },
+        {
+          "type": "p",
+          "text": "Es obligatorio anunciarla para evitar una penalización pero no se permite anunciarla si no se tiene. El anuncio deber realizarse antes de jugar la primera baza o de aceptar cualquier otro tipo de declaración de envido de los jugadores anteriores, quedando las jugadas de truco en suspenso hasta que se haya resuelto la jugada. Anunciada la flor, hay que esperar a que hablen los jugadores siguientes, ya que todas las declaraciones sobre flor deben quedar resueltas antes de seguir el juego. Los que hayan jugado la primera baza ya no podrán hacerlo."
+        },
+        {
+          "type": "p",
+          "text": "Cuando un jugador tiene tres cartas del mismo palo lo anuncia diciendo “flor”. Si algún jugador más tiene flor, el equipo del jugador que la tenga de más valor se anotará, además de 3 puntos de la flor propia, 3 más por cada flor anunciada. El valor de la flor es la suma del valor de las cartas más 20 puntos."
+        },
+        {
+          "type": "p",
+          "text": "La mejor es la formada por el cinco, el seis y el siete, ya que vale 38 tantos y la peor, la formada por cartas negras, que sólo vale 20 tantos. Cuando un jugador anuncia flor, hay cuatro posibles respuestas por parte de los jugadores contrarios:"
+        },
+        {
+          "type": "p",
+          "text": "Flor. Indica que se tiene otra flor. El equipo con la mejor flor ganará 3 puntos por cada una. A esta flor, se puede responder también declarando contraflor."
+        },
+        {
+          "type": "p",
+          "text": "Con flor me achico. El jugador tiene flor, pero acepta como ganadora la de los contrarios. Con esta declaración termina la flor y el equipo ganador se anota los tantos correspondientes. – Contraflor. Sirve para anunciar la flor y retar al bando contrario a hablar de nuevo. Al declarar contraflor se apuestan 6 tantos (o 9 si hubiera tres equipos) al que tenga mejor flor."
+        },
+        {
+          "type": "p",
+          "text": "Contraflor al resto. Se anuncia la flor propia y, a la vez, se eleva la apuesta hasta el número de puntos necesario para que el equipo que lleva más alcance los 30, además de 3 puntos por cada flor anunciada."
+        },
+        {
+          "type": "p",
+          "text": "Después de anunciar contraflor, los contrarios tienen tres opciones: con flor quiero, que sirve para aceptar la apuesta realizada; con flor me achico,"
+        },
+        {
+          "type": "p",
+          "text": "con lo cual el que anunció la contraflor se apunta los tantos apostados y aceptados hasta ese momento; y contraflor al resto. Las respuestas a esta declaración son sólo dos: con flor me achico y con flor quiero. Si se acepta la apuesta y la gana el equipo que va por delante, gana también la partida. Si el que gana es el equipo que tenía menos puntos, se anotará los puntos que el otro equipo necesitaba para llegar a los 30 puntos y 3 puntos por cada flor anunciada."
+        },
+        {
+          "type": "p",
+          "text": "Cuando han terminado todos los anuncios relativos a la flor se procede a la resolución de las apuestas. Por turno a partir del mano, cada jugador declara el valor de su flor. Si éste no supera el declarado por un jugador anterior, puede decir que las cartas de contrario “son buenas” y dar la apuesta por perdida, a menos que otro jugador posterior del mismo bando mejore el valor anunciado."
+        },
+        {
+          "type": "p",
+          "text": "El jugador con la flor ganadora debe mostrar sus cartas antes de anotarse los puntos."
+        },
+        {
+          "type": "p",
+          "text": "Al final del juego, cualquier jugador que sospeche que otro tenía flor y no la ha anunciado, puede retarlo pidiendo o exigiendo flor. Para ello dice “pido flor”. Si la tenía, el equipo retador recibe 3 puntos, más todos los puntos de la mano contraria pero si muestra dos cartas de distinto palo, el equipo retado se anota 3 o 4 puntos."
+        }
+      ]
+    },
+    {
+      "heading": "Envido",
+      "paragraphs": [
+        "Cualquier jugador tiene la posibilidad de apostar o contestar a las apuestas de envido. Tanto las apuestas como las respuestas, comprometen a todo el equipo. No se puede apostar a envido después de jugada la primera carta o después de haber aceptado una apuesta sobre truco. Si un jugador hace una apuesta sobre truco antes de que un miembro del otro bando haya dicho envido, ese jugador puede contestar al envido contrario, y después de terminado el envido, hay que contestar el truco anterior.",
+        "Si se tienen dos cartas del mismo palo, la mano vale la suma de los índices de estas dos cartas más 20 tantos y si las tres cartas son de distinto palo, el valor es el de la carta más alta. Por ello, el envido más alto vale 33 tantos y el menor, formado por tres cartas negras de tres palos distintos, vale 0 puntos.",
+        "Para apostar sobre envido puede decirse:",
+        "Envido. Equivale a 2 puntos.",
+        "Real envido. Equivale a 3 puntos.",
+        "Falta envido. Equivale al número de tantos necesarios para que el bando que va por delante gane el juego. Algunos jugadores apuestan a que el bando ganador lo será también de la partida, aunque vaya por detrás en el tanteo.",
+        "Después de que el equipo ha anunciado envido o real envido, el otro equipo tiene cinco posibles respuestas:",
+        "Quiero. Se acepta la voz anterior y quedan cerradas las apuestas.",
+        "Envido. Se sube la apuesta otros 2 puntos.",
+        "Real envido. Se sube la apuesta otros 3 puntos.",
+        "Falta envido. La cantidad de puntos que le falte al equipo que va ganando para ganar la partida.",
+        "No quiero. Se rechaza la última apuesta y se cierra el envido. Si la apuesta rechazada era la primera, el equipo que la había hecho gana 1 punto. Si había otras, el equipo al que le ha sido rechazada esa última apuesta gana los puntos aceptados hasta ese momento.",
+        "Si se responde envido o real envido a una de estas dos apuestas, las nuevas respuestas son las cinco anteriores, y el valor de las apuestas va subiendo sucesivamente, hasta que uno de los dos diga quiero o no quiero, cerrando así las apuestas de envido. Concluidas las apuestas, los jugadores anuncian el valor de su jugada. Cuando un jugador tiene una jugada peor que otra anunciada, no es necesario que cante la suya, basta que diga “son buenas”. El envido ganador es el que tiene mayor valor en puntos. En caso de igualdad, el primero que lo canta tiene prioridad. El ganador del envido debe mostrar sus cartas antes de anotarse el premio. Si se hubiera equivocado, ganaría el equipo contrario, aunque tuviera peor envido."
+      ],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Cualquier jugador tiene la posibilidad de apostar o contestar a las apuestas de envido. Tanto las apuestas como las respuestas, comprometen a todo el equipo. No se puede apostar a envido después de jugada la primera carta o después de haber aceptado una apuesta sobre truco. Si un jugador hace una apuesta sobre truco antes de que un miembro del otro bando haya dicho envido, ese jugador puede contestar al envido contrario, y después de terminado el envido, hay que contestar el truco anterior."
+        },
+        {
+          "type": "p",
+          "text": "Si se tienen dos cartas del mismo palo, la mano vale la suma de los índices de estas dos cartas más 20 tantos y si las tres cartas son de distinto palo, el valor es el de la carta más alta. Por ello, el envido más alto vale 33 tantos y el menor, formado por tres cartas negras de tres palos distintos, vale 0 puntos."
+        },
+        {
+          "type": "p",
+          "text": "Para apostar sobre envido puede decirse:"
+        },
+        {
+          "type": "p",
+          "text": "Envido. Equivale a 2 puntos."
+        },
+        {
+          "type": "p",
+          "text": "Real envido. Equivale a 3 puntos."
+        },
+        {
+          "type": "p",
+          "text": "Falta envido. Equivale al número de tantos necesarios para que el bando que va por delante gane el juego. Algunos jugadores apuestan a que el bando ganador lo será también de la partida, aunque vaya por detrás en el tanteo."
+        },
+        {
+          "type": "p",
+          "text": "Después de que el equipo ha anunciado envido o real envido, el otro equipo tiene cinco posibles respuestas:"
+        },
+        {
+          "type": "p",
+          "text": "Quiero. Se acepta la voz anterior y quedan cerradas las apuestas."
+        },
+        {
+          "type": "p",
+          "text": "Envido. Se sube la apuesta otros 2 puntos."
+        },
+        {
+          "type": "p",
+          "text": "Real envido. Se sube la apuesta otros 3 puntos."
+        },
+        {
+          "type": "p",
+          "text": "Falta envido. La cantidad de puntos que le falte al equipo que va ganando para ganar la partida."
+        },
+        {
+          "type": "p",
+          "text": "No quiero. Se rechaza la última apuesta y se cierra el envido. Si la apuesta rechazada era la primera, el equipo que la había hecho gana 1 punto. Si había otras, el equipo al que le ha sido rechazada esa última apuesta gana los puntos aceptados hasta ese momento."
+        },
+        {
+          "type": "p",
+          "text": "Si se responde envido o real envido a una de estas dos apuestas, las nuevas respuestas son las cinco anteriores, y el valor de las apuestas va subiendo sucesivamente, hasta que uno de los dos diga quiero o no quiero, cerrando así las apuestas de envido. Concluidas las apuestas, los jugadores anuncian el valor de su jugada. Cuando un jugador tiene una jugada peor que otra anunciada, no es necesario que cante la suya, basta que diga “son buenas”. El envido ganador es el que tiene mayor valor en puntos. En caso de igualdad, el primero que lo canta tiene prioridad. El ganador del envido debe mostrar sus cartas antes de anotarse el premio. Si se hubiera equivocado, ganaría el equipo contrario, aunque tuviera peor envido."
+        }
+      ]
+    },
+    {
+      "heading": "Truco",
+      "paragraphs": [
+        "Es el juego de bazas y se desarrolla después de la flor y el envido. Cada juego parcial se compone de tres bazas y para ganar el truco, hay que ganar dos de ellas. Cada jugador juega una de sus cartas ganando la baza la carta más alta. La primera baza la inicia el “mano” y las siguientes lo hará quien haya ganado la baza anterior, a menos que haya habido un empate, en cuyo caso, vuelve a salir el mismo que salió en la baza empatada.",
+        "Cuando más de uno juega la carta mayor, si son del mismo bando, ganan y si son contrarios, empatan (baza parda). Las bazas no se recogen sino que se dejan, boca arriba, delante del que las ha jugado. Si no hay apuestas en el truco, lo gana el equipo que hace la mayoría de las bazas, anotándose 1 punto. Si hay un empate, el truco lo gana el bando vencedor en la baza siguiente. Si se empatan las tres bazas, gana el equipo del “mano”. Si se empata la primera mano y la segunda, no es necesario jugar la tercera. Tampoco es necesario hacerlo si un bando gana las dos primeras bazas, porque entonces ya ha ganado el truco. Un jugador puede cantar truco en cualquier momento, siendo lo usual hacerlo en la segunda baza, aumentando así su valor a 2 puntos. Cualquier miembro del bando contrario puede contestar y su respuesta obliga a todo su equipo. Las respuestas son quiero, para aceptar el aumento de valor, o no quiero, con lo que se admite la derrota y la pérdida de 1 punto.",
+        "Retruco. El equipo que ha contestado “quiero” al truco, puede decir retruco en cualquier momento aumentando el valor a 3 puntos. Las respuestas al retruco son las mismas que las del truco: quiero para aceptar y no quiero para rechazarlo, perdiendo 2 puntos.",
+        "Vale cuatro. Cuando un equipo ha contestado “quiero” al retruco, puede aumentar la apuesta a 4 puntos diciendo “vale cuatro”. Las respuestas a vale cuatro son también quiero para aceptar o no quiero para reconocer que se pierde el truco, en cuyo caso el otro equipo se anota 3 tantos. Vale cuatro es la apuesta más alta del truco. Ya no se puede seguir apostando y sólo queda terminar de jugar las cartas para conocer el bando ganador. Cada uno de los cantos debe aceptarse explícitamente con la palabra quiero y sólo después puede “retrucarse”.",
+        "Carta jugada. Significa tirar las cartas, boca abajo, junto al mazo y retirarse del juego. Si en un bando un jugador se va a baraja y el otro no, éste queda solo en el juego defendiendo con sus cartas la suerte del equipo. Si los dos jugadores de un bando se van a baraja y no se ha cantado truco, el otro bando cobra 1 tanto."
+      ],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Es el juego de bazas y se desarrolla después de la flor y el envido. Cada juego parcial se compone de tres bazas y para ganar el truco, hay que ganar dos de ellas. Cada jugador juega una de sus cartas ganando la baza la carta más alta. La primera baza la inicia el “mano” y las siguientes lo hará quien haya ganado la baza anterior, a menos que haya habido un empate, en cuyo caso, vuelve a salir el mismo que salió en la baza empatada."
+        },
+        {
+          "type": "p",
+          "text": "Cuando más de uno juega la carta mayor, si son del mismo bando, ganan y si son contrarios, empatan (baza parda). Las bazas no se recogen sino que se dejan, boca arriba, delante del que las ha jugado. Si no hay apuestas en el truco, lo gana el equipo que hace la mayoría de las bazas, anotándose 1 punto. Si hay un empate, el truco lo gana el bando vencedor en la baza siguiente. Si se empatan las tres bazas, gana el equipo del “mano”. Si se empata la primera mano y la segunda, no es necesario jugar la tercera. Tampoco es necesario hacerlo si un bando gana las dos primeras bazas, porque entonces ya ha ganado el truco. Un jugador puede cantar truco en cualquier momento, siendo lo usual hacerlo en la segunda baza, aumentando así su valor a 2 puntos. Cualquier miembro del bando contrario puede contestar y su respuesta obliga a todo su equipo. Las respuestas son quiero, para aceptar el aumento de valor, o no quiero, con lo que se admite la derrota y la pérdida de 1 punto."
+        },
+        {
+          "type": "p",
+          "text": "Retruco. El equipo que ha contestado “quiero” al truco, puede decir retruco en cualquier momento aumentando el valor a 3 puntos. Las respuestas al retruco son las mismas que las del truco: quiero para aceptar y no quiero para rechazarlo, perdiendo 2 puntos."
+        },
+        {
+          "type": "p",
+          "text": "Vale cuatro. Cuando un equipo ha contestado “quiero” al retruco, puede aumentar la apuesta a 4 puntos diciendo “vale cuatro”. Las respuestas a vale cuatro son también quiero para aceptar o no quiero para reconocer que se pierde el truco, en cuyo caso el otro equipo se anota 3 tantos. Vale cuatro es la apuesta más alta del truco. Ya no se puede seguir apostando y sólo queda terminar de jugar las cartas para conocer el bando ganador. Cada uno de los cantos debe aceptarse explícitamente con la palabra quiero y sólo después puede “retrucarse”."
+        },
+        {
+          "type": "p",
+          "text": "Carta jugada. Significa tirar las cartas, boca abajo, junto al mazo y retirarse del juego. Si en un bando un jugador se va a baraja y el otro no, éste queda solo en el juego defendiendo con sus cartas la suerte del equipo. Si los dos jugadores de un bando se van a baraja y no se ha cantado truco, el otro bando cobra 1 tanto."
+        }
+      ]
+    },
+    {
+      "heading": "El tanteo",
+      "paragraphs": [
+        "Lo corriente es que las partidas de Truco se jueguen a 30 tantos. Los primeros 15 se denominan malos y los siguientes, buenos. La contabilidad la lleva uno de los jugadores de cada equipo, que recoge los tantos obtenidos al final de cada juego parcial o tiro."
+      ],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Lo corriente es que las partidas de Truco se jueguen a 30 tantos. Los primeros 15 se denominan malos y los siguientes, buenos. La contabilidad la lleva uno de los jugadores de cada equipo, que recoge los tantos obtenidos al final de cada juego parcial o tiro."
+        }
+      ]
+    },
+    {
+      "heading": "Señas y expresiones",
+      "paragraphs": [
+        "Por otra parte, es muy importante cuidar el lenguaje utilizado y no utilizar expresiones reservadas, como quiero o no quiero, ya que obligan al que las dice. En el envido, las apuestas deben cerrarse con las expresiones quiero o no quiero, pero en el caso de que se haga una nueva apuesta, ésta implica la aceptación de las anteriores. En la flor y en el truco, las condiciones son distintas. A una flor se contesta con otra o se dice “es buena” si no se tiene nada. En el truco, no puede hacerse una nueva apuesta sin haber manifestado antes claramente que se aceptaba la anterior diciendo “quiero”.",
+        "En los casos en que se haga una apuesta doble, si se acepta o rechaza en su totalidad, bastará con decir quiero o no quiero. Si únicamente se acepta una parte de la apuesta, hay que decir primero que se pasa de la otra parte, ya que si no quedarían aceptadas las dos.",
+        "Es posible señalar a los compañeros las cartas que se tienen. Tales señas pueden variar de un lugar a otro y está permitido que los jugadores elaboren su propio código, pero hay algunas muy frecuentes:"
+      ],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Por otra parte, es muy importante cuidar el lenguaje utilizado y no utilizar expresiones reservadas, como quiero o no quiero, ya que obligan al que las dice. En el envido, las apuestas deben cerrarse con las expresiones quiero o no quiero, pero en el caso de que se haga una nueva apuesta, ésta implica la aceptación de las anteriores. En la flor y en el truco, las condiciones son distintas. A una flor se contesta con otra o se dice “es buena” si no se tiene nada. En el truco, no puede hacerse una nueva apuesta sin haber manifestado antes claramente que se aceptaba la anterior diciendo “quiero”."
+        },
+        {
+          "type": "p",
+          "text": "En los casos en que se haga una apuesta doble, si se acepta o rechaza en su totalidad, bastará con decir quiero o no quiero. Si únicamente se acepta una parte de la apuesta, hay que decir primero que se pasa de la otra parte, ya que si no quedarían aceptadas las dos."
+        },
+        {
+          "type": "p",
+          "text": "Es posible señalar a los compañeros las cartas que se tienen. Tales señas pueden variar de un lugar a otro y está permitido que los jugadores elaboren su propio código, pero hay algunas muy frecuentes:"
+        },
+        {
+          "type": "table",
+          "rows": [
+            [
+              "As de espadas",
+              "levantar las cejas"
+            ],
+            [
+              "As de bastos",
+              "guiñar un ojo"
+            ],
+            [
+              "Siete de espadas",
+              "mover los labios hacia la derecha"
+            ],
+            [
+              "Siete de oros",
+              "mover los labios hacia la izquierda"
+            ],
+            [
+              "Cualquier tres",
+              "morder el labio inferior"
+            ],
+            [
+              "Cualquier dos",
+              "fruncir los labios hacia adelante, como besar"
+            ],
+            [
+              "As de oros o as de copas",
+              "abrir un poco la boca"
+            ],
+            [
+              "Malas cartas",
+              "cerrar los ojos"
+            ],
+            [
+              "Buenas cartas para envido",
+              "inclinar la cabeza hacia adelante o hacia un lado"
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "deckType": "espanola",
+    "deckSize": 40,
+    "playersMin": 2,
+    "playersMax": 12,
+    "objective": "Sumar los 30 tantos, 15 malos los primeros y 15 buenos los segundos, necesarios para ganar un chico. La partida se gana cuando un equipo consigue dos chicos. Si hay empate en los dos primeros chicos, el tercero y definitivo es el bueno.",
+    "wordCount": 2941
+  }
+}

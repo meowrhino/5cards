@@ -1,0 +1,155 @@
+{
+  "slug": "tomate",
+  "name": "El Tomate",
+  "url": "https://www.nhfournier.es/como-jugar/tomate/",
+  "description": "Consulta el manual de cómo jugar al tomate, con las instrucciones completas: tipo de cartas, tanteos, número de jugadores y más tutoriales",
+  "intro": [
+    "El Tomate, debido a su sencillez, está extendido por todo el territorio español, gozando de una gran popularidad."
+  ],
+  "sections": [
+    {
+      "heading": "Objetivo del juego",
+      "paragraphs": [
+        "La finalidad de este juego es, en primer lugar, asegurarse una baza para no recibir Tomate y en segundo lugar, procurar dar Tomate a los demás."
+      ],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "La finalidad de este juego es, en primer lugar, asegurarse una baza para no recibir Tomate y en segundo lugar, procurar dar Tomate a los demás."
+        }
+      ]
+    },
+    {
+      "heading": "Baraja de cartas",
+      "paragraphs": [
+        "Se emplea la baraja española de 40 cartas."
+      ],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Se emplea la baraja española de 40 cartas."
+        }
+      ]
+    },
+    {
+      "heading": "Número de jugadores",
+      "paragraphs": [
+        "Pueden participar desde dos hasta un máximo de trece jugadores."
+      ],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Pueden participar desde dos hasta un máximo de trece jugadores."
+        }
+      ]
+    },
+    {
+      "heading": "Orden y valor de las cartas",
+      "paragraphs": [
+        "El orden de las cartas, de mayor a menor, es el siguiente: as, tres, rey, caballo, sota, siete, seis, cinco, cuatro y dos. En cuanto al valor de las cartas, en el Tomate, no tienen valor en puntos."
+      ],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "El orden de las cartas, de mayor a menor, es el siguiente: as, tres, rey, caballo, sota, siete, seis, cinco, cuatro y dos. En cuanto al valor de las cartas, en el Tomate, no tienen valor en puntos."
+        }
+      ]
+    },
+    {
+      "heading": "Distribución de las cartas",
+      "paragraphs": [
+        "Cada jugador toma una carta de la baraja. Quien sacó la carta menor es el dador y pondrá en el plato tres tantos, que es el importe del Tomate, antes de hacer la distribución de cartas. A continuación, y después de haber ofrecido a cortar la baraja al jugador de su izquierda, dará tres cartas a cada jugador, de una en una, y siguiendo el orden de izquierda a derecha, descubriendo la carta siguiente, que es la que marca el palo de triunfo, y dejándola sobre la mesa junto a la baceta. El turno de dar, en los juegos sucesivos, continúa por orden riguroso de izquierda a derecha."
+      ],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Cada jugador toma una carta de la baraja. Quien sacó la carta menor es el dador y pondrá en el plato tres tantos, que es el importe del Tomate, antes de hacer la distribución de cartas. A continuación, y después de haber ofrecido a cortar la baraja al jugador de su izquierda, dará tres cartas a cada jugador, de una en una, y siguiendo el orden de izquierda a derecha, descubriendo la carta siguiente, que es la que marca el palo de triunfo, y dejándola sobre la mesa junto a la baceta. El turno de dar, en los juegos sucesivos, continúa por orden riguroso de izquierda a derecha."
+        }
+      ]
+    },
+    {
+      "heading": "Inicio y marcha del juego",
+      "paragraphs": [
+        "Una vez distribuidas las cartas, el jugador que las dio puede, antes de ver las cartas que le tocaron en suerte, recoger la carta que señala el palo de triunfo, diciendo “Tomo” y descartándose obligatoriamente de una carta cualquiera de las de su mano. Si decide coger la carta de triunfo, al llegarle su turno, deberá jugar obligatoriamente.",
+        "Inicia el juego el “mano”, diciendo “paso”, si no desea jugar, o “juego”, en el caso contrario. Todos los jugadores restantes, al llegarles su turno, tendrán derecho a esta misma opción, pudiendo pasar o jugar. Todos los jugadores que hubieran pasado dejarán sus cartas, boca abajo, en el centro de la mesa.A continuación comenzará a jugar el “mano” o el jugador siguiente, si aquél hubiera pasado, jugando una carta cualquiera. Los demás jugadores, al llegarles su turno, deberán jugar otra carta con obligación de asistir y montar al palo de salida. Si no se pudiera montar, se juega carta menor. Cuando no se tiene carta del palo de salida, se jugará carta de triunfo y en su defecto, una carta cualquiera.",
+        "Gana la baza la mayor carta jugada del palo de triunfo y en su defecto, la carta más alta del palo de salida.",
+        "El jugador que ganó la baza anterior, inicia la siguiente,saliendo de una carta cualquiera y jugando los demás por orden riguroso de izquierda a derecha, en la forma ya explicada.",
+        "Cuando pasan todos los jugadores menos uno, un jugador cualquiera, comenzando por el “mano”, puede decir “tomo la baceta”, tomando las tres cartas superiores de la baceta para jugar con ellas. Esto tiene por objeto evitar que el que juega se lleve el plato sin competencia. Si gana el que toma la baceta, los tantos que debe poner su contrario quedarán en la mesa como reserva para el siguiente juego, y en el caso de que perdiera, no tendrá que pagar nada a la mesa. En algunas partidas es costumbre que el que toma la baceta lo haga para sí, corriendo el mismo riesgo que si jugara con sus propias cartas. Esto deberá acordarse antes de comenzar la partida.",
+        "Termina un juego cuando se han jugado las tres cartas de la mano de cada jugador. Le dan Tomate a un jugador cuando no consigue hacer ninguna baza. Si el jugador que distribuyó las cartas tomó la que marcaba el triunfo, deberá hacer, como mínimo, dos bazas para que no le den Tomate."
+      ],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Una vez distribuidas las cartas, el jugador que las dio puede, antes de ver las cartas que le tocaron en suerte, recoger la carta que señala el palo de triunfo, diciendo “Tomo” y descartándose obligatoriamente de una carta cualquiera de las de su mano. Si decide coger la carta de triunfo, al llegarle su turno, deberá jugar obligatoriamente."
+        },
+        {
+          "type": "p",
+          "text": "Inicia el juego el “mano”, diciendo “paso”, si no desea jugar, o “juego”, en el caso contrario. Todos los jugadores restantes, al llegarles su turno, tendrán derecho a esta misma opción, pudiendo pasar o jugar. Todos los jugadores que hubieran pasado dejarán sus cartas, boca abajo, en el centro de la mesa.A continuación comenzará a jugar el “mano” o el jugador siguiente, si aquél hubiera pasado, jugando una carta cualquiera. Los demás jugadores, al llegarles su turno, deberán jugar otra carta con obligación de asistir y montar al palo de salida. Si no se pudiera montar, se juega carta menor. Cuando no se tiene carta del palo de salida, se jugará carta de triunfo y en su defecto, una carta cualquiera."
+        },
+        {
+          "type": "p",
+          "text": "Gana la baza la mayor carta jugada del palo de triunfo y en su defecto, la carta más alta del palo de salida."
+        },
+        {
+          "type": "p",
+          "text": "El jugador que ganó la baza anterior, inicia la siguiente,saliendo de una carta cualquiera y jugando los demás por orden riguroso de izquierda a derecha, en la forma ya explicada."
+        },
+        {
+          "type": "p",
+          "text": "Cuando pasan todos los jugadores menos uno, un jugador cualquiera, comenzando por el “mano”, puede decir “tomo la baceta”, tomando las tres cartas superiores de la baceta para jugar con ellas. Esto tiene por objeto evitar que el que juega se lleve el plato sin competencia. Si gana el que toma la baceta, los tantos que debe poner su contrario quedarán en la mesa como reserva para el siguiente juego, y en el caso de que perdiera, no tendrá que pagar nada a la mesa. En algunas partidas es costumbre que el que toma la baceta lo haga para sí, corriendo el mismo riesgo que si jugara con sus propias cartas. Esto deberá acordarse antes de comenzar la partida."
+        },
+        {
+          "type": "p",
+          "text": "Termina un juego cuando se han jugado las tres cartas de la mano de cada jugador. Le dan Tomate a un jugador cuando no consigue hacer ninguna baza. Si el jugador que distribuyó las cartas tomó la que marcaba el triunfo, deberá hacer, como mínimo, dos bazas para que no le den Tomate."
+        }
+      ]
+    },
+    {
+      "heading": "Tanteo",
+      "paragraphs": [
+        "Antes de comenzar una partida de Tomate, los jugadores deberán determinar, de común acuerdo, el valor del tanto, que será elmismo para todos los juegos.",
+        "Al finalizar cada juego parcial, los jugadores que reciban Tomate dejarán junto al plato la misma cantidad de lo que hubiera en el mismo.",
+        "El plato que había se distribuirá entre los jugadores que hubieren ganado las bazas, llevándose dichos jugadores, por cada baza ganada, la tercera parte del mismo. Por tanto, el jugador que gane las tres bazas se lleva todo lo que haya en el plato."
+      ],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Antes de comenzar una partida de Tomate, los jugadores deberán determinar, de común acuerdo, el valor del tanto, que será elmismo para todos los juegos."
+        },
+        {
+          "type": "p",
+          "text": "Al finalizar cada juego parcial, los jugadores que reciban Tomate dejarán junto al plato la misma cantidad de lo que hubiera en el mismo."
+        },
+        {
+          "type": "p",
+          "text": "El plato que había se distribuirá entre los jugadores que hubieren ganado las bazas, llevándose dichos jugadores, por cada baza ganada, la tercera parte del mismo. Por tanto, el jugador que gane las tres bazas se lleva todo lo que haya en el plato."
+        }
+      ]
+    },
+    {
+      "heading": "Reservas",
+      "paragraphs": [
+        "Es costumbre no poner en el plato el importe de todos los Tomates recibidos, porque puede aumentarlo de manera tan considerable, que encarezca excesivamente el juego. Por ello, se procede a formar las reservas con parte de aquellos Tomates y se dejan en la mesa junto al plato para irlos incluyendo cuando no haya más tantos que los procedentes de dar.",
+        "Resumiendo, el plato se nutre con los tres tantos de dar y con lo que se acuerde pasar de las reservas, si las hay, que deberán ser de tres o múltiplo de tres tantos. Las reservas sólo se nutren con el importe de los Tomates."
+      ],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Es costumbre no poner en el plato el importe de todos los Tomates recibidos, porque puede aumentarlo de manera tan considerable, que encarezca excesivamente el juego. Por ello, se procede a formar las reservas con parte de aquellos Tomates y se dejan en la mesa junto al plato para irlos incluyendo cuando no haya más tantos que los procedentes de dar."
+        },
+        {
+          "type": "p",
+          "text": "Resumiendo, el plato se nutre con los tres tantos de dar y con lo que se acuerde pasar de las reservas, si las hay, que deberán ser de tres o múltiplo de tres tantos. Las reservas sólo se nutren con el importe de los Tomates."
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "deckType": "espanola",
+    "deckSize": 40,
+    "playersMin": 2,
+    "playersMax": 2,
+    "objective": "La finalidad de este juego es, en primer lugar, asegurarse una baza para no recibir Tomate y en segundo lugar, procurar dar Tomate a los demás.",
+    "wordCount": 811
+  }
+}

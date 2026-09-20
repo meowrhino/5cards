@@ -1,0 +1,489 @@
+{
+  "slug": "canasta",
+  "name": "La Canasta",
+  "url": "https://www.nhfournier.es/como-jugar/canasta/",
+  "description": "Consulta el manual de cómo jugar a la canasta, con las instrucciones completas: tipo de cartas, tanteos, número de jugadores y más tutoriales",
+  "intro": [
+    "La Canasta es un juego de origen uruguayo y de reciente creación, que se ha popularizado con una rapidez sorprendente por todo el continente americano."
+  ],
+  "sections": [
+    {
+      "heading": "Objetivo del juego",
+      "paragraphs": [
+        "Consiste en desprenderse de las cartas de la mano, exponiéndolas sobre la mesa formando combinaciones de siete cartas, Canasta, y alcanzar antes que los contrarios, en varios juegos parciales, el mínimo de 5.000 puntos que se requieren para ganar la partida."
+      ],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Consiste en desprenderse de las cartas de la mano, exponiéndolas sobre la mesa formando combinaciones de siete cartas, Canasta, y alcanzar antes que los contrarios, en varios juegos parciales, el mínimo de 5.000 puntos que se requieren para ganar la partida."
+        }
+      ]
+    },
+    {
+      "heading": "Baraja de cartas",
+      "paragraphs": [
+        "Se juega empleando dos barajas inglesas de 52 cartas, más dos comodines o Joker en cada baraja. Además de los cuatro comodines, los ocho doses tienen la misma aplicación."
+      ],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Se juega empleando dos barajas inglesas de 52 cartas, más dos comodines o Joker en cada baraja. Además de los cuatro comodines, los ocho doses tienen la misma aplicación."
+        }
+      ]
+    },
+    {
+      "heading": "Número de jugadores",
+      "paragraphs": [
+        "Puede jugarse entre dos o más jugadores hasta un máximo de seis, pero el más interesante es el de cuatro jugadores, jugando por parejas, cuyo reglamento es el que se explica a contincuación."
+      ],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Puede jugarse entre dos o más jugadores hasta un máximo de seis, pero el más interesante es el de cuatro jugadores, jugando por parejas, cuyo reglamento es el que se explica a contincuación."
+        }
+      ]
+    },
+    {
+      "heading": "Orden y valor de las cartas",
+      "paragraphs": [
+        "En cualquiera de los cuatro palos, el valor de las cartas es el siguiente:",
+        "Los Treses Rojos sólo tienen valor como Honores."
+      ],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "En cualquiera de los cuatro palos, el valor de las cartas es el siguiente:"
+        },
+        {
+          "type": "table",
+          "rows": [
+            [
+              "Comodín",
+              "50 Puntos"
+            ],
+            [
+              "Dos",
+              "20 Puntos"
+            ],
+            [
+              "As",
+              "20 Puntos"
+            ],
+            [
+              "K, Q, J, 10, 9 y 8",
+              "10 Puntos"
+            ],
+            [
+              "7, 6, 5 y 4",
+              "5 Puntos"
+            ],
+            [
+              "Cada Tres Negro",
+              "5 Puntos"
+            ]
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Los Treses Rojos sólo tienen valor como Honores."
+        }
+      ]
+    },
+    {
+      "heading": "Distribución de las cartas",
+      "paragraphs": [
+        "Cada jugador toma una carta, jugando los dos que tengan las dos cartas mayores contra los otros dos. El jugador situado a la izquierda del que sacó la cartas más alta, el “mano”, es el dador. Éste barajará las cartas, ofreciéndolas a cortar al jugador de su izquierda, y distribuirá a cada jugador once cartas, de una en una, en sentido contrario a las agujas del reloj, volviendo la carta superior, que quedará descubierta sobre la mesa. Esta carta inicia el pozo de descartes. Si dicha carta fuera un comodín, un dos, un Tres Negro o un Tres Rojo, se volverá la carta siguiente, colocándose sobre la anterior hasta que dicha carta no sea ninguna de las mencionadas. Sólo puede verse la carta superior del pozo, ya que ningún jugador puede examinar las cartas que lo integran."
+      ],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Cada jugador toma una carta, jugando los dos que tengan las dos cartas mayores contra los otros dos. El jugador situado a la izquierda del que sacó la cartas más alta, el “mano”, es el dador. Éste barajará las cartas, ofreciéndolas a cortar al jugador de su izquierda, y distribuirá a cada jugador once cartas, de una en una, en sentido contrario a las agujas del reloj, volviendo la carta superior, que quedará descubierta sobre la mesa. Esta carta inicia el pozo de descartes. Si dicha carta fuera un comodín, un dos, un Tres Negro o un Tres Rojo, se volverá la carta siguiente, colocándose sobre la anterior hasta que dicha carta no sea ninguna de las mencionadas. Sólo puede verse la carta superior del pozo, ya que ningún jugador puede examinar las cartas que lo integran."
+        }
+      ]
+    },
+    {
+      "heading": "Inicio y marcha del juego",
+      "paragraphs": [
+        "Comienza a jugar el “mano”, pudiendo tomar la carta superior del mazo o la carta o cartas del pozo de descartes. Para poder tomar el pozo por primera vez, son necesarias dos condiciones:",
+        "1ª Tener dos cartas iguales, sin comodín, a la carta superior del pozo.",
+        "2ª Que el valor de las cartas que deberán exponerse por primera vez, en una o más combinaciones, alcance los puntos requeridos para la salida. La carta superior del pozo deberá formar parte de las cartas expuestas, pudiendo añadir su valor al de las demás a efectos de la salida. Las demás cartas que hubiera en el mismo, se pueden exponer o conservar en la mano. No es necesario cumplir esta segunda condición si al hacer la salida, se exponen todas las cartas de una sola vez con Canasta oculta.",
+        "Como cada pareja expone su juego en común, basta con que cumpla dichas dos condiciones un solo jugador de cada pareja.",
+        "Hasta que no se hayan extendido las cartas que se tienen en la mano, y que, con la superior del pozo, sumen el valor requerido para salir, no podrá hacerse uso de las demás cartas que integran el pozo. Después de la primera salida, la pareja que la hizo puede tomar el pozo sin cumplir con la condición segunda, y en cuanto a la condición primera, basta con tener una carta igual a la superior del pozo, pudiendo suplir la otra con un comodín.",
+        "También es suficiente, para poder tomar el pozo, que no esté premiado o que su carta superior sea igual a la de una Canasta terminada o a la de una combinación inicial de Canasta expuesta. Cuando el pozo está premiado, es decir, cuando contiene algún Tres Rojo o comodín, es preciso tener en la mano dos cartas limpias iguales a la superior del mismo para poder tomarlo.",
+        "Nunca puede tomarse el pozo con dos comodines. El tomar la carta superior del pozo obliga a tomar todas las demás que hubiera en el mismo. El jugador que sólo tiene una carta en la mano, está obligado a avisarlo diciendo en voz alta “Pumba” y no puede tomar una carta el pozo, a menos que el mazo se haya terminado.",
+        "Si se toma la carta superior del mazo, no es obligatorio exponer cartas, en cambio, si se toma la superior del pozo, la salida es obligatoria. No es obligatoria la toma del pozo, pudiendo salir con las cartas que se tengan en la mano si alcanzan la valoración requerida. La jugada queda completada con el descarte forzoso de una carta de la mano del jugador.",
+        "Continúa el juego por turno riguroso de izquierda a derecha, y cada jugador, al llegarle su turno deberá tomar la carta superior del mazo o tomar el pozo con todas las cartas que lo formen, terminando su jugada con el descarte de una de sus cartas. Una vez hecha la salida por un jugador, tanto él como su compañero, en los siguientes turnos, podrán añadir cartas a las ya expuestas o exponer nuevas combinaciones, sin tener que cumplir con las condiciones de salida."
+      ],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Comienza a jugar el “mano”, pudiendo tomar la carta superior del mazo o la carta o cartas del pozo de descartes. Para poder tomar el pozo por primera vez, son necesarias dos condiciones:"
+        },
+        {
+          "type": "p",
+          "text": "1ª Tener dos cartas iguales, sin comodín, a la carta superior del pozo."
+        },
+        {
+          "type": "p",
+          "text": "2ª Que el valor de las cartas que deberán exponerse por primera vez, en una o más combinaciones, alcance los puntos requeridos para la salida. La carta superior del pozo deberá formar parte de las cartas expuestas, pudiendo añadir su valor al de las demás a efectos de la salida. Las demás cartas que hubiera en el mismo, se pueden exponer o conservar en la mano. No es necesario cumplir esta segunda condición si al hacer la salida, se exponen todas las cartas de una sola vez con Canasta oculta."
+        },
+        {
+          "type": "p",
+          "text": "Como cada pareja expone su juego en común, basta con que cumpla dichas dos condiciones un solo jugador de cada pareja."
+        },
+        {
+          "type": "p",
+          "text": "Hasta que no se hayan extendido las cartas que se tienen en la mano, y que, con la superior del pozo, sumen el valor requerido para salir, no podrá hacerse uso de las demás cartas que integran el pozo. Después de la primera salida, la pareja que la hizo puede tomar el pozo sin cumplir con la condición segunda, y en cuanto a la condición primera, basta con tener una carta igual a la superior del pozo, pudiendo suplir la otra con un comodín."
+        },
+        {
+          "type": "p",
+          "text": "También es suficiente, para poder tomar el pozo, que no esté premiado o que su carta superior sea igual a la de una Canasta terminada o a la de una combinación inicial de Canasta expuesta. Cuando el pozo está premiado, es decir, cuando contiene algún Tres Rojo o comodín, es preciso tener en la mano dos cartas limpias iguales a la superior del mismo para poder tomarlo."
+        },
+        {
+          "type": "p",
+          "text": "Nunca puede tomarse el pozo con dos comodines. El tomar la carta superior del pozo obliga a tomar todas las demás que hubiera en el mismo. El jugador que sólo tiene una carta en la mano, está obligado a avisarlo diciendo en voz alta “Pumba” y no puede tomar una carta el pozo, a menos que el mazo se haya terminado."
+        },
+        {
+          "type": "p",
+          "text": "Si se toma la carta superior del mazo, no es obligatorio exponer cartas, en cambio, si se toma la superior del pozo, la salida es obligatoria. No es obligatoria la toma del pozo, pudiendo salir con las cartas que se tengan en la mano si alcanzan la valoración requerida. La jugada queda completada con el descarte forzoso de una carta de la mano del jugador."
+        },
+        {
+          "type": "p",
+          "text": "Continúa el juego por turno riguroso de izquierda a derecha, y cada jugador, al llegarle su turno deberá tomar la carta superior del mazo o tomar el pozo con todas las cartas que lo formen, terminando su jugada con el descarte de una de sus cartas. Una vez hecha la salida por un jugador, tanto él como su compañero, en los siguientes turnos, podrán añadir cartas a las ya expuestas o exponer nuevas combinaciones, sin tener que cumplir con las condiciones de salida."
+        }
+      ]
+    },
+    {
+      "heading": "Combinaciones que pueden hacerse",
+      "paragraphs": [
+        "Cada grupo de cartas iguales deberá contener, por lo menos, dos cartas naturales y tres comodines como máximo.",
+        "Canasta. Es la combinación de siete cartas iguales. Por lo menos cuatro cartas deberán ser naturales. Para iniciar esta jugada, hay que exponer sobre la mesa, por lo menos, tres cartas. Es Canasta limpia la que no contiene ningún comodín y Canasta sucia la que tiene alguno. Cuando se haya completado una Canasta, se pueden seguir añadiendo cartas iguales, aun cuando esto no aumente el valor de la Canasta. Si a una Canasta limpia se le añade algún comodín, quedará convertida en sucia. Canasta oculta es la que forma un jugador sin ayuda de su compañero, exponiéndola completa de una sola vez.",
+        "Canasta de canastas. Esta jugada tiene un premio especial y consiste en hacer siete Canastas sucias o limpias.",
+        "Canastrón. Jugada análoga a la anterior y consiste en hacer cinco Canastas.",
+        "Una vez terminada una Canasta, se amontonan todas sus cartas. Si la Canasta es limpia, se pone como carta superior una de palo rojo y si es sucia, se indicará poniendo la carta superior de un palo negro. Para que un jugador pueda terminar un juego, es necesario que, en el juego común expuesto entre él y su compañero, haya por lo menos una Canasta terminada. Entonces, expondrá las cartas que le queden en una o más combinaciones o sobre las cartas ya expuestas, terminando en el momento que se quede sin ninguna carta en la mano.",
+        "Si le quedase una carta sin combinar, podrá igualmente terminar el juego descartándose de ella. Cuando un jugador tiene la posibilidad de terminar un juego, podrá pedir permiso a su compañero para “irse” antes de exponer las cartas que le queden en la mano, pero sin darle información alguna, y su compañero sólo podrá decir “Sí” o “No”. Puede terminar sin pedir permiso a su compañero, pero, si lo pide, deberá cumplir el deseo de éste.",
+        "Cuando un jugador toma la última carta del mazo y se descarta sin terminar el juego, el jugador siguiente deberá tomar el pozo forzosamente si la carta superior liga con las suyas expuestas. Si no pudiese tomar el pozo, el juego termina. Si toma el pozo y se descarta, sin terminar, el juego continuará hasta que algún jugador termine o no pueda tomar el pozo. El juego también termina cuando alguien exponga de una sola vez toda una mano de cartas.",
+        "El valor mínimo de cartas necesario para hacer la primera salida, varía con relación a la puntuación que se va alcanzando en el curso de la partida, valorándose sólo las cartas, pero no los Honores o Premios.Si al hacer la salida se “abate”, puede hacerse aun cuando el valor de todas las cartas no llegue al mínimo.",
+        "En resumen, los objetivos que debe perseguir el jugador de Canasta son:",
+        "1º Exponer cartas con miras a hacer Canastas.",
+        "2º Tomar el pozo siempre que sea posible.",
+        "3º Evitar que los jugadores contrarios puedan tomar el pozo.",
+        "4º Terminar el juego con la mayor cantidad posible de puntos sobre sus contrarios."
+      ],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Cada grupo de cartas iguales deberá contener, por lo menos, dos cartas naturales y tres comodines como máximo."
+        },
+        {
+          "type": "p",
+          "text": "Canasta. Es la combinación de siete cartas iguales. Por lo menos cuatro cartas deberán ser naturales. Para iniciar esta jugada, hay que exponer sobre la mesa, por lo menos, tres cartas. Es Canasta limpia la que no contiene ningún comodín y Canasta sucia la que tiene alguno. Cuando se haya completado una Canasta, se pueden seguir añadiendo cartas iguales, aun cuando esto no aumente el valor de la Canasta. Si a una Canasta limpia se le añade algún comodín, quedará convertida en sucia. Canasta oculta es la que forma un jugador sin ayuda de su compañero, exponiéndola completa de una sola vez."
+        },
+        {
+          "type": "p",
+          "text": "Canasta de canastas. Esta jugada tiene un premio especial y consiste en hacer siete Canastas sucias o limpias."
+        },
+        {
+          "type": "p",
+          "text": "Canastrón. Jugada análoga a la anterior y consiste en hacer cinco Canastas."
+        },
+        {
+          "type": "p",
+          "text": "Una vez terminada una Canasta, se amontonan todas sus cartas. Si la Canasta es limpia, se pone como carta superior una de palo rojo y si es sucia, se indicará poniendo la carta superior de un palo negro. Para que un jugador pueda terminar un juego, es necesario que, en el juego común expuesto entre él y su compañero, haya por lo menos una Canasta terminada. Entonces, expondrá las cartas que le queden en una o más combinaciones o sobre las cartas ya expuestas, terminando en el momento que se quede sin ninguna carta en la mano."
+        },
+        {
+          "type": "p",
+          "text": "Si le quedase una carta sin combinar, podrá igualmente terminar el juego descartándose de ella. Cuando un jugador tiene la posibilidad de terminar un juego, podrá pedir permiso a su compañero para “irse” antes de exponer las cartas que le queden en la mano, pero sin darle información alguna, y su compañero sólo podrá decir “Sí” o “No”. Puede terminar sin pedir permiso a su compañero, pero, si lo pide, deberá cumplir el deseo de éste."
+        },
+        {
+          "type": "p",
+          "text": "Cuando un jugador toma la última carta del mazo y se descarta sin terminar el juego, el jugador siguiente deberá tomar el pozo forzosamente si la carta superior liga con las suyas expuestas. Si no pudiese tomar el pozo, el juego termina. Si toma el pozo y se descarta, sin terminar, el juego continuará hasta que algún jugador termine o no pueda tomar el pozo. El juego también termina cuando alguien exponga de una sola vez toda una mano de cartas."
+        },
+        {
+          "type": "p",
+          "text": "El valor mínimo de cartas necesario para hacer la primera salida, varía con relación a la puntuación que se va alcanzando en el curso de la partida, valorándose sólo las cartas, pero no los Honores o Premios.Si al hacer la salida se “abate”, puede hacerse aun cuando el valor de todas las cartas no llegue al mínimo."
+        },
+        {
+          "type": "p",
+          "text": "En resumen, los objetivos que debe perseguir el jugador de Canasta son:"
+        },
+        {
+          "type": "p",
+          "text": "1º Exponer cartas con miras a hacer Canastas."
+        },
+        {
+          "type": "p",
+          "text": "2º Tomar el pozo siempre que sea posible."
+        },
+        {
+          "type": "p",
+          "text": "3º Evitar que los jugadores contrarios puedan tomar el pozo."
+        },
+        {
+          "type": "p",
+          "text": "4º Terminar el juego con la mayor cantidad posible de puntos sobre sus contrarios."
+        },
+        {
+          "type": "table",
+          "rows": [
+            [
+              "Puntuación alcanzada",
+              "Valor mínimo de las cartas"
+            ],
+            [
+              "Negativa",
+              "15 Puntos"
+            ],
+            [
+              "Entre 0 y 1.495",
+              "50 Puntos"
+            ],
+            [
+              "Entre 1.500 y 2.995",
+              "90 Puntos"
+            ],
+            [
+              "Igual o mayor de 3.000",
+              "150 Puntos"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Los Treses Rojos",
+      "paragraphs": [
+        "Son Honores y no sirven para formar Canastas. El jugador que tenga en su mano inicial algún Tres Rojo, deberá exponerlo inmediatamente, tomando, en su turno, tantas cartas del mazo como Treses tuviese. Si durante el juego, al tomar cartas del mazo, recibiese un Tres Rojo, lo expondrá inmediatamente, tomando otra carta del mazo. Para anotarse los puntos de estos Honores, será preciso que, antes de terminar el juego, hayan expuesto al menos, una Canasta terminada. En caso contrario, la puntuación de estos Honores será negativa.",
+        "Cuando un jugador tome un pozo que contenga algún Tres Rojo por haber salido al inicio del mismo, lo expondrá sobre la mesa, pero sin poder tomar una carta del mazo. Si la última carta del mazo es un Tres Rojo, el jugador que lo tome lo expondrá sobre la mesa y hará el resto de su jugada, sin tener que descartarse, y terminando entonces el juego."
+      ],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Son Honores y no sirven para formar Canastas. El jugador que tenga en su mano inicial algún Tres Rojo, deberá exponerlo inmediatamente, tomando, en su turno, tantas cartas del mazo como Treses tuviese. Si durante el juego, al tomar cartas del mazo, recibiese un Tres Rojo, lo expondrá inmediatamente, tomando otra carta del mazo. Para anotarse los puntos de estos Honores, será preciso que, antes de terminar el juego, hayan expuesto al menos, una Canasta terminada. En caso contrario, la puntuación de estos Honores será negativa."
+        },
+        {
+          "type": "p",
+          "text": "Cuando un jugador tome un pozo que contenga algún Tres Rojo por haber salido al inicio del mismo, lo expondrá sobre la mesa, pero sin poder tomar una carta del mazo. Si la última carta del mazo es un Tres Rojo, el jugador que lo tome lo expondrá sobre la mesa y hará el resto de su jugada, sin tener que descartarse, y terminando entonces el juego."
+        }
+      ]
+    },
+    {
+      "heading": "Los Treses Negros",
+      "paragraphs": [
+        "No sirven para la formación de Canastas, pero constituyen una importante defensa, ya que al colocarlos en el descarte sobre el pozo, evitan que el siguiente jugador pueda tomarlo. Su efecto sólo dura una jugada, hasta quedar cubierta por la carta del siguiente descarte. Los Treses Negros pueden exponerse solamente para terminar el juego, no pudiendo emplearse comodines.",
+        "Al igual que los Treses Negros, los comodines y los doses sirven en el descarte para evitar que el jugador siguiente pueda tomar el pozo."
+      ],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "No sirven para la formación de Canastas, pero constituyen una importante defensa, ya que al colocarlos en el descarte sobre el pozo, evitan que el siguiente jugador pueda tomarlo. Su efecto sólo dura una jugada, hasta quedar cubierta por la carta del siguiente descarte. Los Treses Negros pueden exponerse solamente para terminar el juego, no pudiendo emplearse comodines."
+        },
+        {
+          "type": "p",
+          "text": "Al igual que los Treses Negros, los comodines y los doses sirven en el descarte para evitar que el jugador siguiente pueda tomar el pozo."
+        }
+      ]
+    },
+    {
+      "heading": "Tanteo del juego",
+      "paragraphs": [
+        "Una partida se compone de los juegos parciales necesarios para que una de las parejas llegue a 5.000 puntos.",
+        "La puntuación es común a ambos jugadores de la pareja. Al terminar cada juego parcial, se contarán y anotarán los Honores y Premios, restándose el total de las Penalizaciones. A continuación, se valoran todas las cartas expuestas por la pareja ganadora, incluso el de las cartas que formen Canastas terminadas, contando también el valor los Treses Negros expuestos para terminar. El valor de las cartas que quedan en la mano al compañero del ganador y a los dos jugadores de la pareja contraria, es negativo y se deduce.",
+        "Si hubiera cartas penalizadas sin utilizar, se contarán como negativas.",
+        "Los jugadores pueden anotarse puntos por los siguientes Premios y Honores:",
+        "* Más el valor de las cartas que las forman. ** Más el valor de cada Canasta y de las cartas que las forman.",
+        "Con Canasta oculta, los puntos por Premios y Honores son los siguientes:",
+        "Si algún jugador comete alguna de las siguientes Penalidades, se le deducirán los siguientes puntos:",
+        "Las Cartas penalizadas son aquellas con las cuales se ha cometido alguna irregularidad, dejándolas sobre la mesa ante el jugador que hizo la falta. Se las considera como si fueran cartas en manos del jugador y se pueden utilizar para tomar el pozo o para utilizarlas en las combinaciones expuestas, y el descarte será obligatorio ir haciéndolo con las cartas penalizadas. Al utilizarse para exponer combinaciones o para añadirlas a combinaciones ya expuestas, pierden el carácter de penalizadas.",
+        "Quedan penalizadas:",
+        "Las cartas que un jugador muestre por descuido o las que ponga sobre la mesa equivocadamente y sean vistas por los demás jugadores.",
+        "Las cartas que se expongan fuera de turno.",
+        "Las cartas de primera salida, cuando su valor sea insuficiente, o las que le sobraron al rectificar su salida defectuosa.",
+        "Si un jugador toma el pozo sin mostrar antes las cartas de su mano que ligan con la superior del pozo, a requerimiento de cualquiera de los jugadores, deberá extender sobre la mesa todas las cartas de su mano y las del pozo, reconstruyéndose éste y decidiendo en caso de duda los jugadores perjudicados, quedando penalizadas las cartas que formaban su mano.",
+        "La carta o cartas que se exponen para terminar el juego sin formar ni tener Canasta.",
+        "Las irregularidades y su penalización prescriben si no son advertidas antes que termine su jugada el jugador siguiente al que cometió la irregularidad."
+      ],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Una partida se compone de los juegos parciales necesarios para que una de las parejas llegue a 5.000 puntos."
+        },
+        {
+          "type": "p",
+          "text": "La puntuación es común a ambos jugadores de la pareja. Al terminar cada juego parcial, se contarán y anotarán los Honores y Premios, restándose el total de las Penalizaciones. A continuación, se valoran todas las cartas expuestas por la pareja ganadora, incluso el de las cartas que formen Canastas terminadas, contando también el valor los Treses Negros expuestos para terminar. El valor de las cartas que quedan en la mano al compañero del ganador y a los dos jugadores de la pareja contraria, es negativo y se deduce."
+        },
+        {
+          "type": "p",
+          "text": "Si hubiera cartas penalizadas sin utilizar, se contarán como negativas."
+        },
+        {
+          "type": "p",
+          "text": "Los jugadores pueden anotarse puntos por los siguientes Premios y Honores:"
+        },
+        {
+          "type": "table",
+          "rows": [
+            [
+              "Canasta limpia *",
+              "500 Puntos"
+            ],
+            [
+              "Canasta sucia *",
+              "300 Puntos"
+            ],
+            [
+              "Cada Tres Rojo",
+              "100 Puntos"
+            ],
+            [
+              "Los 4 Treses Rojos",
+              "800 Puntos"
+            ],
+            [
+              "Por exponer los 4 Treses Negros al terminar",
+              "500 Puntos"
+            ],
+            [
+              "Premio por irse (terminar un juego)",
+              "100 Puntos"
+            ],
+            [
+              "Canasta de Canastas **",
+              "2000 Puntos"
+            ],
+            [
+              "Canastrón **",
+              "500 Puntos"
+            ]
+          ]
+        },
+        {
+          "type": "p",
+          "text": "* Más el valor de las cartas que las forman. ** Más el valor de cada Canasta y de las cartas que las forman."
+        },
+        {
+          "type": "p",
+          "text": "Con Canasta oculta, los puntos por Premios y Honores son los siguientes:"
+        },
+        {
+          "type": "table",
+          "rows": [
+            [
+              "Abatiendo de mano sin apoyarse en las cartas expuestas por el compañero",
+              "1000 Puntos"
+            ],
+            [
+              "Abatiendo de mano apoyándose en las cartas expuestas por el compañero",
+              "500 Puntos"
+            ],
+            [
+              "Abatiendo en el curso del juego sin apoyarse en las cartas expuestas por el compañero",
+              "500 Puntos"
+            ],
+            [
+              "Abatiendo en el curso del juego apoyándose en las cartas expuestas por el compañero",
+              "200 Puntos"
+            ]
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Si algún jugador comete alguna de las siguientes Penalidades, se le deducirán los siguientes puntos:"
+        },
+        {
+          "type": "table",
+          "rows": [
+            [
+              "Si un jugador, al terminar un juego, tiene en su mano los cuatro Treses Negros",
+              "500 Puntos"
+            ],
+            [
+              "Por cada Tres Rojo que se tenga en la mano al terminar el juego",
+              "500 Puntos"
+            ],
+            [
+              "Por tomar el pozo antes de exponer las cartas con que se va a ligar",
+              "200 Puntos"
+            ],
+            [
+              "Por exponer cartas en turno del compañero",
+              "200 Puntos"
+            ],
+            [
+              "Por tomar carta fuera de turno, mezclándolas con las de la mano",
+              "200 Puntos"
+            ],
+            [
+              "Por tomar carta del mazo fuera de turno",
+              "100 Puntos"
+            ],
+            [
+              "Por exponer cartas en el turno de algún jugador contrario",
+              "100 Puntos"
+            ],
+            [
+              "Por tomar el pozo fuera de turno",
+              "100 Puntos"
+            ],
+            [
+              "Por pedir permiso para irse y no poder",
+              "100 Puntos"
+            ],
+            [
+              "Por tomar dos cartas en vez de una",
+              "100 Puntos"
+            ],
+            [
+              "Por tomar carta del pozo y no poder salir",
+              "50 Puntos"
+            ],
+            [
+              "Por volverse atrás de una toma de carta",
+              "50 Puntos"
+            ]
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Las Cartas penalizadas son aquellas con las cuales se ha cometido alguna irregularidad, dejándolas sobre la mesa ante el jugador que hizo la falta. Se las considera como si fueran cartas en manos del jugador y se pueden utilizar para tomar el pozo o para utilizarlas en las combinaciones expuestas, y el descarte será obligatorio ir haciéndolo con las cartas penalizadas. Al utilizarse para exponer combinaciones o para añadirlas a combinaciones ya expuestas, pierden el carácter de penalizadas."
+        },
+        {
+          "type": "p",
+          "text": "Quedan penalizadas:"
+        },
+        {
+          "type": "p",
+          "text": "Las cartas que un jugador muestre por descuido o las que ponga sobre la mesa equivocadamente y sean vistas por los demás jugadores."
+        },
+        {
+          "type": "p",
+          "text": "Las cartas que se expongan fuera de turno."
+        },
+        {
+          "type": "p",
+          "text": "Las cartas de primera salida, cuando su valor sea insuficiente, o las que le sobraron al rectificar su salida defectuosa."
+        },
+        {
+          "type": "p",
+          "text": "Si un jugador toma el pozo sin mostrar antes las cartas de su mano que ligan con la superior del pozo, a requerimiento de cualquiera de los jugadores, deberá extender sobre la mesa todas las cartas de su mano y las del pozo, reconstruyéndose éste y decidiendo en caso de duda los jugadores perjudicados, quedando penalizadas las cartas que formaban su mano."
+        },
+        {
+          "type": "p",
+          "text": "La carta o cartas que se exponen para terminar el juego sin formar ni tener Canasta."
+        },
+        {
+          "type": "p",
+          "text": "Las irregularidades y su penalización prescriben si no son advertidas antes que termine su jugada el jugador siguiente al que cometió la irregularidad."
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "deckType": null,
+    "deckSize": 52,
+    "playersMin": 2,
+    "playersMax": 6,
+    "objective": "Consiste en desprenderse de las cartas de la mano, exponiéndolas sobre la mesa formando combinaciones de siete cartas, Canasta, y alcanzar antes que los contrarios, en varios juegos parciales, el mínimo de 5.000 puntos que se requieren para ganar la partida.",
+    "wordCount": 1964
+  }
+}

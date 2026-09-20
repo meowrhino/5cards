@@ -1,0 +1,104 @@
+# La Manilla
+
+> fuente: https://www.nhfournier.es/como-jugar/manilla/
+>
+> baraja  de 48 cartas · 2-12 jugadores
+
+Al parecer, la Manilla se originó en la zona del Rosellón y de ahí se extendió por el sur de Francia, donde es muy popular, y por España, especialmente en Cataluña.
+
+## Objetivo del juego
+
+Conseguir ganar bazas de tantos para alcanzar la suma de puntos establecida.
+
+## Baraja de cartas
+
+Se juega con una baraja de caras catalanas de 48 cartas.
+
+## Número de jugadores
+
+Se juega entre cuatro jugadores que formarán dos parejas enfrentadas entre sí.
+
+## Orden y valor de las cartas
+
+El orden, de mayor a menor, es el siguiente: nueve o manilla, as, rey, caballo, sota, ocho, siete, seis, cinco, cuatro, tres y dos.
+
+El valor de las cartas se muestra en la siguiente tabla:
+
+| Nueve | 5 Puntos |
+|---|---|
+| As | 4 Puntos |
+| Rey | 3 Puntos |
+| Caballo | 2 Puntos |
+| Sota | 1 Puntos |
+
+Corresponden 15 tantos a cada palo completo. Las demás cartas, llamadas blancas, no tienen valor en tantos.
+
+## Distribución de las cartas
+
+Cada jugador descubre una carta, jugando los dos jugadores que tengan cartas mayores contra los otros dos. Quien sacó la carta más alta elige sitio y es el primero en dar las cartas, sentándose frente a él su compañero y a su derecha, el jugador contrario que sacó la carta mayor.
+
+Si saliesen dos o más cartas de igual valor, la preferencia la determina el palo por el siguiente orden: oros, copas, espadas y bastos.
+
+El jugador que reparte, baraja las cartas y las ofrece a cortar al de su izquierda, distribuyendo a continuación doce cartas a cada jugador, de cuatro en cuatro, siguiendo el orden de izquierda a derecha y descubriendo la última carta, que corresponde al jugador que las da y que es la que señala el palo del triunfo. Si esta carta es de tantos (manilla o figura), se los anota el bando que dio las cartas, salvo en el caso de excepción que se indicará más adelante. El orden de rotación señalado se sigue también para el turno de dar y jugar.
+
+## Inicio y marcha del juego
+
+Inicia el juego, el jugador situado a la derecha del que dio, jugando una carta. Los demás jugadores, juegan la suya en el orden de rotación indicado, ateniéndose a las normas siguientes.
+
+Mientras vaya ganando la baza un contrario, es obligatorio:
+
+Asistir al palo de salida y montar.
+
+Asistir solamente si no se puede montar.
+
+Fallar si no se puede asistir, jugando triunfo.
+
+Pisar el triunfo del contrario si éste ha fallado y no se puede asistir.
+
+Se puede descartar cualquier carta cuando no se puede pisar el triunfo del contrario y también cuando ni se puede asistir ni se tiene triunfo.
+
+Cuando va ganando la baza el compañero, la única obligación es asistir, si se puede. En caso contrario, no es obligado fallar y se puede jugar cualquier carta blanca o de tantos.
+
+Una baza que no contenga triunfo, es ganada por la carta mayor del palo de salida. Una baza que contenga triunfos, es ganada por el triunfo mayor. El que gana una baza gana también la mano para iniciar la baza siguiente.
+
+Llámase capote a la jugada máxima, que consiste en que una de las parejas de compañeros haga las doce bazas. Esta jugada no tiene premio especial, pero se gana con ella un juego, o sea, media partida.
+
+Una pareja gana un juego cuando consigue anotarse 40 tantos. Existe la posibilidad de que una pareja los anote de una sola vez, si se apunta 4 ó 5 tantos de la pinta y da capote a la otra pareja, siendo lo normal hacerlo en varios juegos parciales.
+
+Una pareja gana la partida si se anota dos juegos. Los puntos que exceden de 40 en un juego no se arrastran al siguiente, que se empieza con un tanteo inicial de 0 tantos para cada pareja.
+
+## Tanteo del juego
+
+Se lleva en una hoja de papel con una casilla para cada pareja de jugadores.
+
+La primera puntuación que se hace normalmente, si hay lugar a ello, es la de tantos de la carta que pinta, apuntándose los tantos que correspondan al bando del que dio las cartas.
+
+Cada baza vale un tanto para el bando que gana. Los tantos de juego posibles son 72 (60 tantos de las cartas de valor entre todos los palos más 12 tantos de doce bazas). En cada mano puntúa solamente el bando que, por sus bazas ganadas, tenga más de 36 tantos y anota en la hoja los tantos hechos por encima de 36. Si los dos bandos suman 36 tantos, no puntúa ninguno (salvo la pinta si hay lugar a ello) y corre la mano para dar de nuevo.
+
+## Caso de excepción en la puntuación que pinta
+
+Cuando el bando que da tiene el número suficiente de tantos para completar un juego con el valor de la carta que pinta, esta valor no se anota hasta jugar la mano. Si el bando que dio hace al menos 36 tantos, se anotan aquéllos y termina el juego. Pero si hace menos tantos que el otro bando, éste anota los que le correspondan y aquél no anota los tantos de pinta. Y sigue el juego si no ha terminado en esa mano.
+
+## Manilla para dos jugadores a cartas vistas
+
+La Manilla para dos jugadores se juega a cartas vistas. Las reglas básicas son las mismas que en la Manilla de dos parejas, pero en esta modalidad cada jugador juega con 24 cartas que coloca en seis montones de 4 cartas cada uno, en los que la carta superior está descubierta descubriendo la siguiente a medida que se juega. Juega el “mano” una de las cartas descubiertas y responde el otro con una suya, con la obligación de:
+
+Asistir al palo de salida y montar.
+
+Asistir solamente si no puede montar.
+
+Fallar si no puede asistir, jugando triunfo.
+
+El que gana baza inicia la siguiente.
+
+El tanteo del juego es similar al anterior, con una ligera modificación:
+
+El que da puntúa, por la carta que pinta, si hay lugar a ello. Los puntos por las cartas de valor en las bazas ganadas son los mismos. La puntuación por bazas se hace asignando un tanto a cada cuatro cartas de bazas ganadas.
+
+Como las bazas son de dos cartas, pueden ocurrir dos casos:
+
+a) El número de bazas ganadas por cada jugador sea par. Cada uno tendrá en sus bazas ganadas un número de cartas múltiplo de cuatro siendo el número total de tantos de juego de 72, como en la modalidad anterior.
+
+b) El número de bazas ganadas por cada jugador sea impar. Cada uno tendrá en sus bazas ganadas un número de cartas múltiplo de 4 y le sobrarán dos cartas (una baza), sumando estas dos cartas sobrantes un tanto. De modo que el número total de tantos por bazas será de 13 en vez de 12 (11 de once grupos de cuatro cartas y 2 de dos grupos de dos cartas) y el número total de tantos de juego será de 73 en vez de 72.
+
+Puntúa solamente el jugador que exceda de 36 tantos y únicamente por el exceso de 36.

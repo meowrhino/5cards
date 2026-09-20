@@ -1,0 +1,218 @@
+{
+  "slug": "butifarra",
+  "name": "La Butifarra",
+  "url": "https://www.nhfournier.es/como-jugar/butifarra/",
+  "description": "Consulta el manual de cómo jugar a la butifarra, con las instrucciones completas: tipo de cartas, tanteos, número de jugadores y más tutoriales",
+  "intro": [
+    "El juego de la Butifarra surgió en Cataluña en el año 1940 y ha alcanzado tanta difusión que, en la actualidad, es la versión más jugada de la Manilla."
+  ],
+  "sections": [
+    {
+      "heading": "Objetivo del juego",
+      "paragraphs": [
+        "Conseguir ganar bazas de tantos para alcanzar la suma de puntos establecida."
+      ],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Conseguir ganar bazas de tantos para alcanzar la suma de puntos establecida."
+        }
+      ]
+    },
+    {
+      "heading": "Baraja de cartas",
+      "paragraphs": [
+        "Se juega con una baraja de cartas catalanas de 48 cartas."
+      ],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Se juega con una baraja de cartas catalanas de 48 cartas."
+        }
+      ]
+    },
+    {
+      "heading": "Número de jugadores",
+      "paragraphs": [
+        "Se juega entre cuatro jugadores, que formarán dos parejas enfrentadas entre sí."
+      ],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Se juega entre cuatro jugadores, que formarán dos parejas enfrentadas entre sí."
+        }
+      ]
+    },
+    {
+      "heading": "Orden y valor de las cartas",
+      "paragraphs": [
+        "El orden, de mayor a menor, es el siguiente: nueve, as, rey, caballo, sota, ocho, siete, seis, cinco, cuatro, tres y dos. Valor de las Cartas:",
+        "Corresponden 15 tantos a cada palo completo. Las demás cartas, llamadas blancas, no tienen valor en tantos."
+      ],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "El orden, de mayor a menor, es el siguiente: nueve, as, rey, caballo, sota, ocho, siete, seis, cinco, cuatro, tres y dos. Valor de las Cartas:"
+        },
+        {
+          "type": "table",
+          "rows": [
+            [
+              "Nueve",
+              "5 Puntos"
+            ],
+            [
+              "As",
+              "4 Puntos"
+            ],
+            [
+              "Rey",
+              "3 Puntos"
+            ],
+            [
+              "Caballo",
+              "2 Puntos"
+            ],
+            [
+              "Sota",
+              "1 Puntos"
+            ]
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Corresponden 15 tantos a cada palo completo. Las demás cartas, llamadas blancas, no tienen valor en tantos."
+        }
+      ]
+    },
+    {
+      "heading": "Distribución de las cartas",
+      "paragraphs": [
+        "Cada jugador toma una carta que descubrirá, jugando los dos jugadores que tengan cartas mayores contra los otros dos. Quien sacó la carta más alta elige sitio y es el primero en dar las cartas, sentándose frente a él su compañero y a su derecha, el jugador contrario que sacó la mayor carta.",
+        "Si saliesen dos o más cartas de igual valor, la preferencia la determina el palo, por el siguiente orden: oros, copas, espadas y bastos.",
+        "El jugador que reparte, baraja las cartas y las ofrece a cortar al de su izquierda, distribuyendo a continuación doce cartas a cada jugador, de cuatro en cuatro, siguiendo el orden de izquierda a derecha.",
+        "El orden de rotación señalado se sigue también para jugar y para el turno de dar."
+      ],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Cada jugador toma una carta que descubrirá, jugando los dos jugadores que tengan cartas mayores contra los otros dos. Quien sacó la carta más alta elige sitio y es el primero en dar las cartas, sentándose frente a él su compañero y a su derecha, el jugador contrario que sacó la mayor carta."
+        },
+        {
+          "type": "p",
+          "text": "Si saliesen dos o más cartas de igual valor, la preferencia la determina el palo, por el siguiente orden: oros, copas, espadas y bastos."
+        },
+        {
+          "type": "p",
+          "text": "El jugador que reparte, baraja las cartas y las ofrece a cortar al de su izquierda, distribuyendo a continuación doce cartas a cada jugador, de cuatro en cuatro, siguiendo el orden de izquierda a derecha."
+        },
+        {
+          "type": "p",
+          "text": "El orden de rotación señalado se sigue también para jugar y para el turno de dar."
+        }
+      ]
+    },
+    {
+      "heading": "Inicio y marcha del juego",
+      "paragraphs": [
+        "El que ha dado las cartas, es siempre el que marca el triunfo en primer lugar, si le conviene a la vista de sus cartas, y si no, delega en su compañero, quien tendrá la obligación de marcar triunfo o Butifarra, es decir, marca a jugar sin triunfo. El jugador situado a la derecha del dador, el “mano”, tiene la opción de contrar, haciendo que se pague y se cobre el doble. En último término, los jugadores que marcaron la jugada podrán recontrar, y con ello el tanteo queda cuadriplicado.",
+        "Si se ha optado por la posibilidad de jugar Butifarra, se duplica el tanteo. Si los contrarios deciden contrar, lo cuadriplican y si los jugadores que han marcado el triunfo optan por recontrar, el tanteo queda multiplicado por ocho.",
+        "Inicia el juego el jugador situado a la derecha del que dio, jugando una carta. Los demás jugadores juegan la suya en el orden de rotación indicado, ateniéndose a las normas siguientes.",
+        "Mientras vaya ganando la baza un contrario, es obligatorio:",
+        "Asistir al palo de salida y montar.",
+        "Asistir solamente si no se puede montar.",
+        "Fallar si no se puede asistir, jugando triunfo.",
+        "Pisar el triunfo del contrario si éste ha fallado y no se puede asistir.",
+        "Se puede:",
+        "Contrafallar (jugar cualquier carta), si no se puede pisar el triunfo del contrario en el caso anterior.",
+        "Descartar cualquier carta cuando no se puede asistir ni se tiene triunfo.",
+        "Cuando va ganando la baza el compañero, la única obligación es asistir, si se puede. En caso contrario, no es obligado fallar y se puede jugar cualquier carta blanca o de tantos.",
+        "Una baza que no contenga triunfo, es ganada por la carta mayor del palo de salida. Una baza que contenga triunfos es ganada por el triunfo mayor. El que gana una baza, gana también la mano para iniciar la baza siguiente. Llámase capote a la jugada máxima, que consiste en que una de las parejas de compañeros haga las doce bazas.",
+        "Una partida se juega a 100 puntos, que se pueden conseguir juego a juego."
+      ],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "El que ha dado las cartas, es siempre el que marca el triunfo en primer lugar, si le conviene a la vista de sus cartas, y si no, delega en su compañero, quien tendrá la obligación de marcar triunfo o Butifarra, es decir, marca a jugar sin triunfo. El jugador situado a la derecha del dador, el “mano”, tiene la opción de contrar, haciendo que se pague y se cobre el doble. En último término, los jugadores que marcaron la jugada podrán recontrar, y con ello el tanteo queda cuadriplicado."
+        },
+        {
+          "type": "p",
+          "text": "Si se ha optado por la posibilidad de jugar Butifarra, se duplica el tanteo. Si los contrarios deciden contrar, lo cuadriplican y si los jugadores que han marcado el triunfo optan por recontrar, el tanteo queda multiplicado por ocho."
+        },
+        {
+          "type": "p",
+          "text": "Inicia el juego el jugador situado a la derecha del que dio, jugando una carta. Los demás jugadores juegan la suya en el orden de rotación indicado, ateniéndose a las normas siguientes."
+        },
+        {
+          "type": "p",
+          "text": "Mientras vaya ganando la baza un contrario, es obligatorio:"
+        },
+        {
+          "type": "p",
+          "text": "Asistir al palo de salida y montar."
+        },
+        {
+          "type": "p",
+          "text": "Asistir solamente si no se puede montar."
+        },
+        {
+          "type": "p",
+          "text": "Fallar si no se puede asistir, jugando triunfo."
+        },
+        {
+          "type": "p",
+          "text": "Pisar el triunfo del contrario si éste ha fallado y no se puede asistir."
+        },
+        {
+          "type": "p",
+          "text": "Se puede:"
+        },
+        {
+          "type": "p",
+          "text": "Contrafallar (jugar cualquier carta), si no se puede pisar el triunfo del contrario en el caso anterior."
+        },
+        {
+          "type": "p",
+          "text": "Descartar cualquier carta cuando no se puede asistir ni se tiene triunfo."
+        },
+        {
+          "type": "p",
+          "text": "Cuando va ganando la baza el compañero, la única obligación es asistir, si se puede. En caso contrario, no es obligado fallar y se puede jugar cualquier carta blanca o de tantos."
+        },
+        {
+          "type": "p",
+          "text": "Una baza que no contenga triunfo, es ganada por la carta mayor del palo de salida. Una baza que contenga triunfos es ganada por el triunfo mayor. El que gana una baza, gana también la mano para iniciar la baza siguiente. Llámase capote a la jugada máxima, que consiste en que una de las parejas de compañeros haga las doce bazas."
+        },
+        {
+          "type": "p",
+          "text": "Una partida se juega a 100 puntos, que se pueden conseguir juego a juego."
+        }
+      ]
+    },
+    {
+      "heading": "Tanteo del Juego",
+      "paragraphs": [
+        "Se lleva en una hoja de papel con una casilla para cada pareja de jugadores.",
+        "Cada pareja contabilizará un tanto por baza ganada más el valor de las cartas que la componen. Los tantos de juego posibles son 72 (60 tantos de las cartas de valor entre todos los palos más 12 tantos de doce bazas). En cada mano puntúa solamente el bando que, por sus bazas ganadas, tenga más de 36 tantos, y anota en la hoja los tantos hechos por encima de 36. Si los dos bandos suman 36 tantos, no puntúa ninguno y corre la mano para dar de nuevo. Como ya se ha indicado, al marcar Butifarra, el tanteo queda duplicado."
+      ],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Se lleva en una hoja de papel con una casilla para cada pareja de jugadores."
+        },
+        {
+          "type": "p",
+          "text": "Cada pareja contabilizará un tanto por baza ganada más el valor de las cartas que la componen. Los tantos de juego posibles son 72 (60 tantos de las cartas de valor entre todos los palos más 12 tantos de doce bazas). En cada mano puntúa solamente el bando que, por sus bazas ganadas, tenga más de 36 tantos, y anota en la hoja los tantos hechos por encima de 36. Si los dos bandos suman 36 tantos, no puntúa ninguno y corre la mano para dar de nuevo. Como ya se ha indicado, al marcar Butifarra, el tanteo queda duplicado."
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "deckType": null,
+    "deckSize": 48,
+    "playersMin": 2,
+    "playersMax": 4,
+    "objective": "Conseguir ganar bazas de tantos para alcanzar la suma de puntos establecida.",
+    "wordCount": 694
+  }
+}

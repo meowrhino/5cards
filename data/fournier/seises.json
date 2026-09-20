@@ -1,0 +1,101 @@
+{
+  "slug": "seises",
+  "name": "Los Seises",
+  "url": "https://www.nhfournier.es/como-jugar/seises/",
+  "description": "Consulta el manual de cómo jugar a los seises, con las instrucciones completas: tipo de cartas, tanteos, número de jugadores y más tutoriales",
+  "intro": [
+    "Los Seises es un juego muy sencillo cuyo resultado depende fundamentalmente de la suerte que se tenga en el reparto"
+  ],
+  "sections": [
+    {
+      "heading": "Objetivo del juego",
+      "paragraphs": [
+        "Ser el primero en desprenderse de todas las cartas de la mano."
+      ],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Ser el primero en desprenderse de todas las cartas de la mano."
+        }
+      ]
+    },
+    {
+      "heading": "Baraja de cartas",
+      "paragraphs": [
+        "Puede jugarse con una baraja española de 40 ó 48 cartas."
+      ],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Puede jugarse con una baraja española de 40 ó 48 cartas."
+        }
+      ]
+    },
+    {
+      "heading": "Número de jugadores",
+      "paragraphs": [
+        "Como se distribuyen todas las cartas entre los jugadores, es preciso que el número de cartas que se emplee sea divisible entre el número de aquéllos. Para que el juego sea entretenido, es recomendable no jugar menos de cuatro ni más de ocho personas."
+      ],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Como se distribuyen todas las cartas entre los jugadores, es preciso que el número de cartas que se emplee sea divisible entre el número de aquéllos. Para que el juego sea entretenido, es recomendable no jugar menos de cuatro ni más de ocho personas."
+        }
+      ]
+    },
+    {
+      "heading": "Orden y valor de las cartas",
+      "paragraphs": [
+        "Para este juego, las cartas no tienen ningún orden ni valor. Lo único que se tendrá en cuenta, será el orden correlativo, ascendente y descendente de las mismas, a la hora de hacer la escalera correspondiente a cada palo."
+      ],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Para este juego, las cartas no tienen ningún orden ni valor. Lo único que se tendrá en cuenta, será el orden correlativo, ascendente y descendente de las mismas, a la hora de hacer la escalera correspondiente a cada palo."
+        }
+      ]
+    },
+    {
+      "heading": "Distribución de las cartas",
+      "paragraphs": [
+        "En el primer juego, es indiferente quién ha de dar las cartas, puesto que será “mano” el jugador que tenga el seis de oros. Éste será el que reparta las cartas en el siguiente juego y para los sucesivos, el sentido que se seguirá para el reparto de las cartas será contrario a las agujas del reloj."
+      ],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "En el primer juego, es indiferente quién ha de dar las cartas, puesto que será “mano” el jugador que tenga el seis de oros. Éste será el que reparta las cartas en el siguiente juego y para los sucesivos, el sentido que se seguirá para el reparto de las cartas será contrario a las agujas del reloj."
+        }
+      ]
+    },
+    {
+      "heading": "Inicio y marcha del juego",
+      "paragraphs": [
+        "Empezará el jugador que tenga el seis de oros, estando obligado a salir de dicha carta, que colocará descubierta sobre la mesa. El jugador siguiente deberá colocar el siete o el cinco de oros, formando hilera vertical con el seis que hay sobre la mesa. Si no tuviera ninguna de estas cartas, podrá poner junto al seis de oros, otro seis de un palo cualquiera, pasando el turno al siguiente jugador de su derecha. Por tanto, un jugador, al llegarle su turno, podrá optar por colocar cualquier carta que ligue en orden correlativo del mismo palo con las descubiertas que haya sobre la mesa o descubrir otro seis que tuviera en su mano.",
+        "De esta forma, cada jugador procurará ir desprendiéndose de todas sus cartas, para quedarse el primero sin ninguna y ganar con ello el juego. Cuando un jugador, al llegarle su turno, no pudiera desprenderse de ninguna de sus cartas, por no ligar con las de la mesa y no tener tampoco ningún seis, pondrá en el platillo el tanto que hubieren convenido antes de comenzar el juego y pasará el turno al siguiente jugador.",
+        "El primer jugador que logra desprenderse de todas sus cartas gana el juego y se lleva el plato."
+      ],
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Empezará el jugador que tenga el seis de oros, estando obligado a salir de dicha carta, que colocará descubierta sobre la mesa. El jugador siguiente deberá colocar el siete o el cinco de oros, formando hilera vertical con el seis que hay sobre la mesa. Si no tuviera ninguna de estas cartas, podrá poner junto al seis de oros, otro seis de un palo cualquiera, pasando el turno al siguiente jugador de su derecha. Por tanto, un jugador, al llegarle su turno, podrá optar por colocar cualquier carta que ligue en orden correlativo del mismo palo con las descubiertas que haya sobre la mesa o descubrir otro seis que tuviera en su mano."
+        },
+        {
+          "type": "p",
+          "text": "De esta forma, cada jugador procurará ir desprendiéndose de todas sus cartas, para quedarse el primero sin ninguna y ganar con ello el juego. Cuando un jugador, al llegarle su turno, no pudiera desprenderse de ninguna de sus cartas, por no ligar con las de la mesa y no tener tampoco ningún seis, pondrá en el platillo el tanto que hubieren convenido antes de comenzar el juego y pasará el turno al siguiente jugador."
+        },
+        {
+          "type": "p",
+          "text": "El primer jugador que logra desprenderse de todas sus cartas gana el juego y se lleva el plato."
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "deckType": "espanola",
+    "deckSize": 48,
+    "playersMin": 4,
+    "playersMax": 8,
+    "objective": "Ser el primero en desprenderse de todas las cartas de la mano.",
+    "wordCount": 388
+  }
+}
