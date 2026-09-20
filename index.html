@@ -44,6 +44,7 @@
   <link rel="stylesheet" href="css/game/game-poker.css">
   <link rel="stylesheet" href="css/game/game-hints.css">
   <link rel="stylesheet" href="css/game/game-the-mind.css">
+  <link rel="stylesheet" href="css/game/game-brisca.css">
 </head>
 <body data-game="chinchon">
 
@@ -59,6 +60,7 @@
       <button class="game-tab" data-game="virus">virus</button>
       <button class="game-tab" data-game="poker">poker</button>
       <button class="game-tab" data-game="the-mind">the mind</button>
+      <button class="game-tab" data-game="brisca">brisca</button>
     </nav>
 
     <!-- partida sin terminar -->
@@ -107,6 +109,10 @@
 
         <div id="the-mind-options" class="game-options" style="display:none;">
           <span class="action-hint">cooperativo · sin hablar</span>
+        </div>
+
+        <div id="brisca-options" class="game-options" style="display:none;">
+          <span class="action-hint">bazas con triunfo · 120 tantos · sin obligacion de asistir</span>
         </div>
       </div>
 
@@ -332,6 +338,12 @@
   <script src="js/games/the-mind/the-mind-rules.js"></script>
   <script src="js/games/the-mind/the-mind-render.js"></script>
   <script src="js/games/the-mind/the-mind.js"></script>
+
+  <!-- brisca: el primer juego traido del archivo de reglas -->
+  <script src="js/games/brisca/brisca-rules.js"></script>
+  <script src="js/games/brisca/brisca-scoring.js"></script>
+  <script src="js/games/brisca/brisca-render.js"></script>
+  <script src="js/games/brisca/brisca.js"></script>
 
   <!-- app -->
   <script src="js/app/turn-flow.js"></script>

@@ -88,8 +88,8 @@ const GameEngine = {
   },
 
   dealCards(game) {
-    /* the-mind controla su propio reparto por nivel */
-    if (game === 'the-mind') {
+    /* estos juegos reparten ellos mismos (por nivel, por bazas...) */
+    if (game === 'the-mind' || game === 'brisca') {
       this.state.players.forEach(p => { p.hand = []; });
       return;
     }
@@ -159,11 +159,6 @@ const GameEngine = {
     this.state.currentPlayerIdx = this.peekNextTurn();
     this.touch();
     return this.state.currentPlayerIdx;
-  },
-
-  skipTurn() {
-    this.nextTurn();
-    return this.nextTurn();
   },
 
   reverseDirection() {

@@ -17,6 +17,8 @@ const CardComponent = {
     el.className = 'card';
     el.dataset.id = card.id;
     el.dataset.game = game;
+    /* el estilo va por skin, el comportamiento por juego */
+    el.dataset.skin = skinOf(game);
 
     const data = card[game];
     if (!data) return el;
@@ -25,8 +27,8 @@ const CardComponent = {
     const equivIdx = SuitEquivalence.getIndex(card, game);
     if (equivIdx !== null) el.dataset.equiv = equivIdx;
 
-    /* delegar al renderer del juego */
-    const renderer = this.renderers[game];
+    /* delegar al renderer de la skin */
+    const renderer = this.renderers[skinOf(game)];
     if (renderer) renderer(el, data, card);
 
     if (options.hidden) el.classList.add('hidden-card');

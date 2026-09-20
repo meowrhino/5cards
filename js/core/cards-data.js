@@ -10,7 +10,15 @@
    5. chinchon =  48 (pos 0-47)
    ======================================== */
 
-const GAMES = ['chinchon', 'uno', 'rummikub', 'virus', 'poker', 'the-mind'];
+const GAMES = ['chinchon', 'uno', 'rummikub', 'virus', 'poker', 'the-mind', 'brisca'];
+
+/* un juego puede reutilizar el aspecto de otro: la brisca se juega con
+   la misma baraja española que el chinchon, no hace falta otra skin */
+const CARD_SKINS = { brisca: 'chinchon' };
+
+function skinOf(game) {
+  return CARD_SKINS[game] || game;
+}
 
 /* minPlayers/maxPlayers: el selector de jugadores se genera con esto,
    antes era un 2-6 fijo para todos y dejaba montar partidas imposibles */
@@ -20,7 +28,8 @@ const GAME_INFO = {
   rummikub: { name: 'rummikub', display: 'rummikub', cards: 106, perPlayer: 14, minPlayers: 2, maxPlayers: 4, rules: null, desc: 'fichas numericas, grupos y escaleras' },
   virus:    { name: 'virus',    display: 'virus',    cards: 68, perPlayer: 3, minPlayers: 2, maxPlayers: 6, rules: null, desc: 'organos, virus y medicinas' },
   poker:    { name: 'poker',    display: 'poker',    cards: 52, perPlayer: 2, minPlayers: 2, maxPlayers: 7, rules: 'texas-holdem', desc: 'texas holdem simplificado' },
-  'the-mind': { name: 'the-mind', display: 'the mind', cards: 100, perPlayer: 1, minPlayers: 2, maxPlayers: 4, rules: null, desc: 'cooperativo: jugar 1-100 en orden sin hablar' }
+  'the-mind': { name: 'the-mind', display: 'the mind', cards: 100, perPlayer: 1, minPlayers: 2, maxPlayers: 4, rules: null, desc: 'cooperativo: jugar 1-100 en orden sin hablar' },
+  brisca:   { name: 'brisca',   display: 'brisca',   cards: 40, perPlayer: 3, minPlayers: 2, maxPlayers: 4, rules: 'brisca', desc: 'bazas con triunfo, manos de 3 cartas' }
 };
 
 /* simbolos de palos */
@@ -124,6 +133,8 @@ function buildMasterDeck() {
         },
         virus: buildVirusCard_ZoneA(val, suits.virus, suitIdx)
       };
+      /* la brisca comparte la carta española del chinchon */
+      deck[pos].brisca = deck[pos].chinchon;
     }
   }
 
@@ -262,7 +273,11 @@ function buildMasterDeck() {
 /* ---- funciones de consulta ---- */
 
 function getCardsForGame(game, masterDeck) {
-  return masterDeck.filter(card => card[game] !== null);
+  /* != null cubre null (zonas que no tienen ese juego) y undefined
+     (skins añadidas solo a una zona, como la brisca) */
+  const cards = masterDeck.filter(card => card[game] != null);
+  if (game === 'brisca') return BriscaRules.buildDeck(cards);
+  return cards;
 }
 
 function getCardCountForGame(game) {

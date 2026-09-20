@@ -91,17 +91,12 @@ const UnoGame = {
   },
 
   askForColor(callback) {
-    ModalManager.showColorPicker();
-    setTimeout(() => {
-      document.querySelectorAll('.color-choice').forEach(btn => {
-        btn.addEventListener('click', () => {
-          GameEngine.state.gameSpecific.chosenColor = btn.dataset.color;
-          GameLog.push(GameEngine.state.currentPlayerIdx, `eligio ${btn.dataset.color}`, '🎨');
-          ModalManager.close(btn.dataset.color);
-          if (callback) callback();
-        });
-      });
-    }, 50);
+    ModalManager.chooseColor().then(color => {
+      if (!color) return;
+      GameEngine.state.gameSpecific.chosenColor = color;
+      GameLog.push(GameEngine.state.currentPlayerIdx, `eligio ${color}`, '🎨');
+      if (callback) callback();
+    });
   },
 
   getColorHex(color) {

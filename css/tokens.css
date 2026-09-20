@@ -88,6 +88,21 @@ body[data-game="chinchon"] {
 /* ========================================
    uno: negro + 4 colores teletexto puros
    ======================================== */
+body[data-game="brisca"] {
+  --bg-primary: #5a2d0c;
+  --bg-secondary: #331a06;
+  --bg-surface: #4a2409;
+  --bg-surface-solid: #4a2409;
+  --accent: var(--tt-yellow);
+  --accent-secondary: var(--tt-white);
+  --text-primary: var(--tt-white);
+  --text-secondary: var(--tt-yellow);
+  --nav-bg: var(--tt-black);
+  --nav-active-bg: var(--tt-yellow);
+  --nav-active-text: var(--tt-black);
+  --btn-bg: var(--tt-black);
+}
+
 body[data-game="uno"] {
   --bg-primary: var(--tt-black);
   --bg-secondary: var(--tt-black);

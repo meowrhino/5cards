@@ -93,3 +93,89 @@ se mejoraron significativamente los estilos CSS de todas las cartas, implementan
 
 todas las transformaciones funcionan correctamente con animaciones suaves.
 
+
+
+## 2026-09-20 — fase: jugabilidad de pasar el movil, archivo de reglas y brisca
+
+### sinopsis
+
+revision de jugabilidad probando la app de verdad en viewport 375x812 (partida
+real de uno a 3 jugadores), no solo leyendo codigo. el diagnostico: el proyecto
+resolvia bien el *secreto* (bloqueo por jugador) pero no el *traspaso*, que es
+el 90% de jugar con un solo movil. de ahi salieron tres bloques de trabajo.
+
+### 1. el ciclo del turno
+
+lo que se medio y se confirmo antes de tocar nada:
+
+- al pulsar "jugar" en uno, el estado saltaba **instantaneamente** de la mano
+  del jugador 1 a la pantalla de contraseña del jugador 2, con el movil todavia
+  en la mano del primero
+- `grep localStorage` → cero coincidencias: nada de persistencia
+- con 14 cartas (el reparto de rummikub) la mano se apilaba en 3 filas
+  superpuestas, el contenedor crecia de 179px a 262px y el boton de accion
+  quedaba recortado contra el borde
+
+modulos nuevos:
+
+- `game-log.js` — registro publico de jugadas. cada accion visible en la mesa
+  deja entrada y al desbloquear se muestra "desde tu ultimo turno". sin esto,
+  en chinchon no sabias si el anterior robo del mazo o del descarte
+- `snapshot.js` — copia del estado al empezar el turno; permite deshacer
+  mientras el movil siga siendo tuyo. `restore()` vacia y rellena el objeto
+  existente en vez de sustituirlo, para no invalidar referencias de otros modulos
+- `persistence.js` — guardado en localStorage tras cada cambio y cartel de
+  "continuar partida" al arrancar
+- `serialize.js` — los Set del estado (poker.actedThisRound, the-mind.
+  shurikenVotes) no sobreviven a JSON: se envuelven en {__set:[...]}
+- `device.js` — wake lock, auto-bloqueo por visibilitychange e inactividad,
+  vibracion (solo tras el primer gesto real, si no el navegador la bloquea y
+  ensucia la consola)
+- `turn-flow.js` + `handoff-screen.js` — el paso explicito de traspaso
+- `js/ui/unlock/` — tres modos de desbloqueo con el mismo contrato: mantener
+  pulsado (por defecto, sin teclado), PIN con teclado propio, texto
+
+### 2. limpieza
+
+- los 7 `alert()` nativos pasan a `ActionHint` (en ios el alert muestra el
+  dominio y bloquea el hilo)
+- "← atras" pedia contraseña para *bloquear*, al reves de lo logico: ahora
+  candado gratis + menu con historial, reglas y abandonar
+- el selector de jugadores se genera desde `GAME_INFO` por juego en vez de un
+  2-6 fijo (the-mind decia 2-4 y dejaba elegir 6)
+- el que sale rota cada ronda; antes salia siempre el jugador 1
+- la mano pasa a carril horizontal con scroll-snap, y un boton "mover" separa
+  hojear de reordenar (en un carril horizontal serian el mismo gesto)
+- fuera codigo muerto: `ModalManager.showPasswordPrompt`/`bindPasswordEvents`,
+  `GameEngine.skipTurn`, `App.renderCurrentHand`
+- el selector de color del uno devuelve promesa en vez de que el llamante
+  vuelva a enganchar listeners sobre los mismos botones
+
+### 3. archivo de reglas y brisca
+
+`tools/scrape-fournier.py` descarga las 27 fichas de nhfournier.es a json
+estructurado + markdown. el visor (`rules-screen.js`) las consulta dentro de la
+app con filtros, y el service worker las cachea: un archivo que solo existe con
+internet no es un archivo.
+
+la **brisca** es el primer juego que hace el camino archivo → jugable, y se
+eligio a proposito: manos de 3 cartas, un toque por turno y toda la mesa
+publica salvo la mano. es el mejor caso posible para pasar un movil.
+
+para no duplicar la baraja se introdujo el concepto de *skin*: `CARD_SKINS`
+mapea brisca → chinchon y la carta de brisca **es** la misma referencia que la
+de chinchon. el estilo pasa a ir por `data-skin` y el comportamiento por
+`data-game`.
+
+tambien obligo a arreglar `getCardsForGame`, que filtraba con `!== null` y por
+tanto dejaba pasar las cartas donde la skin era `undefined`.
+
+### verificacion
+
+- `tests/index.html`: 64 comprobaciones, todas pasan
+- partida completa de brisca a 2 jugadores simulada: 20 bazas, las dos manos
+  vacias, mazo agotado y **los tantos suman exactamente 120**
+- los 7 juegos arrancan, reparten y renderizan sin un solo error en consola
+- probado en el navegador: hold-to-unlock, traspaso, deshacer (estado, mano,
+  log y descarte vuelven atras), reanudar tras recarga, auto-bloqueo al perder
+  el foco, y la mano de 14 cartas ya en una sola fila

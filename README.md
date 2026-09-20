@@ -1,62 +1,123 @@
 # 5cards
 
-Una web interactiva vanilla JavaScript que transforma una baraja española entre **5 juegos diferentes** con estéticas únicas y sistema multijugador local con contraseñas.
+Una baraja, muchos juegos. Web vanilla (sin frameworks, sin build) pensada para
+**partidas en una mesa real pasando un solo móvil entre los jugadores**, más un
+**archivo libre de reglas** de los juegos de baraja españoles.
 
-## 🎮 Juegos Incluidos
+```bash
+python3 -m http.server 8000   # y abrir http://localhost:8000
+```
 
-1. **Chinchón** — Juego clásico español con puntuación
-2. **UNO** — Adaptado con baraja española
-3. **Rummikub** — Fichas con números y colores
-4. **Virus** — Juego de cartas con órganos, virus y medicinas
-5. **Poker** — Texas Hold'em simplificado con baraja inglesa
+Hace falta servirlo (no vale abrir `index.html` con doble clic): el archivo de
+reglas se carga con `fetch` y el service worker necesita origen http.
 
-## 🎨 Características
+---
 
-- **Baraja unificada**: Un array maestro de 108 cartas que se transforma entre juegos
-- **Estéticas únicas**: Cada juego tiene su propio tema visual y paleta de colores
-- **Transformaciones fluidas**: Animaciones suaves al cambiar de juego
-- **Multijugador local**: Sistema de contraseñas para proteger la mano de cada jugador
-- **Responsive**: Funciona en desktop y móvil
-- **Vanilla JS**: Sin dependencias externas, código modular y limpio
+## 🎮 Juegos
 
-## 🚀 Cómo Usar
+| juego | jugadores | baraja |
+|---|---|---|
+| **chinchón** | 2-8 | española 40/48/80 |
+| **uno** | 2-8 | 108 cartas |
+| **rummikub** | 2-4 | 106 fichas |
+| **virus** | 2-6 | 68 cartas |
+| **poker** | 2-7 | inglesa 52 (Texas Hold'em) |
+| **the mind** | 2-4 | 1-100, cooperativo |
+| **brisca** | 2-4 | española 40 |
 
-1. Abre `index.html` en tu navegador
-2. Selecciona un juego en el menú superior
-3. Configura el número de jugadores y opciones
-4. Haz clic en **JUGAR**
-5. Cada jugador introduce su contraseña para desbloquear su mano
-6. ¡A jugar!
+Todos salen del mismo array maestro de 108 cartas: cada posición lleva una
+"skin" por juego, y un juego puede reutilizar la skin de otro (la brisca usa la
+carta española del chinchón).
 
-## 📁 Estructura del Proyecto
+---
+
+## 📱 Pensado para un móvil que cambia de manos
+
+Es el eje del diseño, no un extra:
+
+- **Pantalla de traspaso** — al acabar tu turno ves el resumen de lo que has
+  hecho, a quién le toca, y un botón de **deshacer** que solo existe mientras el
+  móvil sigue en tu mano. En cuanto lo pasas, la jugada es firme.
+- **Log público** — cada acción visible en la mesa deja entrada. Al desbloquear
+  ves *"desde tu último turno"*: qué se jugó, quién robó del descarte, quién
+  cambió el sentido. Sin esto, pasando el móvil no te enteras de nada.
+- **Tres formas de desbloquear** — mantener pulsado (por defecto, sin teclado),
+  PIN de 4 dígitos con teclado propio, o contraseña de texto.
+- **Auto-bloqueo** — si la app pierde el foco o nadie toca en 45 s, la mano se
+  tapa sola.
+- **Wake lock** — la pantalla no se apaga mientras la partida está en marcha.
+- **Se reanuda** — la partida se guarda tras cada cambio; si el móvil se
+  bloquea o el navegador descarta la pestaña, al volver sigue donde estaba.
+- **Instalable y sin conexión** — manifest + service worker. Se juega en bares
+  y trenes.
+
+---
+
+## 📖 Archivo de reglas
+
+Las **27 fichas** de [nhfournier.es/como-jugar](https://www.nhfournier.es/como-jugar/)
+descargadas y consultables dentro de la app, con filtros por baraja y número de
+jugadores, y marcadas las que ya se pueden jugar aquí.
+
+```bash
+python3 tools/scrape-fournier.py              # todas
+python3 tools/scrape-fournier.py --slug mus   # una
+python3 tools/scrape-fournier.py --no-cache   # ignorar la cache local
+```
+
+Genera:
+
+- `data/fournier/index.json` — índice con baraja, jugadores y objetivo
+- `data/fournier/<slug>.json` — ficha estructurada (apartados, tablas, meta)
+- `docs/reglas/<slug>.md` — la misma ficha en markdown legible
+
+La idea es que las reglas sobrevivan aunque la web original cambie, y que cada
+juego del archivo pueda acabar siendo jugable aquí. La brisca es el primero que
+ha hecho ese camino.
+
+---
+
+## 📁 Estructura
 
 ```
 5cards/
-├── index.html              # Estructura HTML (5 pantallas)
-├── README.md               # Este archivo
+├── index.html           una sola página, seis pantallas
+├── manifest.json  sw.js  icon.svg
 ├── css/
-│   ├── reset.css          # Normalización
-│   ├── themes.css         # Temas por juego
-│   ├── cards.css          # Diseño de cartas
-│   ├── layout.css         # Estructura general
-│   └── game.css           # Elementos de partida
+│   ├── tokens.css themes.css layout.css reset.css transitions.css
+│   ├── screens/    una hoja por pantalla
+│   ├── cards/      una hoja por skin de carta
+│   └── game/       componentes de la mesa
 ├── js/
-│   ├── cards-data.js      # Array maestro de 108 cartas
-│   ├── card-renderer.js   # Renderizado visual
-│   ├── game-engine.js     # Motor genérico
-│   ├── chinchon.js        # Lógica del chinchón
-│   ├── uno.js             # Lógica del UNO
-│   ├── rummikub.js        # Lógica del rummikub
-│   ├── virus.js           # Lógica del virus
-│   ├── poker.js           # Lógica del poker
-│   └── app.js             # Controlador principal
-└── manus/
-    └── proceso.md         # Documentación del proceso
+│   ├── core/       motor, baraja, log, snapshot, persistencia, dispositivo
+│   ├── ui/         pantallas y componentes
+│   │   └── unlock/   un módulo por forma de desbloquear
+│   ├── games/      un directorio por juego (rules · scoring · render · orquestador)
+│   ├── rules/      acceso al archivo de reglas
+│   └── app/        orquestación y flujo de turnos
+├── data/fournier/  reglas en JSON
+├── docs/reglas/    reglas en markdown
+├── tests/          abrir tests/index.html en el navegador
+├── tools/          scraper
+└── manus/          proceso y revisiones
 ```
 
-## 🎯 Sistema de Equivalencias
+Cada juego implementa el mismo contrato (`init`, `renderTable`, `renderActions`)
+y se registra en `GameInterface`. Añadir un juego es crear su directorio y
+enchufarlo; no hay que tocar el motor.
 
-Cada carta tiene 5 "skins" según el juego activo:
+---
+
+## ✅ Tests
+
+Sin dependencias: abre `tests/index.html` en el navegador. Cubren las reglas que,
+si se rompen, arruinan una partida sin que se note (orden y tanteo de la brisca,
+quién gana la baza, serialización del estado guardado, integridad de la baraja
+maestra, log público).
+
+---
+
+## 🎯 Equivalencias entre juegos
 
 | Española | Poker | UNO | Rummikub | Virus |
 |----------|-------|-----|----------|-------|
@@ -65,32 +126,12 @@ Cada carta tiene 5 "skins" según el juego activo:
 | Espadas (negra) | Picas ♠ | Azul | Negro | Azul |
 | Bastos (negra) | Tréboles ♣ | Verde | Azul | Verde |
 
-## 🔐 Multijugador Local
-
-- Cada jugador tiene una contraseña personal
-- Al pasar el turno, la mano se bloquea automáticamente
-- El siguiente jugador debe introducir su contraseña para desbloquear
-- Botón "atrás" permite volver atrás pidiendo contraseña
-
-## 🎨 Estéticas
-
-- **Chinchón**: Verde clásico, cartas españolas elegantes
-- **UNO**: Negro intenso, colores vivos (amarillo, rojo, azul, verde)
-- **Rummikub**: Azul oscuro, fichas con números grandes
-- **Virus**: Verde fosforito (#39ff14), cartas redondeadas
-- **Poker**: Patrón geométrico azul/blanco, cartas blanco/negro
-
-## 💻 Tecnologías
-
-- HTML5 semántico
-- CSS3 (gradientes, transiciones, animaciones)
-- JavaScript vanilla (sin frameworks)
-- Emojis para símbolos visuales
-
-## 📝 Licencia
-
-Proyecto de Manu — diseñador y artista web
-
 ---
+
+## 📝 Licencia y créditos
+
+Proyecto de Manu — diseñador y artista web.
+Las reglas del archivo proceden de [nhfournier.es](https://www.nhfournier.es/como-jugar/),
+recogidas aquí para consulta libre con enlace a la fuente en cada ficha.
 
 **Repositorio**: https://github.com/meowrhino/5cards

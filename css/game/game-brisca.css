@@ -1,0 +1,103 @@
+/* ========================================
+   game-brisca.css — mesa de la brisca
+   ======================================== */
+
+.brisca-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 24px;
+}
+
+.brisca-label {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+  text-align: center;
+  margin-bottom: 2px;
+}
+
+.brisca-trump__card {
+  /* la carta del triunfo se enseña tumbada bajo el mazo: el hueco se
+     reserva ya girado para que no se coma a los vecinos */
+  width: var(--card-h);
+  height: var(--card-w);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brisca-trump__card .card {
+  transform: rotate(90deg);
+  flex: 0 0 auto;
+}
+
+.brisca-trump__suit {
+  font-size: 2.4rem;
+}
+
+.brisca-pile__count {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 2rem;
+  text-align: center;
+  color: var(--accent);
+  border: 3px solid var(--accent);
+  min-width: 56px;
+  padding: 6px 4px;
+}
+
+.brisca-trick {
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+  justify-content: center;
+  flex-wrap: wrap;
+  min-height: calc(var(--card-h) + 20px);
+}
+
+.brisca-play {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.brisca-play__name {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.brisca-last {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--text-secondary);
+  text-align: center;
+  padding: 0 8px;
+}
+
+.brisca-scores {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+}
+
+.brisca-score {
+  padding: 2px 8px;
+  border: 2px solid var(--text-secondary);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+
+.brisca-score--me {
+  border-color: var(--accent);
+  color: var(--accent);
+}

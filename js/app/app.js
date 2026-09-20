@@ -65,10 +65,7 @@ const App = {
 
     AppHand.render();
     AppHand.bindTools();
-  },
-
-  /* compat: algunos modulos viejos llaman App.renderCurrentHand */
-  renderCurrentHand() { AppHand.render(); }
+  }
 };
 
 document.addEventListener('DOMContentLoaded', () => App.init());

@@ -3,18 +3,18 @@
    pips numericos + figuras (sota/caballo/rey)
    ======================================== */
 
-.card[data-game="chinchon"] {
+.card[data-skin="chinchon"] {
   background: var(--tt-white);
   color: var(--tt-black);
   border: 3px solid var(--tt-black);
 }
 
-.card[data-game="chinchon"][data-suit="oros"]    { color: var(--tt-yellow); background: var(--tt-black); border-color: var(--tt-yellow); }
-.card[data-game="chinchon"][data-suit="copas"]   { color: var(--tt-red); }
-.card[data-game="chinchon"][data-suit="espadas"] { color: var(--tt-cyan); background: var(--tt-black); border-color: var(--tt-cyan); }
-.card[data-game="chinchon"][data-suit="bastos"]  { color: var(--tt-green); }
+.card[data-skin="chinchon"][data-suit="oros"]    { color: var(--tt-yellow); background: var(--tt-black); border-color: var(--tt-yellow); }
+.card[data-skin="chinchon"][data-suit="copas"]   { color: var(--tt-red); }
+.card[data-skin="chinchon"][data-suit="espadas"] { color: var(--tt-cyan); background: var(--tt-black); border-color: var(--tt-cyan); }
+.card[data-skin="chinchon"][data-suit="bastos"]  { color: var(--tt-green); }
 
-.card[data-game="chinchon"] .card-center-area {
+.card[data-skin="chinchon"] .card-center-area {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -65,5 +65,5 @@
 }
 
 @media (max-width: 768px) {
-  .card[data-game="chinchon"] .card-center-area { padding: 10px 4px; }
+  .card[data-skin="chinchon"] .card-center-area { padding: 10px 4px; }
 }

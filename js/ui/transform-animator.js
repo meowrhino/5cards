@@ -52,6 +52,7 @@ const TransformAnimator = {
           const data = card[toGame];
           if (data) {
             el.dataset.game = toGame;
+            el.dataset.skin = skinOf(toGame);
             const equivIdx = SuitEquivalence.getIndex(card, toGame);
             if (equivIdx !== null) el.dataset.equiv = equivIdx;
             else delete el.dataset.equiv;
@@ -62,7 +63,7 @@ const TransformAnimator = {
             delete el.dataset.vtype;
             delete el.dataset.type;
 
-            const renderer = CardComponent.renderers[toGame];
+            const renderer = CardComponent.renderers[skinOf(toGame)];
             if (renderer) renderer(el, data, card);
           }
         }, delay + 250);
