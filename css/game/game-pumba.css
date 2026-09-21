@@ -1,0 +1,88 @@
+/* ========================================
+   game-pumba.css — mesa del pumba
+   ======================================== */
+
+.pumba-head {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.pumba-suit {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 2px 10px;
+  border: 3px solid var(--accent);
+  color: var(--accent);
+}
+
+.pumba-suit[data-suit="copas"]   { border-color: var(--tt-red); color: var(--tt-red); }
+.pumba-suit[data-suit="oros"]    { border-color: var(--tt-yellow); color: var(--tt-yellow); }
+.pumba-suit[data-suit="espadas"] { border-color: var(--tt-cyan); color: var(--tt-cyan); }
+.pumba-suit[data-suit="bastos"]  { border-color: var(--tt-green); color: var(--tt-green); }
+
+.pumba-others {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+}
+
+.pumba-other {
+  padding: 2px 8px;
+  border: 2px solid var(--text-secondary);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+
+/* a uno le queda una carta: eso hay que verlo */
+.pumba-other--alert {
+  border-color: var(--tt-red);
+  color: var(--tt-red);
+  animation: pumbaAlert 900ms steps(2, end) infinite;
+}
+
+@keyframes pumbaAlert {
+  50% { opacity: 0.45; }
+}
+
+.pumba-legend {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  padding: 0 8px;
+}
+
+.pumba-legend__item {
+  white-space: nowrap;
+  opacity: 0.85;
+}
+
+.btn--warn {
+  background: var(--tt-red);
+  color: var(--tt-white);
+  border: 3px solid var(--tt-black);
+  box-shadow: 4px 4px 0 var(--tt-black);
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 12px 20px;
+  min-height: 48px;
+  cursor: pointer;
+}
+
+.draw-pile small {
+  display: block;
+  font-size: 1rem;
+  font-family: var(--font-display);
+}

@@ -45,6 +45,7 @@
   <link rel="stylesheet" href="css/game/game-hints.css">
   <link rel="stylesheet" href="css/game/game-the-mind.css">
   <link rel="stylesheet" href="css/game/game-brisca.css">
+  <link rel="stylesheet" href="css/game/game-pumba.css">
 </head>
 <body data-game="chinchon">
 
@@ -61,6 +62,7 @@
       <button class="game-tab" data-game="poker">poker</button>
       <button class="game-tab" data-game="the-mind">the mind</button>
       <button class="game-tab" data-game="brisca">brisca</button>
+      <button class="game-tab" data-game="pumba">pumba</button>
     </nav>
 
     <!-- partida sin terminar -->
@@ -113,6 +115,14 @@
 
         <div id="brisca-options" class="game-options" style="display:none;">
           <span class="action-hint">bazas con triunfo · 120 tantos · sin obligacion de asistir</span>
+        </div>
+
+        <div id="pumba-options" class="game-options" style="display:none;">
+          <label>eliminar a: <select id="pumba-limit">
+            <option value="50">50 puntos</option>
+            <option value="100" selected>100 puntos</option>
+            <option value="150">150 puntos</option>
+          </select></label>
         </div>
       </div>
 
@@ -262,6 +272,7 @@
   <script src="js/core/event-bus.js"></script>
   <script src="js/core/serialize.js"></script>
   <script src="js/core/suit-equivalence.js"></script>
+  <script src="js/core/spanish-deck.js"></script>
   <script src="js/core/cards-data.js"></script>
   <script src="js/core/card-label.js"></script>
   <script src="js/core/game-log.js"></script>
@@ -344,6 +355,12 @@
   <script src="js/games/brisca/brisca-scoring.js"></script>
   <script src="js/games/brisca/brisca-render.js"></script>
   <script src="js/games/brisca/brisca.js"></script>
+
+  <!-- pumba: el uno original, con baraja española -->
+  <script src="js/games/pumba/pumba-rules.js"></script>
+  <script src="js/games/pumba/pumba-scoring.js"></script>
+  <script src="js/games/pumba/pumba-render.js"></script>
+  <script src="js/games/pumba/pumba.js"></script>
 
   <!-- app -->
   <script src="js/app/turn-flow.js"></script>

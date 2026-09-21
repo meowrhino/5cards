@@ -103,6 +103,21 @@ body[data-game="brisca"] {
   --btn-bg: var(--tt-black);
 }
 
+body[data-game="pumba"] {
+  --bg-primary: #1a1a5e;
+  --bg-secondary: #0d0d33;
+  --bg-surface: #141447;
+  --bg-surface-solid: #141447;
+  --accent: var(--tt-magenta);
+  --accent-secondary: var(--tt-cyan);
+  --text-primary: var(--tt-white);
+  --text-secondary: var(--tt-cyan);
+  --nav-bg: var(--tt-black);
+  --nav-active-bg: var(--tt-magenta);
+  --nav-active-text: var(--tt-black);
+  --btn-bg: var(--tt-black);
+}
+
 body[data-game="uno"] {
   --bg-primary: var(--tt-black);
   --bg-secondary: var(--tt-black);

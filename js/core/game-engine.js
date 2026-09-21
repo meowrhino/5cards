@@ -41,6 +41,7 @@ const GameEngine = {
         chips: 1000,
         bet: 0,
         folded: false,
+        eliminated: false,
         lastSeenLog: 0
       });
     }
@@ -89,7 +90,7 @@ const GameEngine = {
 
   dealCards(game) {
     /* estos juegos reparten ellos mismos (por nivel, por bazas...) */
-    if (game === 'the-mind' || game === 'brisca') {
+    if (game === 'the-mind' || game === 'brisca' || game === 'pumba') {
       this.state.players.forEach(p => { p.hand = []; });
       return;
     }
@@ -148,10 +149,16 @@ const GameEngine = {
     return card;
   },
 
-  /* a quien le tocaria sin mover el turno todavia */
+  /* a quien le tocaria sin mover el turno todavia
+     los eliminados (pumba) se saltan */
   peekNextTurn(from) {
     const n = this.state.players.length;
     const start = from === undefined ? this.state.currentPlayerIdx : from;
+    let idx = start;
+    for (let i = 0; i < n; i++) {
+      idx = (idx + this.state.direction + n) % n;
+      if (!this.state.players[idx].eliminated) return idx;
+    }
     return (start + this.state.direction + n) % n;
   },
 

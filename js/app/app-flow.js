@@ -49,6 +49,9 @@ const AppFlow = {
       case 'rummikub':
         gameModule.init(num('rummikub-min', 30));
         break;
+      case 'pumba':
+        gameModule.init(num('pumba-limit', 100));
+        break;
       case 'poker': {
         const variantEl = document.getElementById('poker-variant');
         gameModule.init(num('poker-chips', 1000), variantEl ? variantEl.value : 'no-limit');
@@ -72,10 +75,17 @@ const AppFlow = {
       this._nextRoundPoker(gameModule);
     } else {
       /* el que sale rota cada ronda: salir siempre el primero es ventaja */
-      GameEngine.state.currentPlayerIdx =
-        (GameEngine.state.round - 1) % GameEngine.state.players.length;
+      const n = GameEngine.state.players.length;
+      let salida = (GameEngine.state.round - 1) % n;
+      /* si ese esta eliminado (pumba), al siguiente que siga en pie */
+      for (let i = 0; i < n && GameEngine.state.players[salida].eliminated; i++) {
+        salida = (salida + 1) % n;
+      }
+      GameEngine.state.currentPlayerIdx = salida;
       if (App.currentGame === 'chinchon') {
         gameModule.init(gameModule.scoreLimit);
+      } else if (App.currentGame === 'pumba') {
+        gameModule.init(GameEngine.state.gameSpecific.scoreLimit);
       } else {
         gameModule.init();
       }

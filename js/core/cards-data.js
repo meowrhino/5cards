@@ -10,11 +10,11 @@
    5. chinchon =  48 (pos 0-47)
    ======================================== */
 
-const GAMES = ['chinchon', 'uno', 'rummikub', 'virus', 'poker', 'the-mind', 'brisca'];
+const GAMES = ['chinchon', 'uno', 'rummikub', 'virus', 'poker', 'the-mind', 'brisca', 'pumba'];
 
 /* un juego puede reutilizar el aspecto de otro: la brisca se juega con
    la misma baraja española que el chinchon, no hace falta otra skin */
-const CARD_SKINS = { brisca: 'chinchon' };
+const CARD_SKINS = { brisca: 'chinchon', pumba: 'chinchon' };
 
 function skinOf(game) {
   return CARD_SKINS[game] || game;
@@ -24,12 +24,13 @@ function skinOf(game) {
    antes era un 2-6 fijo para todos y dejaba montar partidas imposibles */
 const GAME_INFO = {
   chinchon: { name: 'chinchon', display: 'chinchon', cards: 48, perPlayer: 7, minPlayers: 2, maxPlayers: 8, rules: 'chinchon', desc: 'clasico español de escaleras y grupos' },
-  uno:      { name: 'uno',      display: 'uno',      cards: 108, perPlayer: 7, minPlayers: 2, maxPlayers: 8, rules: 'pumba', desc: 'colores, acciones y cambios de sentido' },
+  uno:      { name: 'uno',      display: 'uno',      cards: 108, perPlayer: 7, minPlayers: 2, maxPlayers: 8, rules: null, desc: 'colores, acciones y cambios de sentido' },
   rummikub: { name: 'rummikub', display: 'rummikub', cards: 106, perPlayer: 14, minPlayers: 2, maxPlayers: 4, rules: null, desc: 'fichas numericas, grupos y escaleras' },
   virus:    { name: 'virus',    display: 'virus',    cards: 68, perPlayer: 3, minPlayers: 2, maxPlayers: 6, rules: null, desc: 'organos, virus y medicinas' },
   poker:    { name: 'poker',    display: 'poker',    cards: 52, perPlayer: 2, minPlayers: 2, maxPlayers: 7, rules: 'texas-holdem', desc: 'texas holdem simplificado' },
   'the-mind': { name: 'the-mind', display: 'the mind', cards: 100, perPlayer: 1, minPlayers: 2, maxPlayers: 4, rules: null, desc: 'cooperativo: jugar 1-100 en orden sin hablar' },
-  brisca:   { name: 'brisca',   display: 'brisca',   cards: 40, perPlayer: 3, minPlayers: 2, maxPlayers: 4, rules: 'brisca', desc: 'bazas con triunfo, manos de 3 cartas' }
+  brisca:   { name: 'brisca',   display: 'brisca',   cards: 40, perPlayer: 3, minPlayers: 2, maxPlayers: 4, rules: 'brisca', desc: 'bazas con triunfo, manos de 3 cartas' },
+  pumba:    { name: 'pumba',    display: 'pumba',    cards: 40, perPlayer: 4, minPlayers: 2, maxPlayers: 6, rules: 'pumba', desc: 'descartate el primero · seis cartas con efecto' }
 };
 
 /* simbolos de palos */
@@ -133,8 +134,9 @@ function buildMasterDeck() {
         },
         virus: buildVirusCard_ZoneA(val, suits.virus, suitIdx)
       };
-      /* la brisca comparte la carta española del chinchon */
+      /* brisca y pumba comparten la carta española del chinchon */
       deck[pos].brisca = deck[pos].chinchon;
+      deck[pos].pumba = deck[pos].chinchon;
     }
   }
 
@@ -276,7 +278,8 @@ function getCardsForGame(game, masterDeck) {
   /* != null cubre null (zonas que no tienen ese juego) y undefined
      (skins añadidas solo a una zona, como la brisca) */
   const cards = masterDeck.filter(card => card[game] != null);
-  if (game === 'brisca') return BriscaRules.buildDeck(cards);
+  /* los juegos de baraja española de 40 se quedan sin ochos ni nueves */
+  if (game === 'brisca' || game === 'pumba') return SpanishDeck.forty(cards, game);
   return cards;
 }
 

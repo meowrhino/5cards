@@ -57,6 +57,60 @@ Test.suite('brisca · cambiar el siete', () => {
     BriscaRules.canSwapTrump([carta(7, 'copas')], carta(1, 'oros')), null);
 });
 
+/* ---------------------------------------- pumba */
+
+const cartaP = (valor, palo) =>
+  MASTER_DECK.find(c => c.pumba && c.pumba.value === valor && c.pumba.suit === palo);
+
+Test.suite('pumba · baraja y tanteo', () => {
+  const deck = PumbaRules.buildDeck(MASTER_DECK);
+  Test.is('tiene 40 cartas', deck.length, 40);
+  Test.is('sin ochos ni nueves',
+    deck.filter(c => [8, 9].includes(c.pumba.value)).length, 0);
+  /* segun la tabla de la ficha: as 1, tres 3 ... caballo 9, rey/dos/sota 10 */
+  Test.is('el as vale 1', PumbaRules.points(cartaP(1, 'oros')), 1);
+  Test.is('el caballo vale 9', PumbaRules.points(cartaP(11, 'oros')), 9);
+  Test.is('el dos vale 10', PumbaRules.points(cartaP(2, 'oros')), 10);
+  Test.is('la sota vale 10', PumbaRules.points(cartaP(10, 'oros')), 10);
+  Test.is('la baraja entera suma 260', PumbaRules.sumPoints(deck), 260);
+});
+
+Test.suite('pumba · que se puede echar', () => {
+  const top = cartaP(5, 'copas');
+  Test.is('mismo palo vale',
+    PumbaRules.canPlay(cartaP(3, 'copas'), top, 'copas', 0), true);
+  Test.is('mismo numero de otro palo vale',
+    PumbaRules.canPlay(cartaP(5, 'oros'), top, 'copas', 0), true);
+  Test.is('otro palo y otro numero no vale',
+    PumbaRules.canPlay(cartaP(4, 'oros'), top, 'copas', 0), false);
+  Test.is('la sota es comodin',
+    PumbaRules.canPlay(cartaP(10, 'oros'), top, 'copas', 0), true);
+  Test.is('el dos se echa cuando sea',
+    PumbaRules.canPlay(cartaP(2, 'oros'), top, 'copas', 0), true);
+
+  /* con doses encima solo salva otro dos, ni siquiera la sota */
+  Test.is('con +2 pendiente solo vale un dos',
+    PumbaRules.canPlay(cartaP(2, 'bastos'), top, 'copas', 2), true);
+  Test.is('con +2 pendiente la sota no salva',
+    PumbaRules.canPlay(cartaP(10, 'copas'), top, 'copas', 2), false);
+  Test.is('con +2 pendiente el palo no salva',
+    PumbaRules.canPlay(cartaP(3, 'copas'), top, 'copas', 2), false);
+});
+
+Test.suite('pumba · efectos de las seis especiales', () => {
+  Test.is('as = silencio', PumbaRules.effectOf(cartaP(1, 'oros')), 'silence');
+  Test.is('dos = roba dos', PumbaRules.effectOf(cartaP(2, 'oros')), 'draw2');
+  Test.is('siete = cambia sentido', PumbaRules.effectOf(cartaP(7, 'oros')), 'reverse');
+  Test.is('sota = comodin', PumbaRules.effectOf(cartaP(10, 'oros')), 'wild');
+  Test.is('caballo = salta', PumbaRules.effectOf(cartaP(11, 'oros')), 'skip');
+  Test.is('rey = repite', PumbaRules.effectOf(cartaP(12, 'oros')), 'replay');
+  Test.is('una normal no hace nada', PumbaRules.effectOf(cartaP(5, 'oros')), 'none');
+  Test.is('el rey solo repite con el mismo palo',
+    PumbaRules.canReplayWith(cartaP(3, 'oros'), 'oros'), true);
+  Test.is('el rey no repite con otro palo',
+    PumbaRules.canReplayWith(cartaP(3, 'copas'), 'oros'), false);
+});
+
 /* ---------------------------------------- estado guardado */
 
 Test.suite('serializacion del estado', () => {

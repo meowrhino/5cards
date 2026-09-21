@@ -130,8 +130,15 @@ maestra, log público).
 
 ## 📝 Licencia y créditos
 
+El **código** está bajo [licencia MIT](LICENSE): libre para usar, copiar,
+modificar y redistribuir, para siempre.
+
+El **texto de las fichas de reglas** procede de
+[nhfournier.es](https://www.nhfournier.es/como-jugar/) y es suyo; se conserva
+aquí para consulta con atribución y enlace a la fuente en cada ficha. Las
+reglas de un juego de cartas, en cambio, no son de nadie: son patrimonio común,
+y por eso cualquiera puede implementarlas. Ver [PROCEDENCIA.md](data/fournier/PROCEDENCIA.md).
+
 Proyecto de Manu — diseñador y artista web.
-Las reglas del archivo proceden de [nhfournier.es](https://www.nhfournier.es/como-jugar/),
-recogidas aquí para consulta libre con enlace a la fuente en cada ficha.
 
 **Repositorio**: https://github.com/meowrhino/5cards

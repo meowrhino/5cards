@@ -36,22 +36,16 @@ const ModalManager = {
     }
   },
 
-  /* selector de color del UNO: devuelve el color elegido */
-  chooseColor() {
-    const colors = [
-      { name: 'amarillo', hex: '#FFD600', text: '#111' },
-      { name: 'rojo', hex: '#E02020', text: '#fff' },
-      { name: 'azul', hex: '#2060E0', text: '#fff' },
-      { name: 'verde', hex: '#20A020', text: '#fff' }
-    ];
-
+  /* selector generico: devuelve la opcion elegida
+     options: [{ value, label, bg, fg }] */
+  choose(title, options) {
     const promise = this.show(`
-      <h3 class="modal-title">elige color</h3>
+      <h3 class="modal-title">${title}</h3>
       <div class="color-picker">
-        ${colors.map(c => `
-          <button class="color-choice" data-color="${c.name}"
-            style="--choice-bg:${c.hex}; --choice-text:${c.text}">
-            ${c.name}
+        ${options.map(o => `
+          <button class="color-choice" data-value="${o.value}"
+            style="--choice-bg:${o.bg}; --choice-text:${o.fg}">
+            ${o.label}
           </button>
         `).join('')}
       </div>
@@ -60,11 +54,31 @@ const ModalManager = {
     /* el contenido acaba de entrar en el DOM: enganchar en el siguiente tick */
     setTimeout(() => {
       document.querySelectorAll('.color-choice').forEach(btn => {
-        btn.addEventListener('click', () => this.close(btn.dataset.color));
+        btn.addEventListener('click', () => this.close(btn.dataset.value));
       });
     }, 10);
 
     return promise;
+  },
+
+  /* colores del UNO */
+  chooseColor() {
+    return this.choose('elige color', [
+      { value: 'amarillo', label: 'amarillo', bg: '#FFD600', fg: '#111' },
+      { value: 'rojo', label: 'rojo', bg: '#E02020', fg: '#fff' },
+      { value: 'azul', label: 'azul', bg: '#2060E0', fg: '#fff' },
+      { value: 'verde', label: 'verde', bg: '#20A020', fg: '#fff' }
+    ]);
+  },
+
+  /* palos de la baraja española (sota del pumba) */
+  chooseSpanishSuit() {
+    return this.choose('elige palo', [
+      { value: 'oros', label: `${SUIT_SYMBOLS.oros} oros`, bg: '#FFD600', fg: '#111' },
+      { value: 'copas', label: `${SUIT_SYMBOLS.copas} copas`, bg: '#E02020', fg: '#fff' },
+      { value: 'espadas', label: `${SUIT_SYMBOLS.espadas} espadas`, bg: '#00CCCC', fg: '#111' },
+      { value: 'bastos', label: `${SUIT_SYMBOLS.bastos} bastos`, bg: '#20A020', fg: '#fff' }
+    ]);
   },
 
   /* mostrar error en modal activo */

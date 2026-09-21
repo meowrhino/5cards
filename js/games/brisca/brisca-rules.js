@@ -15,13 +15,9 @@ const BriscaRules = {
   /* tantos que vale cada carta; el resto no valen nada */
   POINTS: { 1: 11, 3: 10, 12: 4, 11: 3, 10: 2 },
 
-  /* la baraja de brisca es la española de 40: sin ochos ni nueves */
+  /* la brisca usa la española de 40 tal cual */
   buildDeck(masterDeck) {
-    return masterDeck.filter(card => {
-      if (!card.brisca) return false;
-      const v = card.brisca.value;
-      return v !== 8 && v !== 9;
-    });
+    return SpanishDeck.forty(masterDeck, 'brisca');
   },
 
   strength(card) {
