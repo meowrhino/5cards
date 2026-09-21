@@ -90,7 +90,7 @@ const GameEngine = {
 
   dealCards(game) {
     /* estos juegos reparten ellos mismos (por nivel, por bazas...) */
-    if (game === 'the-mind' || game === 'brisca' || game === 'pumba') {
+    if (['the-mind', 'brisca', 'pumba', 'escoba'].includes(game)) {
       this.state.players.forEach(p => { p.hand = []; });
       return;
     }

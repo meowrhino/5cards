@@ -179,3 +179,73 @@ tanto dejaba pasar las cartas donde la skin era `undefined`.
 - probado en el navegador: hold-to-unlock, traspaso, deshacer (estado, mano,
   log y descarte vuelven atras), reanudar tras recarga, auto-bloqueo al perder
   el foco, y la mano de 14 cartas ya en una sola fila
+
+
+## 2026-09-21 — fase: licencia, pumba y escoba
+
+### sinopsis
+
+cerrar el circulo del archivo: que los juegos recogidos de nhfournier.es no se
+queden en fichas de lectura sino que se puedan jugar, y que el proyecto tenga
+una licencia que haga verdad el "libre para siempre".
+
+### licencia
+
+sin `LICENSE` nadie podia reutilizar esto legalmente. MIT para el codigo.
+
+el texto de las fichas es otra cosa y conviene no mezclarlo:
+`data/fournier/PROCEDENCIA.md` separa las dos capas. **las reglas de un juego de
+cartas no son de nadie** — son un metodo, patrimonio comun, y por eso se pueden
+implementar y explicar libremente. **la redaccion concreta de cada ficha si es
+de fournier**, se conserva con atribucion y enlace, y no se presenta como propia.
+
+### pumba
+
+el uno original con baraja española, tal como lo cuenta la ficha: 5 cartas al
+mano y 4 al resto, seguir palo o numero, y seis cartas con efecto (as silencio,
+dos +2 acumulable hasta 8, siete cambia sentido, sota comodin que elige palo,
+caballo salta, rey repite). tanteo por lo que queda en la mano, -5 al que se
+descarta primero, eliminacion al llegar a 100.
+
+dos decisiones:
+
+- el **silencio del as** es una regla social que un movil no puede arbitrar: se
+  muestra el aviso y se deja que la mesa se lo aplique
+- el **"pumba"** hay que cantarlo antes de echar la penultima. aqui es un boton,
+  y si echas sin cantarlo robas dos automaticamente, que es lo que pasaria si
+  alguien te pilla
+
+la ficha **no** contempla robar por no poder jugar (solo pasar turno), asi que se
+implemento asi aunque la costumbre de mesa sea otra.
+
+### escoba
+
+sumar 15 entre una carta de la mano y las descubiertas del centro. es el juego
+de la coleccion que mejor encaja con pasar un solo movil: la mesa es publica y
+lo unico secreto son tres cartas.
+
+detalle de implementacion: no se enumeran subconjuntos para buscar capturas
+(seria exponencial con la mesa llena). se valida solo lo que el jugador
+selecciona, y la escoba se detecta comprobando si se lleva todas las
+descubiertas. la UI ensena la suma en vivo y el boton solo se enciende en 15.
+
+el tanteo incluye las siete categorias de la ficha (escobas, oros, mayorias,
+guindis, cuatro sietes, mayoria de cartas) y las **mayorias empatadas no las
+gana nadie**.
+
+### refactor de paso
+
+- `spanish-deck.js`: brisca, pumba y escoba comparten la baraja de 40
+- `GameEngine.peekNextTurn` salta a los eliminados (pumba)
+- `ModalManager.choose()` generico: `chooseColor` y `chooseSpanishSuit` se
+  construyen encima en vez de duplicar el picker
+
+### verificacion
+
+- `tests/index.html`: **122 comprobaciones, todas pasan**
+- ronda completa de pumba a 4 simulada: efectos, tanteo y eliminacion al limite
+- ronda completa de escoba a 4 simulada: **las 40 cartas acaban repartidas en
+  las pilas de capturas**, mesa y mazo vacios, y el desglose del tanteo cuadra
+  (10 oros, 4 sietes, 40 cartas repartidos entre los jugadores)
+- un test fallo al añadirlo y era el dato de prueba, no el codigo: las cuatro
+  cartas que puse sumaban 28, no 30

@@ -52,6 +52,9 @@ const AppFlow = {
       case 'pumba':
         gameModule.init(num('pumba-limit', 100));
         break;
+      case 'escoba':
+        gameModule.init(num('escoba-limit', 21));
+        break;
       case 'poker': {
         const variantEl = document.getElementById('poker-variant');
         gameModule.init(num('poker-chips', 1000), variantEl ? variantEl.value : 'no-limit');
@@ -84,7 +87,7 @@ const AppFlow = {
       GameEngine.state.currentPlayerIdx = salida;
       if (App.currentGame === 'chinchon') {
         gameModule.init(gameModule.scoreLimit);
-      } else if (App.currentGame === 'pumba') {
+      } else if (App.currentGame === 'pumba' || App.currentGame === 'escoba') {
         gameModule.init(GameEngine.state.gameSpecific.scoreLimit);
       } else {
         gameModule.init();

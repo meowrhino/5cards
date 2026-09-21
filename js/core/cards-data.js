@@ -10,11 +10,11 @@
    5. chinchon =  48 (pos 0-47)
    ======================================== */
 
-const GAMES = ['chinchon', 'uno', 'rummikub', 'virus', 'poker', 'the-mind', 'brisca', 'pumba'];
+const GAMES = ['chinchon', 'uno', 'rummikub', 'virus', 'poker', 'the-mind', 'brisca', 'pumba', 'escoba'];
 
 /* un juego puede reutilizar el aspecto de otro: la brisca se juega con
    la misma baraja española que el chinchon, no hace falta otra skin */
-const CARD_SKINS = { brisca: 'chinchon', pumba: 'chinchon' };
+const CARD_SKINS = { brisca: 'chinchon', pumba: 'chinchon', escoba: 'chinchon' };
 
 function skinOf(game) {
   return CARD_SKINS[game] || game;
@@ -30,7 +30,8 @@ const GAME_INFO = {
   poker:    { name: 'poker',    display: 'poker',    cards: 52, perPlayer: 2, minPlayers: 2, maxPlayers: 7, rules: 'texas-holdem', desc: 'texas holdem simplificado' },
   'the-mind': { name: 'the-mind', display: 'the mind', cards: 100, perPlayer: 1, minPlayers: 2, maxPlayers: 4, rules: null, desc: 'cooperativo: jugar 1-100 en orden sin hablar' },
   brisca:   { name: 'brisca',   display: 'brisca',   cards: 40, perPlayer: 3, minPlayers: 2, maxPlayers: 4, rules: 'brisca', desc: 'bazas con triunfo, manos de 3 cartas' },
-  pumba:    { name: 'pumba',    display: 'pumba',    cards: 40, perPlayer: 4, minPlayers: 2, maxPlayers: 6, rules: 'pumba', desc: 'descartate el primero · seis cartas con efecto' }
+  pumba:    { name: 'pumba',    display: 'pumba',    cards: 40, perPlayer: 4, minPlayers: 2, maxPlayers: 6, rules: 'pumba', desc: 'descartate el primero · seis cartas con efecto' },
+  escoba:   { name: 'escoba',   display: 'escoba',   cards: 40, perPlayer: 3, minPlayers: 2, maxPlayers: 4, rules: 'escoba', desc: 'sumar 15 con la mesa · barrerla es escoba' }
 };
 
 /* simbolos de palos */
@@ -137,6 +138,7 @@ function buildMasterDeck() {
       /* brisca y pumba comparten la carta española del chinchon */
       deck[pos].brisca = deck[pos].chinchon;
       deck[pos].pumba = deck[pos].chinchon;
+      deck[pos].escoba = deck[pos].chinchon;
     }
   }
 
@@ -279,7 +281,7 @@ function getCardsForGame(game, masterDeck) {
      (skins añadidas solo a una zona, como la brisca) */
   const cards = masterDeck.filter(card => card[game] != null);
   /* los juegos de baraja española de 40 se quedan sin ochos ni nueves */
-  if (game === 'brisca' || game === 'pumba') return SpanishDeck.forty(cards, game);
+  if (['brisca', 'pumba', 'escoba'].includes(game)) return SpanishDeck.forty(cards, game);
   return cards;
 }
 

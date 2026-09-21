@@ -46,6 +46,7 @@
   <link rel="stylesheet" href="css/game/game-the-mind.css">
   <link rel="stylesheet" href="css/game/game-brisca.css">
   <link rel="stylesheet" href="css/game/game-pumba.css">
+  <link rel="stylesheet" href="css/game/game-escoba.css">
 </head>
 <body data-game="chinchon">
 
@@ -63,6 +64,7 @@
       <button class="game-tab" data-game="the-mind">the mind</button>
       <button class="game-tab" data-game="brisca">brisca</button>
       <button class="game-tab" data-game="pumba">pumba</button>
+      <button class="game-tab" data-game="escoba">escoba</button>
     </nav>
 
     <!-- partida sin terminar -->
@@ -115,6 +117,13 @@
 
         <div id="brisca-options" class="game-options" style="display:none;">
           <span class="action-hint">bazas con triunfo · 120 tantos · sin obligacion de asistir</span>
+        </div>
+
+        <div id="escoba-options" class="game-options" style="display:none;">
+          <label>partida a: <select id="escoba-limit">
+            <option value="21" selected>21 puntos</option>
+            <option value="31">31 puntos</option>
+          </select></label>
         </div>
 
         <div id="pumba-options" class="game-options" style="display:none;">
@@ -361,6 +370,12 @@
   <script src="js/games/pumba/pumba-scoring.js"></script>
   <script src="js/games/pumba/pumba-render.js"></script>
   <script src="js/games/pumba/pumba.js"></script>
+
+  <!-- escoba: sumar 15 con la mesa descubierta -->
+  <script src="js/games/escoba/escoba-rules.js"></script>
+  <script src="js/games/escoba/escoba-scoring.js"></script>
+  <script src="js/games/escoba/escoba-render.js"></script>
+  <script src="js/games/escoba/escoba.js"></script>
 
   <!-- app -->
   <script src="js/app/turn-flow.js"></script>

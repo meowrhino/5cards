@@ -111,6 +111,73 @@ Test.suite('pumba · efectos de las seis especiales', () => {
     PumbaRules.canReplayWith(cartaP(3, 'copas'), 'oros'), false);
 });
 
+/* ---------------------------------------- escoba */
+
+const cartaE = (valor, palo) =>
+  MASTER_DECK.find(c => c.escoba && c.escoba.value === valor && c.escoba.suit === palo);
+
+Test.suite('escoba · valores de suma', () => {
+  /* rey 10, caballo 9, sota 8, el resto su indice */
+  Test.is('el rey suma 10', EscobaRules.value(cartaE(12, 'oros')), 10);
+  Test.is('el caballo suma 9', EscobaRules.value(cartaE(11, 'oros')), 9);
+  Test.is('la sota suma 8', EscobaRules.value(cartaE(10, 'oros')), 8);
+  Test.is('el siete suma 7', EscobaRules.value(cartaE(7, 'oros')), 7);
+  Test.is('el as suma 1', EscobaRules.value(cartaE(1, 'oros')), 1);
+
+  const deck = EscobaRules.buildDeck(MASTER_DECK);
+  Test.is('la baraja tiene 40 cartas', deck.length, 40);
+  /* (1+2+3+4+5+6+7+8+9+10) x 4 palos = 220 */
+  Test.is('la baraja suma 220', EscobaRules.sum(deck), 220);
+});
+
+Test.suite('escoba · capturas', () => {
+  Test.is('rey + cinco = 15',
+    EscobaRules.isValidCapture(cartaE(12, 'oros'), [cartaE(5, 'copas')]), true);
+  Test.is('siete + sota = 15',
+    EscobaRules.isValidCapture(cartaE(7, 'oros'), [cartaE(10, 'copas')]), true);
+  Test.is('tres cartas que suman 15',
+    EscobaRules.isValidCapture(cartaE(5, 'oros'),
+      [cartaE(4, 'copas'), cartaE(6, 'bastos')]), true);
+  Test.is('si no suman 15 no vale',
+    EscobaRules.isValidCapture(cartaE(5, 'oros'), [cartaE(4, 'copas')]), false);
+  Test.is('sin cartas de mesa no hay captura',
+    EscobaRules.isValidCapture(cartaE(5, 'oros'), []), false);
+
+  const mesa = [cartaE(4, 'copas'), cartaE(6, 'bastos')];
+  Test.is('llevarse toda la mesa es escoba',
+    EscobaRules.isEscoba(mesa, mesa), true);
+  Test.is('dejar algo en la mesa no es escoba',
+    EscobaRules.isEscoba([mesa[0]], mesa), false);
+});
+
+Test.suite('escoba · cartas que puntuan', () => {
+  Test.is('el siete de oros es el guindis',
+    EscobaRules.isGuindis(cartaE(7, 'oros')), true);
+  Test.is('el siete de copas no lo es',
+    EscobaRules.isGuindis(cartaE(7, 'copas')), false);
+  Test.is('reconoce los sietes', EscobaRules.isSeven(cartaE(7, 'bastos')), true);
+  Test.is('reconoce los oros', EscobaRules.isOros(cartaE(3, 'oros')), true);
+});
+
+Test.suite('escoba · el que reparte se lleva el centro', () => {
+  Test.is('cuatro cartas que suman 15 dan una escoba',
+    EscobaRules.dealerBonus([cartaE(1, 'oros'), cartaE(2, 'copas'),
+      cartaE(5, 'bastos'), cartaE(7, 'espadas')]), 1);
+  /* rey 10 + rey 10 + sota 8 + dos 2 = 30 */
+  Test.is('si suman 30 son dos escobas',
+    EscobaRules.dealerBonus([cartaE(12, 'oros'), cartaE(12, 'copas'),
+      cartaE(10, 'bastos'), cartaE(2, 'espadas')]), 2);
+  Test.is('si no, ninguna',
+    EscobaRules.dealerBonus([cartaE(1, 'oros'), cartaE(2, 'copas'),
+      cartaE(3, 'bastos'), cartaE(4, 'espadas')]), 0);
+});
+
+Test.suite('escoba · mayorias empatadas no las gana nadie', () => {
+  Test.is('empate a dos no tiene lider', EscobaScoring._soleLeader([2, 2, 1]), null);
+  Test.is('un solo maximo si', EscobaScoring._soleLeader([3, 2, 1]), 0);
+  Test.is('si nadie tiene nada, nadie gana', EscobaScoring._soleLeader([0, 0]), null);
+});
+
 /* ---------------------------------------- estado guardado */
 
 Test.suite('serializacion del estado', () => {

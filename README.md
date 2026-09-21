@@ -24,10 +24,16 @@ reglas se carga con `fetch` y el service worker necesita origen http.
 | **poker** | 2-7 | inglesa 52 (Texas Hold'em) |
 | **the mind** | 2-4 | 1-100, cooperativo |
 | **brisca** | 2-4 | española 40 |
+| **pumba** | 2-6 | española 40 |
+| **escoba** | 2-4 | española 40 |
 
 Todos salen del mismo array maestro de 108 cartas: cada posición lleva una
-"skin" por juego, y un juego puede reutilizar la skin de otro (la brisca usa la
-carta española del chinchón).
+"skin" por juego, y un juego puede reutilizar la skin de otro (brisca, pumba y
+escoba usan la carta española del chinchón).
+
+Los tres últimos vienen del archivo de reglas: **brisca**, **pumba** y
+**escoba** se implementaron leyendo su ficha, y ese es el camino previsto para
+los demás.
 
 ---
 
@@ -72,8 +78,9 @@ Genera:
 - `docs/reglas/<slug>.md` — la misma ficha en markdown legible
 
 La idea es que las reglas sobrevivan aunque la web original cambie, y que cada
-juego del archivo pueda acabar siendo jugable aquí. La brisca es el primero que
-ha hecho ese camino.
+juego del archivo pueda acabar siendo jugable aquí. Ya lo han hecho **brisca**,
+**pumba** y **escoba**; los siguientes candidatos naturales son **tute** y
+**pocha**, que reaprovechan el motor de bazas de la brisca.
 
 ---
 
@@ -110,10 +117,11 @@ enchufarlo; no hay que tocar el motor.
 
 ## ✅ Tests
 
-Sin dependencias: abre `tests/index.html` en el navegador. Cubren las reglas que,
-si se rompen, arruinan una partida sin que se note (orden y tanteo de la brisca,
-quién gana la baza, serialización del estado guardado, integridad de la baraja
-maestra, log público).
+Sin dependencias: abre `tests/index.html` en el navegador. **122 comprobaciones**
+sobre las reglas que, si se rompen, arruinan una partida sin que se note: orden
+y tanteo de la brisca, quién gana la baza, efectos y tanteo del pumba, sumas y
+capturas de la escoba, serialización del estado guardado, integridad de la
+baraja maestra y log público.
 
 ---
 

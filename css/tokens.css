@@ -118,6 +118,21 @@ body[data-game="pumba"] {
   --btn-bg: var(--tt-black);
 }
 
+body[data-game="escoba"] {
+  --bg-primary: #0d4a3a;
+  --bg-secondary: #06291f;
+  --bg-surface: #0a3b2e;
+  --bg-surface-solid: #0a3b2e;
+  --accent: var(--tt-yellow);
+  --accent-secondary: var(--tt-white);
+  --text-primary: var(--tt-white);
+  --text-secondary: #7fd4b8;
+  --nav-bg: var(--tt-black);
+  --nav-active-bg: var(--tt-yellow);
+  --nav-active-text: var(--tt-black);
+  --btn-bg: var(--tt-black);
+}
+
 body[data-game="uno"] {
   --bg-primary: var(--tt-black);
   --bg-secondary: var(--tt-black);
